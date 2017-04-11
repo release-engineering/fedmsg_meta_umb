@@ -35,7 +35,8 @@ class TestBrewTaskFree(BrewTaskBase):
         "msg": {
             "info": {
                 "parent": None,
-                "request": "<?xml version='1.0'?>\n<methodCall>\n<methodName>newRepo</methodName>\n<params>\n<param>\n<value><string>rhel-7.4-candidate</string></value>\n</param>\n</params>\n</methodCall>\n",
+                "request": "<?xml version='1.0'?>\n<methodCall>\n<methodName>newRepo</methodName>\n<params>\n"
+                "<param>\n<value><string>rhel-7.4-candidate</string></value>\n</param>\n</params>\n</methodCall>\n",
                 "id": 18064,
                 "priority": 15,
                 "channel_id": 2,
