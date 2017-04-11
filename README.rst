@@ -20,20 +20,14 @@ Pop into ``#fedora-apps`` on freenode if you have questions or comments.
 Build Status
 ------------
 
-.. |master| image:: https://secure.travis-ci.org/release-engineering/fedmsg_meta_fedora_infrastructure.png?branch=master
+.. |master| image:: https://secure.travis-ci.org/release-engineering/fedmsg_meta_umb.png?branch=master
    :alt: Build Status - master branch
-   :target: http://travis-ci.org/#!/release-engineering/fedmsg_meta_umb
-
-.. |develop| image:: https://secure.travis-ci.org/release-engineering/fedmsg_meta_fedora_infrastructure.png?branch=develop
-   :alt: Build Status - develop branch
    :target: http://travis-ci.org/#!/release-engineering/fedmsg_meta_umb
 
 +----------+-----------+
 | Branch   | Status    |
 +==========+===========+
 | master   | |master|  |
-+----------+-----------+
-| develop  | |develop| |
 +----------+-----------+
 
 Running the Tests
