@@ -269,7 +269,8 @@ class TestBrewImportArchive(test_brew.BrewBase):
         "msg_id": "0c6e5ca8-b9ad-46f5-be91-ce430f219264",
         "topic": "/topic/VirtualTopic.eng.brew.import.archive",
         "msg": {
-            "filepath": "/mnt/brew/work/tasks/1531/12991531/org/jboss/errai/errai-ui/3.2.5.Final-redhat-1/errai-ui-3.2.5.Final-redhat-1.jar",
+            "filepath": "/mnt/brew/work/tasks/1531/12991531/org/jboss/errai/errai-ui/3.2.5.Final-redhat-1/"
+            "errai-ui-3.2.5.Final-redhat-1.jar",
             "build_type": "maven",
             "build": {
                 "package_name": "org.jboss.errai-errai-parent",
@@ -483,7 +484,9 @@ class TestBrewImportCG(test_brew.BrewBase):
                         "extra": {
                             "osbs": {
                                 "build_id": "atomic-docker-unknown-14",
-                                "builder_image_id": "docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rcm/buildroot@sha256:90671a732a1b644c76fe18ec67cb4305cd22cf7db86efaa92aed23e4e0b1f45f"
+                                "builder_image_id": "docker-pullable://brew-pulp-docker01.web.prod."
+                                "ext.phx2.redhat.com:8888/rcm/buildroot@sha256:90671a732a1b644c76fe"
+                                "18ec67cb4305cd22cf7db86efaa92aed23e4e0b1f45f"
                             }
                         },
                         "content_generator": {
