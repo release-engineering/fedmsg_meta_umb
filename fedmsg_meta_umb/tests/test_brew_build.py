@@ -95,6 +95,41 @@ class TestBrewBuildComplete(test_brew.BrewBase):
         }
     }
 
+class TestBrewBuildCompleteDocker(test_brew.BrewBase):
+    expected_title = 'brew.build.complete'
+    expected_subti = 'metrics-cassandra-docker-3.6.0-3 has been built successfully'
+    expected_packages = set(['metrics-cassandra-docker'])
+    expected_usernames = set()
+    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=550925'
+    msg = {
+        "i": 0,
+        "timestamp": 1491951183.0,
+        "msg_id": "ffcbdc40-1435-492f-83f9-51b9892b9524",
+        "topic": "/topic/VirtualTopic.eng.brew.build.complete",
+        "msg": {
+            "info": {
+                "start_time": "2017-04-11 22:42:53",
+                "name": "metrics-cassandra-docker",
+                "task_id": None,
+                "extra": "{\"image\": {\"autorebuild\": false, \"help\": null}, \"container_koji_task_id\": 12996137}",
+                "pkg_id": 54389,
+                "state": 1,
+                "completion_time": "2017-04-11 22:52:49",
+                "epoch": None,
+                "version": "3.6.0",
+                "source": "git://pkgs.devel.redhat.com/rpms/metrics-cassandra-docker#"
+                "1c9ebc26c5066ed4894d45878bc90fd66046a292",
+                "volume_id": 0,
+                "owner": 3436,
+                "release": "3",
+                "id": 550925
+            },
+            "attribute": "state",
+            "old": None,
+            "new": 1
+        }
+    }
+
 class TestBrewBuildDeleted(test_brew.BrewBase):
     expected_title = 'brew.build.deleted'
     expected_subti = 'elasticsearch-2.4.1-2.el7 has been deleted'
