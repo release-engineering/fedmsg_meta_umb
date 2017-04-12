@@ -53,7 +53,7 @@ class BrewProcessor(BaseProcessor):
             },
             'build': {
                 'building': self._('{info[name]}-{info[version]}-{info[release]} is building'),
-                'complete': self._('{info[nvr]} has been built successfully'),
+                'complete': self._('{info[name]}-{info[version]}-{info[release]} has been built successfully'),
                 'deleted': self._('{info[nvr]} has been deleted'),
                 'failed': self._('build of {info[nvr]} has failed'),
                 'canceled': self._('build of {info[nvr]} has been canceled'),
@@ -113,7 +113,9 @@ class BrewProcessor(BaseProcessor):
                 return set([msg['msg']['user']['name'],
                             msg['msg']['build']['owner_name']])
             else:
-                return set([msg['msg']['info']['owner_name']])
+                owner_name = msg['msg']['info'].get('owner_name')
+                if owner_name:
+                    return set([owner_name])
         elif tokens[-2] == 'import':
             return set([msg['msg']['build']['owner_name']])
         elif tokens[-2] == 'sign':
