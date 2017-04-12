@@ -36,7 +36,7 @@ Running the Tests
 ::
 
     # install the test tool
-    $ sudo dnf install detox
+    $ sudo dnf install python2-detox
     # Run it.
     $ detox
 
