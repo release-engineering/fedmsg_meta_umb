@@ -16,7 +16,7 @@
 #
 # Authors:  Mike Bonnet <mikeb@redhat.com>
 
-import test_brew
+from . import test_brew
 
 class TestBrewPackageAdd(test_brew.BrewBase):
     expected_title = 'brew.package.add'

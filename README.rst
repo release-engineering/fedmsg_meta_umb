@@ -35,16 +35,12 @@ Running the Tests
 
 ::
 
-    # Create a virtualenv
-    $ sudo dnf install python-virtualenv
-    $ virtualenv my-env
-    $ source my-env/bin/activate
+    # install the test tool
+    $ sudo dnf install detox
+    # Run it.
+    $ detox
 
-    # Install the dependencies
-    $ python setup.py develop
-
-    # Run the tests
-    $ python setup.py test
+If `detox` is unavailable on your system, you can also use plain old `tox`.
 
 Building the Docs
 -----------------
