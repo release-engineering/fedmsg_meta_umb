@@ -1,6 +1,9 @@
+sudo: false
 language: python
 python:
  - "2.7"
  - "3.5"
-install: pip install tox-travis
-script: tox
+install: pip install tox-travis codecov
+script: tox -- --with-coverage --cover-branches --cover-package=fedmsg_meta_umb
+               --cover-xml --cover-xml-file=$TRAVIS_BUILD_DIR/coverage.xml
+after_success: codecov -e TRAVIS_PYTHON_VERSION --file $TRAVIS_BUILD_DIR/coverage.xml
