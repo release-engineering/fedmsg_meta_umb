@@ -24,11 +24,15 @@ Build Status
    :alt: Build Status - master branch
    :target: http://travis-ci.org/#!/release-engineering/fedmsg_meta_umb
 
-+----------+-----------+
-| Branch   | Status    |
-+==========+===========+
-| master   | |master|  |
-+----------+-----------+
+.. |codecov| image:: https://codecov.io/gh/release-engineering/fedmsg_meta_umb/branch/master/graph/badge.svg
+   :alt: Code Coverage - master branch
+   :target: https://codecov.io/gh/release-engineering/fedmsg_meta_umb
+
++----------+-----------+-----------+
+| Branch   | Status    | Coverage  |
++==========+===========+===========+
+| master   | |master|  | |codecov| |
++----------+-----------+-----------+
 
 Running the Tests
 -----------------
