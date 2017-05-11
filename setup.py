@@ -36,6 +36,7 @@ tests_require = [
 entry_points = {
     'fedmsg.meta': [
         'brew=fedmsg_meta_umb.brew:BrewProcessor',
+        'rpmdiff=fedmsg_meta_umb.rpmdiff:RPMDiffProcessor',
     ]
 }
 
