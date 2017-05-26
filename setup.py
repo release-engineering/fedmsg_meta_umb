@@ -38,6 +38,7 @@ entry_points = {
         'brew=fedmsg_meta_umb.brew:BrewProcessor',
         'rpmdiff=fedmsg_meta_umb.rpmdiff:RPMDiffProcessor',
         'distgit=fedmsg_meta_umb.distgit:DistGitProcessor',
+        'pub=fedmsg_meta_umb.pub:PubProcessor',
     ]
 }
 
