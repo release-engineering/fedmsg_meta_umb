@@ -39,6 +39,7 @@ entry_points = {
         'rpmdiff=fedmsg_meta_umb.rpmdiff:RPMDiffProcessor',
         'distgit=fedmsg_meta_umb.distgit:DistGitProcessor',
         'pub=fedmsg_meta_umb.pub:PubProcessor',
+        'errata=fedmsg_meta_umb.errata:ErrataProcessor',
     ]
 }
 
