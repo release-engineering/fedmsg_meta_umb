@@ -360,3 +360,52 @@ class TestErrataBatchChanged(fedmsg.tests.test_meta.Base):
         },
         "msg": ""
     }
+
+
+class TestErrataDocsApproved(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Messages like these appear whenever someone **approves the docs** on an
+    advisory.
+    """
+    expected_title = 'errata.activity.docs_approval'
+    expected_subti = 'lbopf approved the docs on RHBA-2017:27244-01'
+    expected_link = 'https://errata.devel.redhat.com/advisory/27244'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set(['lbopf'])
+    expected_agent = 'lbopf'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1496279793.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+        "redhat.com-32888-1493960489068-4:481523:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.activity.docs_approval",
+        "headers": {
+            "errata_status": "QE",
+            "expires": "0",
+            "errata_id": "27244",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "to": "docs_approved",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.docs_approval",
+            "when": "2017-06-01 01:16:31 UTC",
+            "persistent": "true",
+            "who": "lbopf@redhat.com",
+            "priority": "4",
+            "synopsis": "openstack-packstack and openstack-puppet-modules bug fix advisory",
+            "subscription": "/queue/Consumer.datanommer-dev-mikeb.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+            "redhat.com-32888-1493960489068-4:481523:0:0:1",
+            "fulladvisory": "RHBA-2017:27244-01",
+            "timestamp": "0",
+            "from": "null",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.activity.docs_approval",
+            "subject": "errata.activity.docs_approval"
+        },
+        "msg": ""
+    }

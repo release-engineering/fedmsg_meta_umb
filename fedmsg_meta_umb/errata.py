@@ -85,6 +85,14 @@ class ErrataProcessor(BaseProcessor):
                 template = self._('{agent} removed {fulladvisory} '
                                   'from the {from} advisory batch')
             return template.format(agent=agent, **headers)
+        elif title == 'errata.activity.docs_approval':
+            if headers['to'] == 'docs_approved':
+                template = self._('{agent} approved the docs '
+                                  'on {fulladvisory}')
+            else:
+                template = self._('{agent} changed the docs flag '
+                                  'on {fulladvisory} to {to}')
+            return template.format(agent=agent, **headers)
 
     def agent(self, msg, **config):
         return msg['headers']['who'].split('@')[0].split('/')[0]
