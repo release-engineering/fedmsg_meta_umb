@@ -409,3 +409,51 @@ class TestErrataDocsApproved(fedmsg.tests.test_meta.Base):
         },
         "msg": ""
     }
+
+
+class TestErrataAssignedTo(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Messages like these appear whenever someone **is assigned to** an advisory.
+    """
+    expected_title = 'errata.activity.assigned_to'
+    expected_subti = 'cye assigned rbean to RHBA-2017:28809-02'
+    expected_link = 'https://errata.devel.redhat.com/advisory/28809'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set(['rbean', 'cye', 'kernel-qe'])
+    expected_agent = 'cye'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1496284509.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+        "redhat.com-32888-1493960489068-4:482002:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.activity.assigned_to",
+        "headers": {
+            "errata_status": "QE",
+            "expires": "0",
+            "errata_id": "28809",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "to": "rbean@redhat.com",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.assigned_to",
+            "when": "2017-06-01 02:35:03 UTC",
+            "persistent": "true",
+            "who": "cye@redhat.com",
+            "priority": "4",
+            "synopsis": "kernel bug fix update",
+            "subscription": "/queue/Consumer.datanommer-dev-mikeb.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+            "redhat.com-32888-1493960489068-4:482002:0:0:1",
+            "fulladvisory": "RHBA-2017:28809-02",
+            "timestamp": "0",
+            "from": "kernel-qe@redhat.com",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.activity.assigned_to",
+            "subject": "errata.activity.assigned_to"
+        },
+        "msg": ""
+    }

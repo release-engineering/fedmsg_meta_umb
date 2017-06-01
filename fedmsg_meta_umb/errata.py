@@ -16,6 +16,8 @@
 #
 # Authors:  Ralph Bean <rbean@redhat.com>
 
+import copy
+
 from fedmsg.meta.base import BaseProcessor
 
 
@@ -49,7 +51,7 @@ class ErrataProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
-        headers = msg['headers']
+        headers = copy.deepcopy(msg['headers'])
         title = self.title(msg, **config)
         agent = self.agent(msg, **config)
 
@@ -93,12 +95,33 @@ class ErrataProcessor(BaseProcessor):
                 template = self._('{agent} changed the docs flag '
                                   'on {fulladvisory} to {to}')
             return template.format(agent=agent, **headers)
+        elif title == 'errata.activity.assigned_to':
+            if headers['to'] == 'null':
+                template = self._('{agent} unassigned {fulladvisory}')
+            else:
+                headers['to'] = self.scrub_username(headers['to'])
+                template = self._('{agent} assigned {to} to {fulladvisory}')
+            return template.format(agent=agent, **headers)
+
+    @staticmethod
+    def scrub_username(username):
+        return username.split('@')[0].split('/')[0]
 
     def agent(self, msg, **config):
-        return msg['headers']['who'].split('@')[0].split('/')[0]
+        return self.scrub_username(msg['headers']['who'])
 
     def usernames(self, msg, **config):
-        return set([self.agent(msg, **config)])
+        # Every message returns the agent in the set...
+        persons = set([self.agent(msg, **config)])
+
+        # But a select few messages have additional persons associated
+        title = self.title(msg, **config)
+        if title == 'errata.activity.assigned_to':
+            for key in ('from', 'to',):
+                if msg['headers'][key] != 'null':
+                    persons.add(self.scrub_username(msg['headers'][key]))
+
+        return persons
 
     def link(self, msg, **config):
         template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
