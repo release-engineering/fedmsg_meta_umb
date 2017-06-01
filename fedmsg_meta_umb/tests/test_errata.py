@@ -171,3 +171,54 @@ class TestErrataSecurityRequested(fedmsg.tests.test_meta.Base):
         "source_version": "0.7.0",
         "msg": ""
     }
+
+
+class TestErrataSignaturesReported(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    The Errata Tool pumps out messages like this one when cryptographic
+    signatures are attached to builds (which are in turn attached to
+    advisories).
+    """
+    expected_title = 'errata.activity.signing'
+    expected_subti = ('robosignatory reported signing gssproxy-0.7.0-4.el7 for '
+                      'RHBA-2017:26924-01')
+    expected_link = 'https://errata.devel.redhat.com/advisory/26924'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set(['robosignatory'])
+    expected_agent = 'robosignatory'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1496271000.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+        "redhat.com-32888-1493960489068-4:479960:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.activity.signing",
+        "headers": {
+            "errata_status": "QE",
+            "expires": "0",
+            "errata_id": "26924",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "to": "gssproxy-0.7.0-4.el7",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.signing",
+            "when": "2017-05-31 22:50:02 UTC",
+            "persistent": "true",
+            "who": "robosignatory/robosignatory.host.prod.eng.bos.redhat.com@REDHAT.COM",
+            "priority": "4",
+            "synopsis": "gssproxy bug fix and enhancement update",
+            "subscription": "/queue/Consumer.datanommer-dev-mikeb.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+            "redhat.com-32888-1493960489068-4:479960:0:0:1",
+            "fulladvisory": "RHBA-2017:26924-01",
+            "timestamp": "0",
+            "from": "null",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.activity.signing",
+            "subject": "errata.activity.signing"
+        },
+        "msg": ""
+    }

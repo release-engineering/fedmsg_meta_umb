@@ -37,6 +37,8 @@ class ErrataProcessor(BaseProcessor):
                 '{agent} moved {fulladvisory} from {from} to {to}'),
             'errata.activity.created': self._(
                 '{agent} filed a new {type} advisory for {release}'),
+            'errata.activity.signing': self._(
+                '{agent} reported signing {to} for {fulladvisory}'),
         }
 
     def title(self, msg, **config):
@@ -72,7 +74,7 @@ class ErrataProcessor(BaseProcessor):
             return template.format(agent=agent, **headers)
 
     def agent(self, msg, **config):
-        return msg['headers']['who'].split('@')[0]
+        return msg['headers']['who'].split('@')[0].split('/')[0]
 
     def usernames(self, msg, **config):
         return set([self.agent(msg, **config)])
