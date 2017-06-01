@@ -70,6 +70,7 @@ class TestErrataStatusChange(fedmsg.tests.test_meta.Base):
         "msg": ""
     }
 
+
 class TestErrataActivityCreated(fedmsg.tests.test_meta.Base):
     """ The Errata Tool supports the release workflow for Red Hat content.
 
@@ -112,6 +113,61 @@ class TestErrataActivityCreated(fedmsg.tests.test_meta.Base):
             "type": "RHBA",
             "subject": "errata.activity.created"
         },
+        "source_version": "0.7.0",
+        "msg": ""
+    }
+
+
+class TestErrataSecurityRequested(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Messages like this one are published when someone *requests security approval*.
+    """
+    expected_title = 'errata.activity.security_approved'
+    expected_subti = ('rbean requested security approval on '
+                      'RHSA-2016:10000-01')
+    expected_link = 'https://errata.devel.redhat.com/advisory/10000'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set(['rbean'])
+    expected_agent = 'rbean'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1496275955.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat."
+        "com-32888-1493960489068-4:481029:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+        "headers": {
+            "errata_status": "QE",
+            "expires": "0",
+            "errata_id": "10000",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "to": "false",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+            "when": "2016-01-01 00:00:01 UTC",
+            "persistent": "true",
+            "who": "rbean@redhat.com",
+            "priority": "4",
+            "synopsis": "A mocked security update.  Not a real example.",
+            "subscription": "/queue/Consumer.datanommer-dev-mikeb.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+            "redhat.com-32888-1493960489068-4:481029:0:0:1",
+            "fulladvisory": "RHSA-2016:10000-01",
+            "timestamp": "0",
+            "from": "null",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.activity.security_approved",
+            "subject": "errata.activity.security_approved"
+        },
+        "signature": None,
         "source_version": "0.7.0",
         "msg": ""
     }

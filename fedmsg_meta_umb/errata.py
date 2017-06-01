@@ -32,7 +32,7 @@ class ErrataProcessor(BaseProcessor):
 
     def __init__(self, *args, **kwargs):
         super(ErrataProcessor, self).__init__(*args, **kwargs)
-        self.subtitle_templates = {
+        self.simple_subtitle_templates = {
             'errata.activity.status': self._(
                 '{agent} moved {fulladvisory} from {from} to {to}'),
             'errata.activity.created': self._(
@@ -46,8 +46,29 @@ class ErrataProcessor(BaseProcessor):
         headers = msg['headers']
         title = self.title(msg, **config)
         agent = self.agent(msg, **config)
-        template = self.subtitle_templates.get(title)
+
+        # First, handle the simple cases...
+        template = self.simple_subtitle_templates.get(title)
         if template:
+            return template.format(agent=agent, **headers)
+
+        # Then, handle these more complex cases if that failed.
+        if title == 'errata.activity.security_approved':
+            if headers['to'] == 'true':
+                template = self._('{agent} approved the security '
+                                  'request on {fulladvisory}')
+            elif headers['to'] == 'null':
+                template = self._('{agent} unset the security '
+                                  'flag on {fulladvisory}')
+            elif headers['to'] == 'false':
+                # Two very different senses of "false"
+                if headers['from'] == 'null':
+                    template = self._('{agent} requested security '
+                                      'approval on {fulladvisory}')
+                else:
+                    template = self._('{agent} denied the security '
+                                      'request on {fulladvisory}')
+
             return template.format(agent=agent, **headers)
 
     def agent(self, msg, **config):
