@@ -104,7 +104,7 @@ following query to get the next one::
     }
 
 
-By default, the order of rows retrieved is from newest to oldest ("descending")
+By default, the order of rows retrieved is from newest to oldest ("descending").
 There is an ``order`` argument you can specify to set that how you like.  The
 default is "desc", but you can set it to "asc" for ascending order, a.k.a.
 from oldest to newest.
