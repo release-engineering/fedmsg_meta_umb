@@ -227,7 +227,7 @@ class TestErrataSignaturesReported(fedmsg.tests.test_meta.Base):
 class TestErrataBugsChanged(fedmsg.tests.test_meta.Base):
     """ The Errata Tool supports the release workflow for Red Hat content.
 
-    You'll see a message like this one when someone changes bugs on an
+    You'll see a message like this one when someone **changes bugs** on an
     advisory.
     """
     expected_title = 'errata.bugs.changed'
@@ -263,6 +263,50 @@ class TestErrataBugsChanged(fedmsg.tests.test_meta.Base):
             "JMS_AMQP_FirstAcquirer": "false",
             "type": "errata.bugs.changed",
             "subject": "errata.bugs.changed"
+        },
+        "msg": ""
+    }
+
+
+class TestErrataBuildsChanged(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **changes the builds** on
+    an advisory.
+    """
+    expected_title = 'errata.builds.changed'
+    expected_subti = ('rharwood changed builds on an advisory')
+    expected_link = 'https://errata.devel.redhat.com/advisory/26924'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set(['rharwood'])
+    expected_agent = 'rharwood'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1496269189.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+        "redhat.com-32888-1493960489068-4:478922:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.builds.changed",
+        "headers": {
+            "expires": "0",
+            "errata_id": "26924",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.builds.changed",
+            "when": "2017-05-31 22:19:49 UTC",
+            "persistent": "true",
+            "who": "rharwood@redhat.com",
+            "priority": "4",
+            "subscription": "/queue/Consumer.datanommer-dev-mikeb.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+            "redhat.com-32888-1493960489068-4:478922:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.builds.changed",
+            "subject": "errata.builds.changed"
         },
         "msg": ""
     }

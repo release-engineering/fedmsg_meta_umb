@@ -41,6 +41,8 @@ class ErrataProcessor(BaseProcessor):
                 '{agent} reported signing {to} for {fulladvisory}'),
             'errata.bugs.changed': self._(
                 '{agent} changed bugs on an advisory'),
+            'errata.builds.changed': self._(
+                '{agent} changed builds on an advisory'),
         }
 
     def title(self, msg, **config):
