@@ -30,17 +30,25 @@ class ErrataProcessor(BaseProcessor):
     __icon__ = ('https://errata.devel.redhat.com/assets/'
                 'images/erratatool18.png')
 
+    def __init__(self, *args, **kwargs):
+        super(ErrataProcessor, self).__init__(*args, **kwargs)
+        self.subtitle_templates = {
+            'errata.activity.status': self._(
+                '{agent} moved {fulladvisory} from {from} to {to}'),
+            'errata.activity.created': self._(
+                '{agent} filed a new {type} advisory for {release}'),
+        }
+
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
         headers = msg['headers']
         title = self.title(msg, **config)
-        if title.endswith('activity.status'):
-            template = self._("{agent} moved {fulladvisory} "
-                              "from {from} "
-                              "to {to}")
-            return template.format(agent=self.agent(msg, **config), **headers)
+        agent = self.agent(msg, **config)
+        template = self.subtitle_templates.get(title)
+        if template:
+            return template.format(agent=agent, **headers)
 
     def agent(self, msg, **config):
         return msg['headers']['who'].split('@')[0]
