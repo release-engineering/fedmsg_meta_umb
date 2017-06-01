@@ -77,6 +77,15 @@ class ErrataProcessor(BaseProcessor):
 
             return template.format(agent=agent, **headers)
 
+        elif title == 'errata.activity.batch':
+            if headers['to'] != 'null':
+                template = self._('{agent} added {fulladvisory} '
+                                  'to the {to} advisory batch')
+            else:
+                template = self._('{agent} removed {fulladvisory} '
+                                  'from the {from} advisory batch')
+            return template.format(agent=agent, **headers)
+
     def agent(self, msg, **config):
         return msg['headers']['who'].split('@')[0].split('/')[0]
 

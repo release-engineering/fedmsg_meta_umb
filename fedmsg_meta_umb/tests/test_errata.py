@@ -310,3 +310,53 @@ class TestErrataBuildsChanged(fedmsg.tests.test_meta.Base):
         },
         "msg": ""
     }
+
+
+class TestErrataBatchChanged(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **changes the batch**
+    associated with an advisory.
+    """
+    expected_title = 'errata.activity.batch'
+    expected_subti = ('lfriedma added RHEA-2017:28445-03 '
+                      'to the RHEL-7.3.6-Containers advisory batch')
+    expected_link = 'https://errata.devel.redhat.com/advisory/28445'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set(['lfriedma'])
+    expected_agent = 'lfriedma'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1496268967.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+        "redhat.com-32888-1493960489068-4:478875:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.activity.batch",
+        "headers": {
+            "errata_status": "QE",
+            "expires": "0",
+            "errata_id": "28445",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "to": "RHEL-7.3.6-Containers",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.batch",
+            "when": "2017-05-31 22:16:04 UTC",
+            "persistent": "true",
+            "who": "lfriedma@redhat.com",
+            "priority": "4",
+            "synopsis": "New Red Hat Enterprise Linux Atomic Container Engine Container Image",
+            "subscription": "/queue/Consumer.datanommer-dev-mikeb.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2."
+            "redhat.com-32888-1493960489068-4:478875:0:0:1",
+            "fulladvisory": "RHEA-2017:28445-03",
+            "timestamp": "0",
+            "from": "null",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.activity.batch",
+            "subject": "errata.activity.batch"
+        },
+        "msg": ""
+    }
