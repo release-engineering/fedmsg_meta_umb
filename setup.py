@@ -24,7 +24,6 @@ long_description = long_description.split('split here', 1)[1]
 f.close()
 
 setup_requires = [
-    'flake8',
 ]
 install_requires = [
     'fedmsg',
