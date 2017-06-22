@@ -51,6 +51,11 @@ class ErrataProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
+
+        # First, some sanity checking...
+        if 'headers' not in msg:
+            raise KeyError("'headers' not found in %r" % msg)
+
         headers = copy.deepcopy(msg['headers'])
         title = self.title(msg, **config)
         agent = self.agent(msg, **config)
