@@ -57,14 +57,14 @@ class PubProcessor(BaseProcessor):
 
     def usernames(self, msg, **config):
         users = set()
-        if msg['msg']['pushed_by']:
+        if msg['msg'].get('pushed_by'):
             users.add(msg['msg']['pushed_by'].split('@')[0])
-        if msg['msg']['owner']:
+        if msg['msg'].get('owner'):
             users.add(msg['msg']['owner'].split('@')[0])
         return users
 
     def agent(self, msg, **config):
-        if msg['msg']['pushed_by']:
+        if msg['msg'].get('pushed_by'):
             return msg['msg']['pushed_by'].split('@')[0]
-        if msg['msg']['owner']:
+        if msg['msg'].get('owner'):
             return msg['msg']['owner'].split('@')[0]
