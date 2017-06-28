@@ -34,6 +34,12 @@ class PubProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
+        if self.title(msg, **config) == 'pub.container.sign':
+            template = self._("image {0} "
+                              "was signed with key {1} in {2}")
+            return template.format(msg['msg']['image_name'],
+                                   msg['msg']['sig_key_id'].lower(),
+                                   msg['headers']['target'])
         template = self._("{agent}'s {source} push to {target} "
                           "of {files} {status}")
         items = [item.split('/')[-1] for item in msg['msg']['file_list']]
@@ -53,6 +59,9 @@ class PubProcessor(BaseProcessor):
             **msg['msg'])
 
     def link(self, msg, **config):
+        if self.title(msg, **config) == 'pub.container.sign':
+            template = 'http://pub.devel.redhat.com/pub/task/{0}/'
+            return template.format(msg['msg']['pub_task_id'])
         return msg['msg']['push_url']
 
     def usernames(self, msg, **config):
