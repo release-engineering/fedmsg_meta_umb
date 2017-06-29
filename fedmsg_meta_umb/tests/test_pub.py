@@ -235,3 +235,68 @@ class TestPubPushStart(fedmsg.tests.test_meta.Base):
             "method": "PushStaged"
         }
     }
+
+
+class TestPubContainerSign(fedmsg.tests.test_meta.Base):
+    """ "Pub" is the system used to push Red Hat releases for distribution.
+
+    This is an example of a message published when Pub signs a container
+    image."""
+    expected_title = 'pub.container.sign'
+    expected_subti = ("image "
+                      "e2e-container/e2e-container-test-product "
+                      "was signed with key f21541eb in cdn-docker-stage-qa")
+    expected_link = "http://pub.devel.redhat.com/pub/task/10908/"
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "username": None,
+        "i": 0,
+        "timestamp": 1498714993.0,
+        "msg_id": "ID:messaging-devops-broker01.web.stage.ext.phx2.redhat.com-"
+        "34269-1498498125324-2:5227:0:0:3",
+        "topic": "/topic/VirtualTopic.eng.pub.container.sign",
+        "headers": {
+            "JMS_AMQP_FirstAcquirer": "false",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "content-length": "751",
+            "destination": "/queue/Consumer.client-datanommer.openpaas-stage-2."
+            "VirtualTopic.eng.>",
+            "environment": "devel",
+            "expires": "0",
+            "message-id": "ID:messaging-devops-broker01.web.stage.ext.phx2."
+            "redhat.com-34269-1498498125324-2:5227:0:0:3",
+            "method": "PushAdvisory",
+            "mtype": "container_signature",
+            "nochannel": "false",
+            "original-destination": "/topic/VirtualTopic.eng.pub.container.sign",
+            "owner_id": "pub/rcm-pub.app.eng.bos.redhat.com",
+            "priority": "4",
+            "push_id": "10908",
+            "pushed_item_count": "0",
+            "service": "pub",
+            "source": "advisory",
+            "state": "OPEN",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-stage-2."
+            "VirtualTopic.eng.>",
+            "target": "cdn-docker-stage-qa",
+            "task_id": "10908",
+            "timestamp": "0"},
+        "msg": {
+            "claim_file": "eyJjcml0aWNhbCI6IHsiaW1hZ2UiOiB7ImRvY2tlci1tYW5pZmVz"
+            "dC1kaWdlc3QiOiAic2hhMjU2OjFiM2E5M2Q1ZjM2ODg3YWI3MTkwOTQzYTQ0Yzc1N"
+            "zkyMzBiYWI4MDMzYmYzYjgzOTJkNzUxNDhiYjE0NWMyNTYifSwgInR5cGUiOiAiYX"
+            "RvbWljIGNvbnRhaW5lciBzaWduYXR1cmUiLCAiaWRlbnRpdHkiOiB7ImRvY2tlci1"
+            "yZWZlcmVuY2UiOiAicmVnaXN0cnkuYWNjZXNzLnFhLnJlZGhhdC5jb20vZTJlLWNv"
+            "bnRhaW5lci1lMmUtY29udGFpbmVyLXRlc3QtcHJvZHVjdCJ9fSwgIm9wdGlvbmFsI"
+            "jogeyJjcmVhdG9yIjogIlJlZCBIYXQsIEluYy4ifX0=",
+            "image_name": "e2e-container/e2e-container-test-product",
+            "manifest_digest": "sha256:1b3a93d5f36887ab7190943a44c7579230bab803"
+            "3bf3b8392d75148bb145c256",
+            "pub_task_id": 10908,
+            "repo": "redhat-e2e-container-e2e-container-test-product",
+            "request_id": "554f6752-83d3-41a4-a6a4-8eebdeb27599",
+            "sig_key_id": "F21541EB"
+        }
+    }
