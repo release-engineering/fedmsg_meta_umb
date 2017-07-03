@@ -40,6 +40,7 @@ entry_points = {
         'pub=fedmsg_meta_umb.pub:PubProcessor',
         'errata=fedmsg_meta_umb.errata:ErrataProcessor',
         'pungi=fedmsg_meta_umb.pungi:PungiProcessor',
+        'distill=fedmsg_meta_umb.distill:DistillProcessor',
     ]
 }
 
