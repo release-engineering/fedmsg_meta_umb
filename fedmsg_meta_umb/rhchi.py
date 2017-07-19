@@ -26,7 +26,7 @@ class RHCHIProcessor(BaseProcessor):
     __description__ = 'the RHCHI Container Validation Pipeline'
     __link__ = 'https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
     __docs__ = 'https://docs.engineering.redhat.com/display/RHAPPINFRA/Container+E2E+QE+-+Full+Workflow'
-    __obj__ = 'pipeline progress'
+    __obj__ = 'Container Validation Progress'
     __icon__ = ('https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/static/'
                 '0e416130/images/headshot.png')
 
