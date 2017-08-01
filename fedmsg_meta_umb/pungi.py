@@ -26,6 +26,7 @@ class PungiProcessor(BaseProcessor):
     __description__ = "The Compose Tool"
     __link__ = "https://pagure.io/pungi"
     __docs__ = "https://pagure.io/pungi"
+    __icon__ = "https://apps.fedoraproject.org/img/icons/pungi.png"
     __obj__ = "Composes"
 
     def title(self, msg, **config):
