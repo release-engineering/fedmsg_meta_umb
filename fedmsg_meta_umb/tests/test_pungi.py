@@ -29,6 +29,7 @@ class TestPungiStart(fedmsg.tests.test_meta.Base):
     expected_subti = "pungi compose of OracleJava-7.4-RHEL-7-20170602.n.0 started"
     expected_link = ("http://download.lab.bos.redhat.com/nightly/"
                      "OracleJava-7.4-RHEL-7-20170602.n.0")
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
     msg = {
         "msg": {
             "status": "STARTED",
@@ -50,6 +51,7 @@ class TestPungiComplete(fedmsg.tests.test_meta.Base):
     expected_subti = "pungi compose of OracleJava-7.4-RHEL-7-20170602.n.0 just finished"
     expected_link = ("http://download.lab.bos.redhat.com/nightly/"
                      "OracleJava-7.4-RHEL-7-20170602.n.0")
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
     msg = {
         "msg": {
             "status": "FINISHED",
@@ -72,6 +74,7 @@ class TestPungiPhaseStart(fedmsg.tests.test_meta.Base):
     expected_subti = "pungi started the createrepo phase of the " + \
         "RHEL-7.4-20170602.n.3 compose"
     expected_link = "http://download.lab.bos.redhat.com/nightly/RHEL-7.4-20170602.n.3"
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
     msg = {
         "i": 1,
         "timestamp": 1449605930.0,
@@ -93,6 +96,7 @@ class TestPungiCreateISOTargets(fedmsg.tests.test_meta.Base):
     expected_title = "pungi.createiso-targets"
     expected_subti = "pungi assigned 13 createiso targets for RHEL-7.4-20170602.n.3"
     expected_link = "http://download.lab.bos.redhat.com/nightly/RHEL-7.4-20170602.n.3"
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
     msg = {
         "i": 1,
         "timestamp": 1449605930.0,
@@ -144,6 +148,7 @@ class TestPungiCreateISOWin(fedmsg.tests.test_meta.Base):
     expected_subti = "pungi finished createiso for " + \
         "Server/s390x/iso/RHEL-7.4-20170602.n.3-Server-s390x-dvd1.iso"
     expected_link = "http://download.lab.bos.redhat.com/nightly/RHEL-7.4-20170602.n.3"
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
     msg = {
         "i": 1,
         "timestamp": 1449605930.0,
@@ -175,6 +180,7 @@ class TestPungiOstree(fedmsg.tests.test_meta.Base):
         "fedora-atomic/25/x86_64/docker-host"
     expected_link = "http://kojipkgs.fedoraproject.org/" + \
         "compose//branched/Fedora-25-20161002.n.0"
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
     msg = {
         "i": 1,
         "timestamp": 1475402944.0,
