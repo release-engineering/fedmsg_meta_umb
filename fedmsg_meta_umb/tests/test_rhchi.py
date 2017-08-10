@@ -23,7 +23,7 @@ class TestRHCHISanityFinish(fedmsg.tests.test_meta.Base):
     """ The RHCHI pipeline validates containers.
 
     Messages (like the example given here) are published when the **sanity**
-    phase of the pipeline **completes*.
+    phase of the pipeline **completes**.
     """
     expected_title = 'rhchi.sanity.finished'
     expected_subti = ('The sanity phase of the RHCHI pipeline passed for '
@@ -85,6 +85,267 @@ class TestRHCHISanityFinish(fedmsg.tests.test_meta.Base):
                 "dist_git_hash": "19881dfcf68522e4915cf7a5f0ea35fb95376f1c",
                 "dist_git_branch": "rhaos-3.4-rhel-7",
                 "container_validation_id": "7a99050d-34c2-432d-a051-f55c3799db41"
+            }
+        }
+    }
+
+
+class TestRHCHISanityStarted(fedmsg.tests.test_meta.Base):
+    """ The RHCHI pipeline validates containers.
+
+    Messages (like the example given here) are published when the **sanity**
+    phase of the pipeline **starts**.
+    """
+    expected_title = 'rhchi.sanity.started'
+    expected_subti = ('The sanity phase of the RHCHI pipeline started for '
+                      'chi-smoke-test')
+    expected_link = ('https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
+                     'job/sanity-prod/1085/')
+    expected_packages = set(['chi-smoke-test-af3ab946-bf36-484e'])
+    expected_icon = ('https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
+                     'static/0e416130/images/headshot.png')
+
+    msg = {
+        "i": 0,
+        "timestamp": 1502234849.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat."
+        "com-37191-1501276833669-2:264280:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.rhchi.sanity.started",
+        "headers": {
+            "priority": "4",
+            "content-length": "1105",
+            "destination": "/topic/VirtualTopic.eng.rhchi.sanity.started",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "timestamp": "0",
+            "started": "1.502234821027946E9",
+            "JMS_AMQP_NATIVE": "false",
+            "address": "topic://VirtualTopic.eng.rhchi.sanity.started",
+            "container_validation_id": "af3ab946-bf36-484e-94b4-af00a16ddfd7",
+            "expires": "0",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat."
+            "com-37191-1501276833669-2:264280:0:0:1",
+            "container_chidata_url": "http://git.app.eng.bos.redhat.com/git/rhchi.git/"
+            "plain/tests/e2e/CHIData.yaml",
+            "container_nvr": "chi-smoke-test-af3ab946-bf36-484e-94b4-af00a16ddfd7",
+            "url": "https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/sanity-prod/1085/",
+            "container_name": "chi-smoke-test",
+            "rhchi_stage": "sanity",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>"
+        },
+        "msg": {
+            "triggered_by": {
+                "status": "passed",
+                "triggered_by": {
+                    "container_chidata_url": "http://git.app.eng.bos.redhat.com/git/rhchi.git/"
+                    "plain/tests/e2e/CHIData.yaml",
+                    "triggered_by": None,
+                    "container_nvr": "chi-smoke-test-af3ab946-bf36-484e-94b4-af00a16ddfd7",
+                    "container_validation_id": "af3ab946-bf36-484e-94b4-af00a16ddfd7",
+                    "container_name": "chi-smoke-test"
+                },
+                "original_topic": "topic://VirtualTopic.eng.rhchi.build.finished",
+                "JMS_AMQP_MESSAGE_FORMAT": 0,
+                "url": "https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/e2e-smoke-test/7/",
+                "JMS_AMQP_NATIVE": False,
+                "address": "topic://VirtualTopic.eng.rhchi.build.finished",
+                "container_validation_id": "af3ab946-bf36-484e-94b4-af00a16ddfd7",
+                "container_chidata_url": "http://git.app.eng.bos.redhat.com/git/rhchi.git/"
+                "plain/tests/e2e/CHIData.yaml",
+                "finished": 1502234823.80292,
+                "container_nvr": "chi-smoke-test-af3ab946-bf36-484e-94b4-af00a16ddfd7",
+                "container_name": "chi-smoke-test",
+                "rhchi_stage": "build",
+                "JMS_AMQP_FirstAcquirer": False,
+                "type": "rhchi"
+            },
+            "container_validation_data": {
+                "container_img": "",
+                "dist_git_hash": "",
+                "dist_git_branch": ""
+            }
+        }
+    }
+
+
+class TestRHCHIFunctionalFinished(fedmsg.tests.test_meta.Base):
+    """ The RHCHI pipeline validates containers.
+
+    Messages (like the example given here) are published when the **functional**
+    phase of the pipeline **completes**.
+    """
+    expected_title = 'rhchi.functional.finished'
+    expected_subti = ('The functional phase of the RHCHI pipeline passed for '
+                      'rhel7/e2e-container-test-product-docker')
+    expected_link = ('https://rhcs-stage-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
+                     'job/cntr_dashost10_e2econtaine-386b5-stable-runtest//1')
+    expected_packages = set(['e2e-container-test-product-docker'])
+    expected_icon = ('https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
+                     'static/0e416130/images/headshot.png')
+
+    msg = {
+        "i": 0,
+        "timestamp": 1502197289.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-"
+        "37191-1501276833669-2:232481:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.rhchi.functional.finished",
+        "headers": {
+            "status": "passed",
+            "priority": "4",
+            "content-length": "1803",
+            "destination": "/topic/VirtualTopic.eng.rhchi.functional.finished",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "timestamp": "0",
+            "url": "https://rhcs-stage-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/"
+            "job/cntr_dashost10_e2econtaine-386b5-stable-runtest//1",
+            "JMS_AMQP_NATIVE": "false",
+            "address": "topic://VirtualTopic.eng.rhchi.functional.finished",
+            "container_validation_id": "a9e8936b-be97-4811-b7c0-75a5c5fbce43",
+            "expires": "0",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-"
+            "37191-1501276833669-2:232481:0:0:1",
+            "container_chidata_url": "https://pkgs.devel.redhat.com/cgit/rpms/e2e-container-test-"
+            "product-docker/plain/CHIData.yaml?h=7e99ac5542915fc9f650daddf735fdf924a99ae2",
+            "finished": "1.502197302427723E9",
+            "container_nvr": "e2e-container-test-product-docker-7.3-968",
+            "container_name": "rhel7/e2e-container-test-product-docker",
+            "rhchi_stage": "functional",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>"
+        },
+        "msg": {
+            "triggered_by": {
+                "status": "passed",
+                "triggered_by": {
+                    "status": "passed",
+                    "triggered_by": None,
+                    "original_topic": "topic://VirtualTopic.eng.rhchi.build.finished",
+                    "JMS_AMQP_MESSAGE_FORMAT": 0,
+                    "url": "https://brew.engineering.redhat.com/brew/buildinfo?buildID=580580",
+                    "JMS_AMQP_NATIVE": False,
+                    "address": "topic://VirtualTopic.eng.rhchi.build.finished",
+                    "container_validation_id": "a9e8936b-be97-4811-b7c0-75a5c5fbce43",
+                    "container_chidata_url": "https://pkgs.devel.redhat.com/cgit/rpms/e2e-"
+                    "container-test-product-docker/plain/CHIData.yaml?"
+                    "h=7e99ac5542915fc9f650daddf735fdf924a99ae2",
+                    "finished": 1502194511.0,
+                    "container_nvr": "e2e-container-test-product-docker-7.3-968",
+                    "container_name": "rhel7/e2e-container-test-product-docker",
+                    "rhchi_stage": "build",
+                    "JMS_AMQP_FirstAcquirer": False,
+                    "type": "rhchi"
+                },
+                "original_topic": "topic://VirtualTopic.eng.rhchi.sanity.finished",
+                "JMS_AMQP_MESSAGE_FORMAT": 0,
+                "url": "https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/sanity-prod/1075/",
+                "JMS_AMQP_NATIVE": False,
+                "address": "topic://VirtualTopic.eng.rhchi.sanity.finished",
+                "container_validation_id": "a9e8936b-be97-4811-b7c0-75a5c5fbce43",
+                "container_chidata_url": "https://pkgs.devel.redhat.com/cgit/rpms/e2e-container-"
+                "test-product-docker/plain/CHIData.yaml?h=7e99ac5542915fc9f650daddf735fdf924a99ae2",
+                "finished": 1502194605.557325,
+                "container_nvr": "e2e-container-test-product-docker-7.3-968",
+                "container_name": "rhel7/e2e-container-test-product-docker",
+                "rhchi_stage": "sanity",
+                "JMS_AMQP_FirstAcquirer": False,
+                "type": "rhchi"
+            },
+            "container_validation_data": {
+                "container_img": "brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhel7/"
+                "e2e-container-test-product-docker:7.3-968",
+                "dist_git_hash": "7e99ac5542915fc9f650daddf735fdf924a99ae2",
+                "dist_git_branch": "release-e2e-test-1.0-rhel-7"
+            }
+        }
+    }
+
+
+class TestRHCHIFunctionalStarted(fedmsg.tests.test_meta.Base):
+    """ The RHCHI pipeline validates containers.
+
+    Messages (like the example given here) are published when the **functional**
+    phase of the pipeline **starts**.
+    """
+    expected_title = 'rhchi.functional.started'
+    expected_subti = ('The functional phase of the RHCHI pipeline started for '
+                      'rhel7/e2e-container-test-product-docker')
+    expected_link = ('https://rhcs-stage-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
+                     'job/cntr_dashost10_e2econtaine-386b5')
+    expected_packages = set(['e2e-container-test-product-docker'])
+    expected_icon = ('https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
+                     'static/0e416130/images/headshot.png')
+
+    msg = {
+        "i": 0,
+        "timestamp": 1502194759.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-"
+        "37191-1501276833669-2:230649:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.rhchi.functional.started",
+        "headers": {
+            "priority": "4",
+            "content-length": "1803",
+            "destination": "/topic/VirtualTopic.eng.rhchi.functional.started",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "timestamp": "0",
+            "started": "1.502194757670781E9",
+            "JMS_AMQP_NATIVE": "false",
+            "address": "topic://VirtualTopic.eng.rhchi.functional.started",
+            "container_validation_id": "a9e8936b-be97-4811-b7c0-75a5c5fbce43",
+            "expires": "0",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-"
+            "37191-1501276833669-2:230649:0:0:1",
+            "container_chidata_url": "https://pkgs.devel.redhat.com/cgit/rpms/e2e-container-"
+            "test-product-docker/plain/CHIData.yaml?h=7e99ac5542915fc9f650daddf735fdf924a99ae2",
+            "container_nvr": "e2e-container-test-product-docker-7.3-968",
+            "url": "https://rhcs-stage-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/"
+            "cntr_dashost10_e2econtaine-386b5",
+            "container_name": "rhel7/e2e-container-test-product-docker",
+            "rhchi_stage": "functional",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>"
+        },
+        "msg": {
+            "triggered_by": {
+                "status": "passed",
+                "triggered_by": {
+                    "status": "passed",
+                    "triggered_by": None,
+                    "original_topic": "topic://VirtualTopic.eng.rhchi.build.finished",
+                    "JMS_AMQP_MESSAGE_FORMAT": 0,
+                    "url": "https://brew.engineering.redhat.com/brew/buildinfo?buildID=580580",
+                    "JMS_AMQP_NATIVE": False,
+                    "address": "topic://VirtualTopic.eng.rhchi.build.finished",
+                    "container_validation_id": "a9e8936b-be97-4811-b7c0-75a5c5fbce43",
+                    "container_chidata_url": "https://pkgs.devel.redhat.com/cgit/rpms/e2e-"
+                    "container-test-product-docker/plain/CHIData.yaml?"
+                    "h=7e99ac5542915fc9f650daddf735fdf924a99ae2",
+                    "finished": 1502194511.0,
+                    "container_nvr": "e2e-container-test-product-docker-7.3-968",
+                    "container_name": "rhel7/e2e-container-test-product-docker",
+                    "rhchi_stage": "build",
+                    "JMS_AMQP_FirstAcquirer": False,
+                    "type": "rhchi"
+                },
+                "original_topic": "topic://VirtualTopic.eng.rhchi.sanity.finished",
+                "JMS_AMQP_MESSAGE_FORMAT": 0,
+                "url": "https://chi-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/sanity-prod/1075/",
+                "JMS_AMQP_NATIVE": False,
+                "address": "topic://VirtualTopic.eng.rhchi.sanity.finished",
+                "container_validation_id": "a9e8936b-be97-4811-b7c0-75a5c5fbce43",
+                "container_chidata_url": "https://pkgs.devel.redhat.com/cgit/rpms/e2e-container-"
+                "test-product-docker/plain/CHIData.yaml?h=7e99ac5542915fc9f650daddf735fdf924a99ae2",
+                "finished": 1502194605.557325,
+                "container_nvr": "e2e-container-test-product-docker-7.3-968",
+                "container_name": "rhel7/e2e-container-test-product-docker",
+                "rhchi_stage": "sanity",
+                "JMS_AMQP_FirstAcquirer": False,
+                "type": "rhchi"
+            },
+            "container_validation_data": {
+                "container_img": "brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhel7/"
+                "e2e-container-test-product-docker:7.3-968",
+                "dist_git_hash": "7e99ac5542915fc9f650daddf735fdf924a99ae2",
+                "dist_git_branch": "release-e2e-test-1.0-rhel-7"
             }
         }
     }

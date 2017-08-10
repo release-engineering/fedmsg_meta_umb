@@ -34,8 +34,12 @@ class RHCHIProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
-        template = self._("The {rhchi_stage} phase of the RHCHI "
-                          "pipeline {status} for {container_name}")
+        if msg['topic'].endswith('.started'):
+            template = self._("The {rhchi_stage} phase of the RHCHI "
+                              "pipeline started for {container_name}")
+        else:
+            template = self._("The {rhchi_stage} phase of the RHCHI "
+                              "pipeline {status} for {container_name}")
         return template.format(**msg['headers'])
 
     def link(self, msg, **config):
