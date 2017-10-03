@@ -457,3 +457,46 @@ class TestErrataAssignedTo(fedmsg.tests.test_meta.Base):
         },
         "msg": ""
     }
+
+
+class TestErrataRescheduleCCAT(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Messages like these appear whenever someone **reschedules** a CCAT test.
+    """
+    expected_title = 'errata.ccat.reschedule_test'
+    expected_subti = 'CCAT for erratum 29873 in cdn-live was rescheduled'
+    expected_link = 'https://errata.devel.redhat.com/advisory/29873'
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_agent = None
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        'topic': '/topic/VirtualTopic.eng.errata.ccat.reschedule_test',
+        'msg': {
+            u'ERRATA_ID': u'29873',
+            u'TARGET': u'cdn-live'
+        },
+        'headers': {
+            'TARGET': 'cdn-live',
+            'JMS_AMQP_FirstAcquirer': 'false',
+            'ERRATA_ID': '29873',
+            'JMS_AMQP_MESSAGE_FORMAT': '0',
+            'timestamp': '0',
+            'destination': '/topic/VirtualTopic.eng.errata.ccat.reschedule_test',
+            'persistent': 'true',
+            'expires': '0',
+            'priority': '4',
+            'subscription': '/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>',
+            'JMS_AMQP_NATIVE': 'false',
+            'message-id': 'ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-'
+            '35748-1505981049344-2:327116:0:0:1',
+            'type': 'errata.ccat.reschedule_test',
+            'subject': 'errata.ccat.reschedule_test'
+        }
+    }

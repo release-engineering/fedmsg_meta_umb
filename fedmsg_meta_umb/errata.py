@@ -45,6 +45,8 @@ class ErrataProcessor(BaseProcessor):
                 '{agent} changed bugs on an advisory'),
             'errata.builds.changed': self._(
                 '{agent} changed builds on an advisory'),
+            'errata.ccat.reschedule_test': self._(
+                'CCAT for erratum {ERRATA_ID} in {TARGET} was rescheduled'),
         }
 
     def title(self, msg, **config):
@@ -108,11 +110,18 @@ class ErrataProcessor(BaseProcessor):
         return username.split('@')[0].split('/')[0]
 
     def agent(self, msg, **config):
-        return self.scrub_username(msg['headers']['who'])
+        who = msg['headers'].get('who')
+        if who:
+            return self.scrub_username(who)
+        else:
+            return None
 
     def usernames(self, msg, **config):
         # Every message returns the agent in the set...
-        persons = set([self.agent(msg, **config)])
+        persons = set()
+        agent = self.agent(msg, **config)
+        if agent:
+            persons.add(agent)
 
         # But a select few messages have additional persons associated
         title = self.title(msg, **config)
@@ -124,5 +133,9 @@ class ErrataProcessor(BaseProcessor):
         return persons
 
     def link(self, msg, **config):
-        template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
+        title = self.title(msg, **config)
+        if title == 'errata.ccat.reschedule_test':
+            template = 'https://errata.devel.redhat.com/advisory/{ERRATA_ID}'
+        else:
+            template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
         return template.format(**msg['headers'])
