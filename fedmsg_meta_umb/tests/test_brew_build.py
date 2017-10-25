@@ -17,6 +17,7 @@
 # Authors:  Mike Bonnet <mikeb@redhat.com>
 
 from . import test_brew
+from .common import add_doc
 
 class TestBrewBuildBuilding(test_brew.BrewBase):
     expected_title = 'brew.build.building'
@@ -382,3 +383,5 @@ class TestBrewBuildUntag(test_brew.BrewBase):
             }
         }
     }
+
+add_doc(locals())

@@ -6,6 +6,8 @@ matrix:
   include:
     - python: "2.7"
       env: TOXENV=flake8
+    - python: "2.7"
+      env: TOXENV=docs
 install: pip install tox-travis codecov
 script: tox -- --with-coverage --cover-branches --cover-package=fedmsg_meta_umb
                --cover-xml --cover-xml-file=$TRAVIS_BUILD_DIR/coverage.xml

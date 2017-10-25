@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 class TestPubPushStop(fedmsg.tests.test_meta.Base):
     """ "Pub" is the system used to push Red Hat releases for distribution.
@@ -300,3 +301,6 @@ class TestPubContainerSign(fedmsg.tests.test_meta.Base):
             "sig_key_id": "F21541EB"
         }
     }
+
+
+add_doc(locals())

@@ -1,0 +1,14 @@
+@import url("cloud.css");
+@import url("http://overpass-30e2.kxcdn.com/overpass.css");
+
+h1.umb-logo {
+    font-family: 'overpass', sans-serif;
+    font-weight: 900;
+    font-size: 5em;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+div.sphinxsidebar a {
+    color: #CC0000;
+}

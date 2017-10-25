@@ -17,6 +17,7 @@
 # Authors:  Mike Bonnet <mikeb@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestDistGit(fedmsg.tests.test_meta.Base):
@@ -94,3 +95,6 @@ class TestDistGit(fedmsg.tests.test_meta.Base):
             "email": "steved@redhat.com"
         }
     }
+
+
+add_doc(locals())

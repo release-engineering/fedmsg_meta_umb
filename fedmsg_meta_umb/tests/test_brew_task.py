@@ -17,6 +17,7 @@
 # Authors:  Mike Bonnet <mikeb@redhat.com>
 
 from . import test_brew
+from .common import add_doc
 
 class BrewTaskBase(test_brew.BrewBase):
     @property
@@ -299,3 +300,6 @@ class TestBrewTaskFailed(BrewTaskBase):
             "new": "FAILED"
         }
     }
+
+
+add_doc(locals())
