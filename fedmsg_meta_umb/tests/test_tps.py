@@ -14,7 +14,7 @@
 # License along with fedmsg; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
-# Authors:  Ralph Bean <rbean@redhat.com>
+# Authors:  Gowrishankar Rajaiyan <grajaiya@redhat.com>
 
 import fedmsg.tests.test_meta
 
