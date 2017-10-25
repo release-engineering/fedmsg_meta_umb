@@ -384,4 +384,5 @@ class TestBrewBuildUntag(test_brew.BrewBase):
         }
     }
 
+
 add_doc(locals())

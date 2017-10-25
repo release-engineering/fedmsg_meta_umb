@@ -121,18 +121,16 @@ def make_topics_doc(output_dir):
     write(fname, header)
 
     for cls in test_classes:
-        if not cls.context.msg is Unspecified:
+        if cls.context.msg is not Unspecified:
             cls.__topic = cls.context.msg['topic'].split('.', 1)[-1]
         else:
             cls.__topic = None
 
-    comparator = lambda a, b: cmp(a.__topic, b.__topic)
-
-    test_classes = sorted(test_classes, comparator)
+    test_classes = sorted(test_classes, lambda a, b: cmp(a.__topic, b.__topic))
 
     seen = []
     for cls in test_classes:
-        if not cls.context.msg is Unspecified:
+        if cls.context.msg is not Unspecified:
             topic = cls.__topic
 
             # You can also exclude a test from the docs with nodoc = True
@@ -140,7 +138,7 @@ def make_topics_doc(output_dir):
                 continue
 
             modname = '.'.join(topic.split('.')[:2])
-            if not modname in seen:
+            if modname not in seen:
                 seen.append(modname)
                 write(fname, modname)
                 write(fname, "-" * len(modname))
@@ -169,9 +167,9 @@ def make_topics_doc(output_dir):
             uid = str(uuid.uuid4())
             icon_inline = Unspecified
             secondary_icon_inline = Unspecified
-            if not cls.context.expected_icon is Unspecified:
+            if cls.context.expected_icon is not Unspecified:
                 icon_inline = "|%s-icon|" % uid
-            if not cls.context.expected_secondary_icon is Unspecified:
+            if cls.context.expected_secondary_icon is not Unspecified:
                 secondary_icon_inline = "|%s-secondary_icon|" % uid
 
             # A bunch of data for the template.
@@ -204,6 +202,7 @@ def make_topics_doc(output_dir):
             write(fname)
 
     outfile.close()
+
 
 if __name__ == '__main__':
     make_topics_doc('.')
