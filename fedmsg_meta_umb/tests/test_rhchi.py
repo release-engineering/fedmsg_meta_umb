@@ -17,7 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
-
+from .common import add_doc
 
 class TestRHCHISanityFinish(fedmsg.tests.test_meta.Base):
     """ The RHCHI pipeline validates containers.
@@ -349,3 +349,6 @@ class TestRHCHIFunctionalStarted(fedmsg.tests.test_meta.Base):
             }
         }
     }
+
+
+add_doc(locals())

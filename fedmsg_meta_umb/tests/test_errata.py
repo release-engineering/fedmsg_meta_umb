@@ -17,7 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
-
+from .common import add_doc
 
 class TestErrataStatusChange(fedmsg.tests.test_meta.Base):
     """ The Errata Tool supports the release workflow for Red Hat content.
@@ -500,3 +500,6 @@ class TestErrataRescheduleCCAT(fedmsg.tests.test_meta.Base):
             'subject': 'errata.ccat.reschedule_test'
         }
     }
+
+
+add_doc(locals())

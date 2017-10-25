@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestRobosignatoryContainerSign(fedmsg.tests.test_meta.Base):
@@ -59,3 +60,6 @@ class TestRobosignatoryContainerSign(fedmsg.tests.test_meta.Base):
         "topic": "/topic/VirtualTopic.eng.robosignatory.container.sign",
         "username": "fedmsg"
     }
+
+
+add_doc(locals())

@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestDistillStart(fedmsg.tests.test_meta.Base):
@@ -69,3 +70,6 @@ class TestDistillComplete(fedmsg.tests.test_meta.Base):
             "release-id": "Supp-6.10-RHEL-6"
         }
     }
+
+
+add_doc(locals())

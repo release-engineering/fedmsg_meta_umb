@@ -17,6 +17,7 @@
 # Authors:  Mike Bonnet <mikeb@redhat.com>
 
 from . import test_brew
+from .common import add_doc
 
 class TestBrewPackageAdd(test_brew.BrewBase):
     expected_title = 'brew.package.add'
@@ -182,3 +183,6 @@ class TestBrewPackageRemove(test_brew.BrewBase):
             }
         }
     }
+
+
+add_doc(locals())

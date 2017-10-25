@@ -1,0 +1,4 @@
+cloud_sptheme
+nose
+fedmsg
+mako

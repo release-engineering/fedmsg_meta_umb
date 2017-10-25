@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestPungiStart(fedmsg.tests.test_meta.Base):
@@ -194,3 +195,6 @@ class TestPungiOstree(fedmsg.tests.test_meta.Base):
             "compose_id": "Fedora-25-20161002.n.0"
         }
     }
+
+
+add_doc(locals())
