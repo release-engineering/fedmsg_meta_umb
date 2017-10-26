@@ -45,6 +45,10 @@ class ErrataProcessor(BaseProcessor):
                 '{agent} changed bugs on an advisory'),
             'errata.builds.changed': self._(
                 '{agent} changed builds on an advisory'),
+            'errata.builds.added': self._(
+                '{agent} added {brew_build} to {product} advisory {errata_id}'),
+            'errata.builds.removed': self._(
+                '{agent} removed {brew_build} from {product} advisory {errata_id}'),
             'errata.ccat.reschedule_test': self._(
                 'CCAT for erratum {ERRATA_ID} in {TARGET} was rescheduled'),
         }
@@ -139,3 +143,9 @@ class ErrataProcessor(BaseProcessor):
         else:
             template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
         return template.format(**msg['headers'])
+
+    def packages(self, msg, **config):
+        nvr = msg['headers'].get('brew_build')
+        if nvr:
+            return set([nvr.rsplit('-', 2)[0]])
+        return set()
