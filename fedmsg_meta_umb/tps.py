@@ -23,6 +23,10 @@ class TPSProcessor(BaseProcessor):
     topic_prefix_re = r'/topic/VirtualTopic\.eng'
 
     __name__ = 'tps'
+    __description__ = 'package sanity testing of brew builds'
+    __obj__ = 'Test Package Sanity'
+    __docs__ = 'https://mojo.redhat.com/docs/DOC-0000000'
+    __link__ = 'https://sometpslink.engineering.redhat.com'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]
