@@ -502,4 +502,102 @@ class TestErrataRescheduleCCAT(fedmsg.tests.test_meta.Base):
     }
 
 
+class TestErrataBuildsAdded(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **adds a build** to
+    an advisory.
+    """
+    expected_title = 'errata.builds.added'
+    expected_subti = 'ajackson added libpciaccess-0.13.4-3.1.el7_4 to RHEL advisory 31169'
+    expected_link = 'https://errata.devel.redhat.com/advisory/31169'
+    expected_packages = set(['libpciaccess'])
+    expected_usernames = set(['ajackson'])
+    expected_agent = 'ajackson'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1509028483.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-2:216012:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.builds.added",
+        "headers": {
+            "product": "RHEL",
+            "expires": "0",
+            "errata_id": "31169",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.builds.added",
+            "subject": "errata.builds.added",
+            "persistent": "true",
+            "who": "ajackson@redhat.com",
+            "priority": "4",
+            "when": "2017-10-26 14:34:37 UTC",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-"
+            "2:216012:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.builds.added",
+            "brew_build": "libpciaccess-0.13.4-3.1.el7_4"
+        },
+        "msg": {
+            "when": "2017-10-26 14:34:37 UTC",
+            "product": "RHEL",
+            "who": "ajackson@redhat.com",
+            "errata_id": 31169,
+            "brew_build": "libpciaccess-0.13.4-3.1.el7_4"
+        }
+    }
+
+
+class TestErrataBuildsRemoved(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **removes a build** from
+    an advisory.
+    """
+    expected_title = 'errata.builds.removed'
+    expected_subti = 'sradco removed ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev from RHV advisory 29571'
+    expected_link = 'https://errata.devel.redhat.com/advisory/29571'
+    expected_packages = set(['ovirt-engine-dwh'])
+    expected_usernames = set(['sradco'])
+    expected_agent = 'sradco'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1509028264.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-2:215849:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.builds.removed",
+        "headers": {
+            "product": "RHV",
+            "expires": "0",
+            "errata_id": "29571",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.builds.removed",
+            "subject": "errata.builds.removed",
+            "persistent": "true",
+            "who": "sradco@redhat.com",
+            "priority": "4",
+            "when": "2017-10-26 14:31:03 UTC",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-"
+            "2:215849:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.builds.removed",
+            "brew_build": "ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev"
+        },
+        "msg": {
+            "when": "2017-10-26 14:31:03 UTC",
+            "product": "RHV",
+            "who": "sradco@redhat.com",
+            "errata_id": 29571,
+            "brew_build": "ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev"
+        }
+    }
+
+
 add_doc(locals())
