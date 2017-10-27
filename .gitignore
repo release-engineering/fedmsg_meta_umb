@@ -3,3 +3,5 @@
 .eggs
 *.egg-info
 .tox
+htmldocs
+doc/topics.rst
