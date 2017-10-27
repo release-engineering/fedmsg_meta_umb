@@ -44,8 +44,9 @@ class TPSProcessor(BaseProcessor):
             template = self._("package sanity testing completed for "
                               "component: {component} with brew task_id: {brew_task_id}")
         else:
-            template = self._("package sanity testing results for "
-                              "component: {component} with brew task_id: {brew_task_id}")
+            template = self._("package sanity testing %s for "
+                              "component: {component} with brew task_id: {brew_task_id}"
+                              % msg['msg']['results']['tps_status'])
 
         return template.format(**msg['headers'])
 

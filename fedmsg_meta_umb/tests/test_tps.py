@@ -123,7 +123,8 @@ class TestTPSResults(fedmsg.tests.test_meta.Base):
     expected_title = 'tps'
     expected_link = ('https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/'
                      'test-package-sanity-development/label=ose-slave-tps,provision_arch=x86_64/1915/')
-    expected_subti = 'package sanity testing results for component: setup-2.8.71-7.el7_4 with brew task_id: 14393825'
+    expected_subti = ('package sanity testing PASSED for '
+                      'component: setup-2.8.71-7.el7_4 with brew task_id: 14393825')
     expected_packages = set(['setup'])
     expected_icon = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/static/0e416130/images/headshot.png'
     msg = {
