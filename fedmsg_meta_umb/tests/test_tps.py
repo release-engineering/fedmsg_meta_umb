@@ -19,6 +19,38 @@
 import fedmsg.tests.test_meta
 
 
+class TestLegacyTestMessage(fedmsg.tests.test_meta.Base):
+    """ shanks once sent a test message like this one... """
+    expected_title = 'tps'
+    expected_link = None
+    expected_subti = None
+    expected_packages = set([])
+    expected_icon = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/static/0e416130/images/headshot.png'
+    msg = {
+        "i": 0,
+        "timestamp": 1509120145.0,
+        "msg_id": "ID:somebroker01-43669-1508744086399-2:286434:0:0:2",
+        "topic": "/topic/VirtualTopic.eng.tps",
+        "headers": {
+            "content-length": "38",
+            "destination": "/topic/VirtualTopic.eng.tps",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "msgnum": "1",
+            "expires": "0",
+            "priority": "4",
+            "message-id": "ID:somebroker01-43669-1508744086399-2:286434:0:0:2",
+            "msgtype": "test",
+            "timestamp": "2017-10-27 16:02:12.643878",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>"
+        },
+        "msg": {
+            "message": "This is test message 1."
+        }
+    }
+
+
 class TestTPSStart(fedmsg.tests.test_meta.Base):
     """ `TPS-next <https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/test-package-sanity-documentation/
     lastSuccessfulBuild/artifact/docs/index.html>`_ performs basic package sanity testing of rpms.
