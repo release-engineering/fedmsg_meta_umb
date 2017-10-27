@@ -16,7 +16,12 @@
 #
 # Authors: Gowrishankar Rajaiyan <grajaiya@redhat.com>
 
+import logging
+
 from fedmsg.meta.base import BaseProcessor
+
+
+log = logging.getLogger(__name__)
 
 
 class TPSProcessor(BaseProcessor):
@@ -34,9 +39,15 @@ class TPSProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def packages(self, msg, **config):
-        return set([msg['headers']['component'].rsplit('-', 2)[0]])
+        if 'component' in msg.get('headers', {}):
+            return set([msg['headers']['component'].rsplit('-', 2)[0]])
+        return set()
 
     def subtitle(self, msg, **config):
+        required = set(['component', 'brew_task_id'])
+        if not required.issubset(set(msg.get('headers', {}).keys())):
+            log.warn("%r missing from %r" % (required, msg.get('headers')))
+            return None
         if msg['topic'].endswith('.starting'):
             template = self._("package sanity testing started for "
                               "component: {component} with brew task_id: {brew_task_id}")
@@ -44,6 +55,9 @@ class TPSProcessor(BaseProcessor):
             template = self._("package sanity testing completed for "
                               "component: {component} with brew task_id: {brew_task_id}")
         else:
+            if 'results' not in msg['msg']:
+                log.warn("No 'results' found in %r" % msg['msg'])
+                return None
             template = self._("package sanity testing %s for "
                               "component: {component} with brew task_id: {brew_task_id}"
                               % msg['msg']['results']['tps_status'])
@@ -52,6 +66,8 @@ class TPSProcessor(BaseProcessor):
 
     def link(self, msg, **config):
         if msg['topic'].endswith('.starting') or msg['topic'].endswith('.completed'):
-            return msg['headers']['jenkins_build_url']
+            headers = msg.get('headers', {})
+            return headers.get('jenkins_build_url')
         else:
-            return msg['msg']['infrastructure']['jenkins_build_url']
+            infrastructure = msg['msg'].get('infrastructure', {})
+            return infrastructure.get('jenkins_build_url')
