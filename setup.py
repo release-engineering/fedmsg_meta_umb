@@ -41,6 +41,7 @@ entry_points = {
         'errata=fedmsg_meta_umb.errata:ErrataProcessor',
         'pungi=fedmsg_meta_umb.pungi:PungiProcessor',
         'distill=fedmsg_meta_umb.distill:DistillProcessor',
+        'mbs=fedmsg_meta_umb.mbs:MBSProcessor',
         'rhchi=fedmsg_meta_umb.rhchi:RHCHIProcessor',
         'robosignatory=fedmsg_meta_umb.robosignatory:RobosignatoryProcessor',
     ]
