@@ -45,6 +45,7 @@ entry_points = {
         'mbs=fedmsg_meta_umb.mbs:MBSProcessor',
         'rhchi=fedmsg_meta_umb.rhchi:RHCHIProcessor',
         'robosignatory=fedmsg_meta_umb.robosignatory:RobosignatoryProcessor',
+        'freshmaker=fedmsg_meta_umb.freshmaker:FreshmakerProcessor',
     ]
 }
 
