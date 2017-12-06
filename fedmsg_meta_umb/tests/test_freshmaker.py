@@ -113,7 +113,8 @@ class TestBuildStateIsNotDone(fedmsg.tests.test_meta.Base):
         "source_version": "0.8.2",
         "msg": {
             "build_id": 62,
-            "state_reason": "Cannot build artifact, because its dependency cannot be built.",
+            "state_reason": "Cannot build artifact, because its "
+            "dependency cannot be built.",
             "time_completed": "2017-11-29T11:05:49Z",
             "name": "rhmap-httpd-docker",
             "time_submitted": "2017-11-22T15:06:50Z",
@@ -144,7 +145,8 @@ class TestEventStateChanged(fedmsg.tests.test_meta.Base):
     expected_title = 'freshmaker.event.state.changed'
     expected_subti = ('Event state is switched to COMPLETE due to "Generated '
                       'ErrataAdvisoryRPMsSignedEvent '
-                      '(ID:messaging-devops-broker01.localhost-46295-1510954431290-2:473881:0:0:1) '
+                      '(ID:messaging-devops-broker01.localhost-46295-'
+                      '1510954431290-2:473881:0:0:1) '
                       'for errata: RHSA-2017:29110"')
     expected_link = 'http://freshmaker.localhost/api/1/events/81'
     expected_packages = set(['pkg', 'another-pkg'])
@@ -162,15 +164,18 @@ class TestEventStateChanged(fedmsg.tests.test_meta.Base):
         "source_version": "0.8.2",
         "msg": {
             "state_reason": ("Generated ErrataAdvisoryRPMsSignedEvent "
-                             "(ID:messaging-devops-broker01.localhost-46295-1510954431290-2:473881:0:0:1) "
+                             "(ID:messaging-devops-broker01.localhost-"
+                             "46295-1510954431290-2:473881:0:0:1) "
                              "for errata: RHSA-2017:29110"),
             "builds": ['pkg-0.1-1', 'another-pkg-1.0-7'],
             "url": "http://freshmaker.localhost/api/1/events/81",
-            "search_key": "ID:messaging-devops-broker01.localhost-46295-1510954431290-2:473881:0:0:1",
+            "search_key": "ID:messaging-devops-broker01.localhost-"
+            "46295-1510954431290-2:473881:0:0:1",
             "id": 81,
             "state": 2,
             "event_type_id": 11,
-            "message_id": "ID:messaging-devops-broker01.localhost-46295-1510954431290-2:473881:0:0:1",
+            "message_id": "ID:messaging-devops-broker01.localhost-"
+            "46295-1510954431290-2:473881:0:0:1",
             "state_name": "COMPLETE"
         }
     }
