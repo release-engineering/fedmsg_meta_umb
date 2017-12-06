@@ -67,6 +67,9 @@ class FreshmakerProcessor(BaseProcessor):
 
     def packages(self, msg, **config):
         if msg['topic'].endswith('event.state.changed'):
-            return set([nvr.rsplit('-', 2)[0] for nvr in msg['msg']['builds']])
+            try:
+                return set([build['name'] for build in msg['msg']['builds']])
+            except TypeError:
+                return set([nvr.rsplit('-', 2)[0] for nvr in msg['msg']['builds']])
         else:
             return set([])

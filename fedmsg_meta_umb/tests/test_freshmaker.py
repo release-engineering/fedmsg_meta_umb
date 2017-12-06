@@ -195,14 +195,106 @@ class TestUnknownMessageComes(fedmsg.tests.test_meta.Base):
         "signature": None,
         "source_version": "0.8.2",
         "msg": {
-            "state_reason": "No container images to rebuild for advisory u'RHSA-2017:31570'",
+            "state_reason": "No container images to rebuild for "
+            "advisory u'RHSA-2017:31570'",
             "builds": [],
             "url": "http://freshmaker.localhost/api/1/events/83",
             "search_key": "31570",
             "id": 83,
             "state": 4,
             "event_type_id": 8,
-            "message_id": "ID:messaging-devops-broker01.localhost-46295-1510954431290-2:474199:0:0:1.RHSA-2017:31570",
+            "message_id": "ID:messaging-devops-broker01.localhost-"
+            "46295-1510954431290-2:474199:0:0:1.RHSA-2017:31570",
             "state_name": "SKIPPED"
         }
+    }
+
+
+class TestAllBuildsDone(fedmsg.tests.test_meta.Base):
+    expected_title = 'freshmaker.event.state.changed'
+    expected_subti = ('Event state is switched to COMPLETE due to "All docker '
+                      'images have been rebuilt."')
+    expected_link = 'http://freshmaker.localhost/api/1/events/242'
+    expected_packages = set(['someimage', 'someimage2'])
+    msg = {
+        "headers": {
+            "JMS_AMQP_FirstAcquirer": "false",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "content-length": "1938",
+            "destination": "/topic/VirtualTopic.eng.freshmaker."
+            "event.state.changed",
+            "expires": "0",
+            "message-id": "ID:messaging-devops-broker01.localhost-"
+            "45704-1510236486219-2:121170:0:0:1",
+            "priority": "4",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas"
+            "-stage.VirtualTopic.eng.>",
+            "timestamp": "0"},
+        "i": 0,
+        "msg": {
+            "builds": [{
+                "build_args": {
+                    "branch": "somebranch",
+                    "commit": "61c79adcc6db5f62cf62d358329042831b153f63",
+                    "odcs_pulp_compose_id": 18,
+                    "parent": "someimage3-docker-7.0.6-3",
+                    "repository": "rpms/someimage4-docker",
+                    "target": "somebranch-docker-candidate"
+                },
+                "build_id": None,
+                "dep_on": None,
+                "event_id": 242,
+                "id": 122,
+                "name": "someimage",
+                "original_nvr": "someimage-1.4-36",
+                "rebuilt_nvr": "someimage-1.4-36.1512495241",
+                "state": 4,
+                "state_name": "PLANNED",
+                "state_reason": None,
+                "time_completed": None,
+                "time_submitted": "2017-12-05T17:34:01Z",
+                "type": 1,
+                "type_name": "IMAGE",
+                "url": "http://freshmaker.localhost/api/1/builds/122"
+            }, {
+                "build_args": {
+                    "branch": "somebranch2",
+                    "commit": "07d6e35c241500a68fdaa02f208c6c098cc00835",
+                    "odcs_pulp_compose_id": 19,
+                    "parent": "someimage-1.4-36.1512495241",
+                    "repository": "rpms/someimage2",
+                    "target": "somebranch2-docker-candidate"
+                },
+                "build_id": None,
+                "dep_on": "someimage",
+                "event_id": 242,
+                "id": 123,
+                "name": "someimage2",
+                "original_nvr": "someimage2-v3.7.9-21",
+                "rebuilt_nvr": "someimage2-v3.7.9-21.1512495241",
+                "state": 4,
+                "state_name": "PLANNED",
+                "state_reason": None,
+                "time_completed": None,
+                "time_submitted": "2017-12-05T17:34:01Z",
+                "type": 1,
+                "type_name": "IMAGE",
+                "url": "http://freshmaker.localhost/api/1/builds/123"
+            }],
+            "event_type_id": 8,
+            "id": 242,
+            "message_id": "ID:messaging-devops-broker02.localhost-33824-"
+            "1512422606448-2:64621:0:0:1.RHSA-2017:31059",
+            "search_key": "31059",
+            "state": 2,
+            "state_name": "COMPLETE",
+            "state_reason": "All docker images have been rebuilt.",
+            "url": "http://freshmaker.localhost/api/1/events/242"
+        },
+        "msg_id": "ID:messaging-devops-broker01.localhost-45704-"
+        "1510236486219-2:121170:0:0:1",
+        "timestamp": 1512495243.0,
+        "topic": "/topic/VirtualTopic.eng.freshmaker.event.state.changed",
+        "username": None,
     }
