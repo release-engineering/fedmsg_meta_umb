@@ -24,6 +24,9 @@ class TestManualRebuild(fedmsg.tests.test_meta.Base):
     expected_title = 'freshmaker.manual.rebuild'
     expected_subti = 'Manual rebuild is triggered for Errata advisory 31360.'
     expected_link = 'https://errata.devel.redhat.com/advisory/31360'
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/freshmaker.png')
     expected_packages = set([])
 
     msg = {
@@ -50,6 +53,9 @@ class TestBuildStateIsDone(fedmsg.tests.test_meta.Base):
                       'from original build rh-nodejs6-docker-6-14.11 to new '
                       'build rh-nodejs6-docker-6-14.1511360844.')
     expected_link = 'http://freshmaker.localhost/api/1/builds/32'
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/freshmaker.png')
     expected_packages = set([])
 
     msg = {
@@ -98,6 +104,9 @@ class TestBuildStateIsNotDone(fedmsg.tests.test_meta.Base):
                       '"Cannot build artifact, because its dependency '
                       'cannot be built."')
     expected_link = 'http://freshmaker.localhost/api/1/builds/96'
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/freshmaker.png')
     expected_packages = set([])
 
     msg = {
@@ -149,6 +158,9 @@ class TestEventStateChanged(fedmsg.tests.test_meta.Base):
                       '1510954431290-2:473881:0:0:1) '
                       'for errata: RHSA-2017:29110"')
     expected_link = 'http://freshmaker.localhost/api/1/events/81'
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/freshmaker.png')
     expected_packages = set(['pkg', 'another-pkg'])
 
     msg = {
@@ -186,6 +198,9 @@ class TestUnknownMessageComes(fedmsg.tests.test_meta.Base):
     expected_title = 'freshmaker.some.new.event'
     expected_subti = 'Unknown message.'
     expected_link = None
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/freshmaker.png')
     expected_packages = set([])
 
     msg = {
@@ -220,6 +235,9 @@ class TestAllBuildsDone(fedmsg.tests.test_meta.Base):
     expected_subti = ('Event state is switched to COMPLETE due to "All docker '
                       'images have been rebuilt."')
     expected_link = 'http://freshmaker.localhost/api/1/events/242'
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/freshmaker.png')
     expected_packages = set(['someimage', 'someimage2'])
     msg = {
         "headers": {
