@@ -37,38 +37,38 @@ class TestODCSStateChange(fedmsg.tests.test_meta.Base):
         "msg_id": "ID:broker.domain-45752-1512505691529-2:38975:0:0:1",
         "topic": "/topic/VirtualTopic.eng.odcs.state.change",
         "headers": {
-          "content-length": "629",
-          "destination": "/topic/VirtualTopic.eng.odcs.state.change",
-          "JMS_AMQP_MESSAGE_FORMAT": "0",
-          "JMS_AMQP_NATIVE": "false",
-          "expires": "0",
-          "priority": "4",
-          "message-id": "ID:broker.domain-45752-1512505691529-2:38975:0:0:1",
-          "timestamp": "0",
-          "JMS_AMQP_FirstAcquirer": "false",
-          "subscription": "/queue/Consumer.client-datanommer.openpaas-"
-          "stage.VirtualTopic.eng.>"
+            "content-length": "629",
+            "destination": "/topic/VirtualTopic.eng.odcs.state.change",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "expires": "0",
+            "priority": "4",
+            "message-id": "ID:broker.domain-45752-1512505691529-2:38975:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-"
+            "stage.VirtualTopic.eng.>"
         },
         "msg": {
-          "compose": {
-            "state_name": "done",
-            "source_type": 1,
-            "sigkeys": "37017186 FD431D51 DB42A60E",
-            "time_submitted": "2017-12-11T08:38:33Z",
-            "results": ["repository"],
-            "time_removed": None,
-            "source": "osbs-test-odcs",
-            "state": 2,
-            "time_to_expire": "2017-12-12T08:38:33Z",
-            "flags": [],
-            "time_done": "2017-12-11T08:38:41Z",
-            "owner": "UID=osbs,OU=users,DC=redhat,DC=com",
-            "result_repo": "http://odcs.host.stage.eng.bos.redhat.com/"
-            "composes/latest-odcs-185-1/compose/Temporary",
-            "id": 185,
-            "result_repofile": "http://odcs.host.stage.eng.bos.redhat.com/"
-            "composes/latest-odcs-185-1/compose/Temporary/odcs-185.repo"
-          },
-          "event": "state-changed"
+            "compose": {
+                "state_name": "done",
+                "source_type": 1,
+                "sigkeys": "37017186 FD431D51 DB42A60E",
+                "time_submitted": "2017-12-11T08:38:33Z",
+                "results": ["repository"],
+                "time_removed": None,
+                "source": "osbs-test-odcs",
+                "state": 2,
+                "time_to_expire": "2017-12-12T08:38:33Z",
+                "flags": [],
+                "time_done": "2017-12-11T08:38:41Z",
+                "owner": "UID=osbs,OU=users,DC=redhat,DC=com",
+                "result_repo": "http://odcs.host.stage.eng.bos.redhat.com/"
+                "composes/latest-odcs-185-1/compose/Temporary",
+                "id": 185,
+                "result_repofile": "http://odcs.host.stage.eng.bos.redhat.com/"
+                "composes/latest-odcs-185-1/compose/Temporary/odcs-185.repo"
+            },
+            "event": "state-changed"
         }
     }
