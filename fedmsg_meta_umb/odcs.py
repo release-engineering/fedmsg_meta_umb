@@ -55,8 +55,15 @@ class ODCSProcessor(BaseProcessor):
     def usernames(self, msg, **config):
         if 'compose' in msg['msg']:
             if 'owner' in msg['msg']['compose']:
-                owner = msg['msg']['compose']['owner']
-                owner = owner.split(',')[0]
-                if owner.startswith('UID='):
-                    owner = owner[4:]
+                owner = self._format_username(msg['msg']['compose']['owner'])
                 return set([owner])
+
+    @staticmethod
+    def _format_username(username):
+        # For ldap-format strings
+        username = username.split(',')[0]
+        if username.startswith('UID='):
+            username = username[4:]
+        # For krb service principals
+        username = username.split('/')[0]
+        return username
