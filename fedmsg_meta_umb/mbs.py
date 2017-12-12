@@ -39,6 +39,8 @@ class MBSProcessor(BaseProcessor):
 
     def link(self, msg, **config):
         link = msg['msg']['state_url']
+        if not link:
+            return None
         return link.replace('http://localhost', 'https://mbs.engineering.redhat.com')
 
     def usernames(self, msg, **config):
