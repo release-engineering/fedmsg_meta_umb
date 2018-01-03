@@ -39,7 +39,7 @@ class PubProcessor(BaseProcessor):
                               "was signed with key {1} in {2}")
             return template.format(msg['msg']['image_name'],
                                    msg['msg']['sig_key_id'].lower(),
-                                   msg['headers']['target'])
+                                   msg['headers'].get('target', '"unspecified"'))
         template = self._("{agent}'s {source} push to {target} "
                           "of {files} {status}")
         items = [item.split('/')[-1] for item in msg['msg']['file_list']]
