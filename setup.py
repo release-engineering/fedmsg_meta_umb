@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Red Hat, Inc.
+# Copyright (C) 2017-2018 Red Hat, Inc.
 #
 # fedmsg_meta_umb is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,6 +15,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
 # Authors:  Mike Bonnet <mikeb@redhat.com>
+#           Ralph Bean <rbean@redhat.com>
 
 from setuptools import setup, find_packages
 
@@ -47,6 +48,7 @@ entry_points = {
         'robosignatory=fedmsg_meta_umb.robosignatory:RobosignatoryProcessor',
         'freshmaker=fedmsg_meta_umb.freshmaker:FreshmakerProcessor',
         'odcs=fedmsg_meta_umb.odcs:ODCSProcessor',
+        'resultsdb=fedmsg_meta_umb.resultsdb:ResultsDBProcessor',
     ]
 }
 
