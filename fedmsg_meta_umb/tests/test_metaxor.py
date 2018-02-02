@@ -198,4 +198,97 @@ class TestMetaXORRefreshEvent(fedmsg.tests.test_meta.Base):
     }
 
 
+class TestMetaXORStrMessage(fedmsg.tests.test_meta.Base):
+    """ The MetaXOR service provides images to lightblue database
+
+    Messages (like the example given here) are published when we issue command
+    to MetaXOR using strings
+    """
+    expected_title = 'metaxor.internal.refresh'
+    expected_subti = ('Non dictionary message')
+    expected_link = None
+    expected_packages = set([])
+    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
+                     'redhat.com/umb/_static/img/icons/metaxor.png')
+
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1517069378.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2."
+        "redhat.com-42569-1516420517578-2:285156:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.metaxor.internal.refresh",
+        "headers": {
+            "repository_filter": "null",
+            "content-length": "95",
+            "destination": "/topic/VirtualTopic.eng.metaxor.internal.refresh",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "repository": "openshift3/registry-console",
+            "full_refresh": "false",
+            "JMS_AMQP_NATIVE": "false",
+            "expires": "0",
+            "priority": "4",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2"
+            ".redhat.com-42569-1516420517578-2:285156:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod."
+            "VirtualTopic.eng.>"
+        },
+        "signature": None,
+        "source_version": "0.8.2",
+        "msg": "Non dictionary message"
+    }
+
+
+class TestMetaXORBadMessage(fedmsg.tests.test_meta.Base):
+    """ The MetaXOR service provides images to lightblue database
+
+    Messages (like the example given here) are published when we send non-string
+    messages to metaxor. These likely can't be simply displayed so let's just
+    put a placeholder for them'
+    """
+    expected_title = 'metaxor.internal.refresh'
+    expected_subti = ('Unknown message format')
+    expected_link = None
+    expected_packages = set([])
+    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
+                     'redhat.com/umb/_static/img/icons/metaxor.png')
+
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1517069378.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2."
+        "redhat.com-42569-1516420517578-2:285156:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.metaxor.internal.refresh",
+        "headers": {
+            "repository_filter": "null",
+            "content-length": "95",
+            "destination": "/topic/VirtualTopic.eng.metaxor.internal.refresh",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "repository": "openshift3/registry-console",
+            "full_refresh": "false",
+            "JMS_AMQP_NATIVE": "false",
+            "expires": "0",
+            "priority": "4",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2"
+            ".redhat.com-42569-1516420517578-2:285156:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod."
+            "VirtualTopic.eng.>"
+        },
+        "signature": None,
+        "source_version": "0.8.2",
+        "msg": 123
+    }
+
+
 add_doc(locals())

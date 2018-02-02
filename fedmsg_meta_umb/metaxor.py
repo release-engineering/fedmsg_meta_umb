@@ -37,6 +37,13 @@ class MetaXORProcessor(BaseProcessor):
     def subtitle(self, msg, **config):
         inner_msg = msg['msg']
         topic = msg['topic']
+
+        if isinstance(inner_msg, str):
+            return inner_msg
+
+        if not isinstance(inner_msg, dict):
+            return "Unknown message format"
+
         publish = 'published' if inner_msg.get('published') else 'unpublished'
 
         if topic.endswith('containerImage.update'):
