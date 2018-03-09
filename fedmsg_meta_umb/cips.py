@@ -24,15 +24,15 @@ from fedmsg.meta.base import BaseProcessor
 log = logging.getLogger(__name__)
 
 
-class TPSProcessor(BaseProcessor):
+class CIPSProcessor(BaseProcessor):
     topic_prefix_re = r'/topic/VirtualTopic\.eng'
 
-    __name__ = 'tps'
-    __description__ = 'package sanity testing of brew builds'
-    __obj__ = 'Test Package Sanity'
+    __name__ = 'cips'
+    __description__ = 'continuous integration package sanity testing of brew builds'
+    __obj__ = 'Continuous Integration Package Sanity'
     __docs__ = ('https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/'
-                'test-package-sanity-documentation/lastSuccessfulBuild/artifact/docs/index.html')
-    __link__ = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/test-package-sanity-development'
+                'ci-package-sanity-documentation/lastSuccessfulBuild/artifact/cips/docs/builddir/index.html')
+    __link__ = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/ci-package-sanity-development'
     __icon__ = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/static/0e416130/images/headshot.png'
 
     def title(self, msg, **config):
@@ -44,30 +44,29 @@ class TPSProcessor(BaseProcessor):
         return set()
 
     def subtitle(self, msg, **config):
-        required = set(['component', 'brew_task_id'])
+        required = set(['component', 'id'])
         if not required.issubset(set(msg.get('headers', {}).keys())):
             log.warn("%r missing from %r" % (required, msg.get('headers')))
             return None
-        if msg['topic'].endswith('.starting'):
-            template = self._("package sanity testing started for "
-                              "component: {component} with brew task_id: {brew_task_id}")
-        elif msg['topic'].endswith('.completed'):
-            template = self._("package sanity testing completed for "
-                              "component: {component} with brew task_id: {brew_task_id}")
+        if msg['topic'].endswith('.start'):
+            template = self._("continuous integration package sanity testing started for "
+                              "component: {component} with brew task_id: {id}")
+        elif msg['topic'].endswith('.end'):
+            template = self._("continuous integration package sanity testing completed for "
+                              "component: {component} with brew task_id: {id}")
         else:
-            if 'results' not in msg['msg']:
-                log.warn("No 'results' found in %r" % msg['msg'])
+            if 'status' not in msg['msg']:
+                log.warn("No 'status' found in %r" % msg['msg'])
                 return None
-            template = self._("package sanity testing %s for "
-                              "component: {component} with brew task_id: {brew_task_id}"
-                              % msg['msg']['results']['tps_status'])
+            template = self._("continuous integration package sanity testing %s for "
+                              "component: {component} with brew task_id: {id}"
+                              % msg['msg']['status'])
 
         return template.format(**msg['headers'])
 
     def link(self, msg, **config):
-        if msg['topic'].endswith('.starting') or msg['topic'].endswith('.completed'):
-            headers = msg.get('headers', {})
-            return headers.get('jenkins_build_url')
-        else:
-            infrastructure = msg['msg'].get('infrastructure', {})
-            return infrastructure.get('jenkins_build_url')
+        if msg['topic'].endswith('.complete'):
+            msg = msg.get('msg', {})
+            return msg.get('run').get('url')
+        elif msg['topic'].endswith('.start') or msg['topic'].endswith('.end'):
+            return msg['headers']['jenkins_build_url']

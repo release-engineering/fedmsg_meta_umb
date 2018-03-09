@@ -37,7 +37,7 @@ entry_points = {
     'fedmsg.meta': [
         'brew=fedmsg_meta_umb.brew:BrewProcessor',
         'rpmdiff=fedmsg_meta_umb.rpmdiff:RPMDiffProcessor',
-        'tps=fedmsg_meta_umb.tps:TPSProcessor',
+        'cips=fedmsg_meta_umb.cips:CIPSProcessor',
         'distgit=fedmsg_meta_umb.distgit:DistGitProcessor',
         'pub=fedmsg_meta_umb.pub:PubProcessor',
         'errata=fedmsg_meta_umb.errata:ErrataProcessor',
