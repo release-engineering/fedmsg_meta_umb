@@ -99,6 +99,79 @@ class TestCIPSStart(fedmsg.tests.test_meta.Base):
     }
 
 
+class TestCIPSRunning(fedmsg.tests.test_meta.Base):
+    """ `CIPS <https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/ci-package-sanity-documentation/
+    lastSuccessfulBuild/artifact/cips/docs/builddir/index.html>`_ performs basic package sanity testing of rpms.
+
+    Messages (like the example given here) are published when an **CIPS**
+    job is **running**. (A CIPS job performs basic sanity testing for the given brew build).
+    """
+    expected_title = 'cips.running'
+    expected_link = ('https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/'
+                     'ci-package-sanity-development/label=ose-slave-tps,provision_arch=x86_64/1919/')
+    expected_subti = ('continuous integration package sanity testing in progress for component: setup-2.8.71-7.el7_4 '
+                      'with brew task_id: 15508224')
+    expected_packages = set(['setup'])
+    expected_icon = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/static/0e416130/images/headshot.png'
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1520556343.0,
+        "msg_id": "ID:somebroker-34234-1520485687892-2:42911:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.cips.running",
+        "headers": {
+            "content-length": "778",
+            "expires": "0",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "timestamp": "0",
+            "issuer": "jenkins/some-jenkins",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.cips.running",
+            "component": "setup-2.8.71-7.el7_4",
+            "nvr": "setup-2.8.71-7.el7_4",
+            "priority": "4",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": "ID:somebroker-34234-1520485687892-2:42911:0:0:1",
+            "scratch": "true",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "brew-build",
+            "id": "15508224",
+            "baseline": ""
+        },
+        "signature": None,
+        "source_version": "0.8.2",
+        "msg": {
+            "category": "sanity",
+            "ci": {
+                "name": "RPM Factory",
+                "url": "https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com",
+                "environment": "production",
+                "team": "rpm-factory",
+                "irc": "#rpm-factory",
+                "email": "nobody@redhat.com"
+            },
+            "run": {
+                "url": ('https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/ci-package-sanity-development'
+                        '/label=ose-slave-tps,provision_arch=x86_64/1919/'),
+                "log": ('https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/ci-package-sanity-development'
+                        '/label=ose-slave-tps,provision_arch=x86_64/1919//console')
+            },
+            "name": "tier0",
+            "artifact": {
+                "nvr": "setup-2.8.71-7.el7_4",
+                "scratch": "true",
+                "component": "setup-2.8.71-7.el7_4",
+                "type": "brew-build",
+                "id": 15508224,
+                "issuer": "jenkins/some-jenkins"
+            }
+        }
+    }
+
+
 class TestCIPSEnd(fedmsg.tests.test_meta.Base):
     """ `CIPS <https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/ci-package-sanity-documentation/
     lastSuccessfulBuild/artifact/cips/docs/builddir/index.html>`_ performs basic package sanity testing of rpms.
@@ -109,7 +182,7 @@ class TestCIPSEnd(fedmsg.tests.test_meta.Base):
     expected_title = 'cips.end'
     expected_link = ('https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/'
                      'ci-package-sanity-development/label=ose-slave-tps,provision_arch=x86_64/1915/')
-    expected_subti = ('continuous integration package sanity testing completed for component: setup-2.8.71-7.el7_4 '
+    expected_subti = ('continuous integration package sanity testing ended for component: setup-2.8.71-7.el7_4 '
                       'with brew task_id: 14393825')
     expected_packages = set(['setup'])
     expected_icon = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/static/0e416130/images/headshot.png'

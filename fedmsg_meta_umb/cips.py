@@ -52,7 +52,10 @@ class CIPSProcessor(BaseProcessor):
             template = self._("continuous integration package sanity testing started for "
                               "component: {component} with brew task_id: {id}")
         elif msg['topic'].endswith('.end'):
-            template = self._("continuous integration package sanity testing completed for "
+            template = self._("continuous integration package sanity testing ended for "
+                              "component: {component} with brew task_id: {id}")
+        elif msg['topic'].endswith('.running'):
+            template = self._("continuous integration package sanity testing in progress for "
                               "component: {component} with brew task_id: {id}")
         else:
             if 'status' not in msg['msg']:
@@ -65,7 +68,7 @@ class CIPSProcessor(BaseProcessor):
         return template.format(**msg['headers'])
 
     def link(self, msg, **config):
-        if msg['topic'].endswith('.complete'):
+        if msg['topic'].endswith('.complete') or msg['topic'].endswith('running'):
             msg = msg.get('msg', {})
             return msg.get('run').get('url')
         elif msg['topic'].endswith('.start') or msg['topic'].endswith('.end'):
