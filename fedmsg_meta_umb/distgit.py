@@ -28,18 +28,33 @@ class DistGitProcessor(BaseProcessor):
     __docs__ = 'https://mojo.redhat.com/docs/DOC-1045187'
     __obj__ = 'Dist-Git Repository Management System'
     __icon__ = 'https://git-scm.com/images/logos/downloads/Git-Icon-Black.png'
-    link_template = ('https://pkgs.devel.redhat.com/cgit/rpms/{repo}/'
-                     'commit/?h={branch}&id={rev}')
-    subtitle_template = ('{shortrev} was committed on the {branch} branch '
-                         'of the {repo} {repotype} repo by {username}')
+    commit_link_template = ('https://pkgs.devel.redhat.com/cgit/rpms/{repo}/'
+                            'commit/?h={branch}&id={rev}')
+    push_link_template = 'https://pkgs.devel.redhat.com/cgit/rpms/{repo}/log/?h={branch}'
+    commit_subtitle_template = ('{shortrev} was committed on the {branch} branch '
+                                'of the {repo} {repotype} repo by {username}')
+    push_subtitle_template = ('{numcommits} {commits_str} {were_str} pushed to the {branch} '
+                              'branch of the {repo} {repotype} repo by {username}')
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
-        return self.subtitle_template.format(repotype=msg['msg']['namespace'][:-1],
-                                             shortrev=msg['msg']['rev'][:8],
-                                             **msg['msg'])
+        if msg['topic'].endswith('.commit'):
+            return self.commit_subtitle_template.format(repotype=msg['msg']['namespace'][:-1],
+                                                        shortrev=msg['msg']['rev'][:8],
+                                                        **msg['msg'])
+        elif msg['topic'].endswith('.push'):
+            if msg['msg']['numcommits'] == 1:
+                commits_str = 'commit'
+                were_str = 'was'
+            else:
+                commits_str = 'commits'
+                were_str = 'were'
+            return self.push_subtitle_template.format(commits_str=commits_str,
+                                                      were_str=were_str,
+                                                      repotype=msg['msg']['namespace'][:-1],
+                                                      **msg['msg'])
 
     def packages(self, msg, **config):
         return set([msg['msg']['repo']])
@@ -48,4 +63,7 @@ class DistGitProcessor(BaseProcessor):
         return set([msg['msg']['username']])
 
     def link(self, msg, **config):
-        return self.link_template.format(**msg['msg'])
+        if msg['topic'].endswith('.commit'):
+            return self.commit_link_template.format(**msg['msg'])
+        elif msg['topic'].endswith('.push'):
+            return self.push_link_template.format(**msg['msg'])
