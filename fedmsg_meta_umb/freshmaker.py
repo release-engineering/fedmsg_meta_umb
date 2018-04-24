@@ -45,10 +45,10 @@ class FreshmakerProcessor(BaseProcessor):
                                   'from original build {original_nvr} to new '
                                   'build {rebuilt_nvr}.')
             else:
-                template = self._('{type_name} build state is switched to {state_name} '
-                                  'due to "{state_reason}"')
+                template = self._('{type_name} build state is switched to {state_name}: '
+                                  '"{state_reason}"')
         elif topic.endswith('event.state.changed'):
-            template = self._('Event state is switched to {state_name} due to "{state_reason}"')
+            template = self._('Event state is switched to {state_name}: "{state_reason}"')
         else:
             template = 'Unknown message.'
 

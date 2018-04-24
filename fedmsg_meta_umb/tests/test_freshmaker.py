@@ -100,7 +100,7 @@ class TestBuildStateIsDone(fedmsg.tests.test_meta.Base):
 class TestBuildStateIsNotDone(fedmsg.tests.test_meta.Base):
 
     expected_title = 'freshmaker.build.state.changed'
-    expected_subti = ('IMAGE build state is switched to FAILED due to '
+    expected_subti = ('IMAGE build state is switched to FAILED: '
                       '"Cannot build artifact, because its dependency '
                       'cannot be built."')
     expected_link = 'http://freshmaker.localhost/api/1/builds/96'
@@ -152,7 +152,7 @@ class TestBuildStateIsNotDone(fedmsg.tests.test_meta.Base):
 class TestEventStateChanged(fedmsg.tests.test_meta.Base):
 
     expected_title = 'freshmaker.event.state.changed'
-    expected_subti = ('Event state is switched to COMPLETE due to "Generated '
+    expected_subti = ('Event state is switched to COMPLETE: "Generated '
                       'ErrataAdvisoryRPMsSignedEvent '
                       '(ID:messaging-devops-broker01.localhost-46295-'
                       '1510954431290-2:473881:0:0:1) '
@@ -232,7 +232,7 @@ class TestUnknownMessageComes(fedmsg.tests.test_meta.Base):
 
 class TestAllBuildsDone(fedmsg.tests.test_meta.Base):
     expected_title = 'freshmaker.event.state.changed'
-    expected_subti = ('Event state is switched to COMPLETE due to "All docker '
+    expected_subti = ('Event state is switched to COMPLETE: "All docker '
                       'images have been rebuilt."')
     expected_link = 'http://freshmaker.localhost/api/1/events/242'
     expected_icon = (
