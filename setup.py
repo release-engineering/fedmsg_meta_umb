@@ -43,6 +43,11 @@ entry_points = {
         'distill=fedmsg_meta_umb.distill:DistillProcessor',
         'rhchi=fedmsg_meta_umb.rhchi:RHCHIProcessor',
         'robosignatory=fedmsg_meta_umb.robosignatory:RobosignatoryProcessor',
+        'freshmaker=fedmsg_meta_umb.freshmaker:FreshmakerProcessor',
+        'odcs=fedmsg_meta_umb.odcs:ODCSProcessor',
+        'resultsdb=fedmsg_meta_umb.resultsdb:ResultsDBProcessor',
+        'metaxor=fedmsg_meta_umb.metaxor:MetaXORProcessor',
+        'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor'
     ]
 }
 
