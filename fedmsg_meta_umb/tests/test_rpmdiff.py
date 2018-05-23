@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 class TestRPMDiffComparisonStart(fedmsg.tests.test_meta.Base):
     """ The RPMDiff system performs analyses of rpms.
@@ -85,3 +86,6 @@ class TestRPMDiffAnalysisCompleted(fedmsg.tests.test_meta.Base):
             "nvr": "openshift-ansible-3.6.65.2-1.git.0.1a149c1.el7"
         }
     }
+
+
+add_doc(locals())

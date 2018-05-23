@@ -45,6 +45,10 @@ class ErrataProcessor(BaseProcessor):
                 '{agent} changed bugs on an advisory'),
             'errata.builds.changed': self._(
                 '{agent} changed builds on an advisory'),
+            'errata.builds.added': self._(
+                '{agent} added {brew_build} to {product} advisory {errata_id}'),
+            'errata.builds.removed': self._(
+                '{agent} removed {brew_build} from {product} advisory {errata_id}'),
             'errata.ccat.reschedule_test': self._(
                 'CCAT for erratum {ERRATA_ID} in {TARGET} was rescheduled'),
         }
@@ -104,6 +108,17 @@ class ErrataProcessor(BaseProcessor):
                 headers['to'] = self.scrub_username(headers['to'])
                 template = self._('{agent} assigned {to} to {fulladvisory}')
             return template.format(agent=agent, **headers)
+        elif title == 'errata.activity.text_changes':
+            body = msg['msg']
+            field_list = [t['name'] for t in body['text_changes']]
+            fields = ', '.join(field_list)
+            if len(field_list) == 2:
+                fields = fields.replace(', ', ' and ')
+            elif len(field_list) > 2:
+                # Oxford comma
+                fields = '{0}, and {2}'.format(*fields.rpartition(', '))
+            template = '{0} changed {1} on {2} advisory {3}'
+            return template.format(agent, fields, body['product'], body['errata_id'])
 
     @staticmethod
     def scrub_username(username):
@@ -139,3 +154,9 @@ class ErrataProcessor(BaseProcessor):
         else:
             template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
         return template.format(**msg['headers'])
+
+    def packages(self, msg, **config):
+        nvr = msg['headers'].get('brew_build')
+        if nvr:
+            return set([nvr.rsplit('-', 2)[0]])
+        return set()

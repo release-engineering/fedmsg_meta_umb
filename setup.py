@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Red Hat, Inc.
+# Copyright (C) 2017-2018 Red Hat, Inc.
 #
 # fedmsg_meta_umb is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,6 +15,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
 # Authors:  Mike Bonnet <mikeb@redhat.com>
+#           Ralph Bean <rbean@redhat.com>
 
 from setuptools import setup, find_packages
 
@@ -36,11 +37,13 @@ entry_points = {
     'fedmsg.meta': [
         'brew=fedmsg_meta_umb.brew:BrewProcessor',
         'rpmdiff=fedmsg_meta_umb.rpmdiff:RPMDiffProcessor',
+        'cips=fedmsg_meta_umb.cips:CIPSProcessor',
         'distgit=fedmsg_meta_umb.distgit:DistGitProcessor',
         'pub=fedmsg_meta_umb.pub:PubProcessor',
         'errata=fedmsg_meta_umb.errata:ErrataProcessor',
         'pungi=fedmsg_meta_umb.pungi:PungiProcessor',
         'distill=fedmsg_meta_umb.distill:DistillProcessor',
+        'mbs=fedmsg_meta_umb.mbs:MBSProcessor',
         'rhchi=fedmsg_meta_umb.rhchi:RHCHIProcessor',
         'robosignatory=fedmsg_meta_umb.robosignatory:RobosignatoryProcessor',
         'freshmaker=fedmsg_meta_umb.freshmaker:FreshmakerProcessor',

@@ -17,7 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
-
+from .common import add_doc
 
 class TestErrataStatusChange(fedmsg.tests.test_meta.Base):
     """ The Errata Tool supports the release workflow for Red Hat content.
@@ -500,3 +500,217 @@ class TestErrataRescheduleCCAT(fedmsg.tests.test_meta.Base):
             'subject': 'errata.ccat.reschedule_test'
         }
     }
+
+
+class TestErrataBuildsAdded(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **adds a build** to
+    an advisory.
+    """
+    expected_title = 'errata.builds.added'
+    expected_subti = 'ajackson added libpciaccess-0.13.4-3.1.el7_4 to RHEL advisory 31169'
+    expected_link = 'https://errata.devel.redhat.com/advisory/31169'
+    expected_packages = set(['libpciaccess'])
+    expected_usernames = set(['ajackson'])
+    expected_agent = 'ajackson'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1509028483.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-2:216012:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.builds.added",
+        "headers": {
+            "product": "RHEL",
+            "expires": "0",
+            "errata_id": "31169",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.builds.added",
+            "subject": "errata.builds.added",
+            "persistent": "true",
+            "who": "ajackson@redhat.com",
+            "priority": "4",
+            "when": "2017-10-26 14:34:37 UTC",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-"
+            "2:216012:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.builds.added",
+            "brew_build": "libpciaccess-0.13.4-3.1.el7_4"
+        },
+        "msg": {
+            "when": "2017-10-26 14:34:37 UTC",
+            "product": "RHEL",
+            "who": "ajackson@redhat.com",
+            "errata_id": 31169,
+            "brew_build": "libpciaccess-0.13.4-3.1.el7_4"
+        }
+    }
+
+
+class TestErrataBuildsRemoved(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **removes a build** from
+    an advisory.
+    """
+    expected_title = 'errata.builds.removed'
+    expected_subti = 'sradco removed ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev from RHV advisory 29571'
+    expected_link = 'https://errata.devel.redhat.com/advisory/29571'
+    expected_packages = set(['ovirt-engine-dwh'])
+    expected_usernames = set(['sradco'])
+    expected_agent = 'sradco'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1509028264.0,
+        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-2:215849:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.builds.removed",
+        "headers": {
+            "product": "RHV",
+            "expires": "0",
+            "errata_id": "29571",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.builds.removed",
+            "subject": "errata.builds.removed",
+            "persistent": "true",
+            "who": "sradco@redhat.com",
+            "priority": "4",
+            "when": "2017-10-26 14:31:03 UTC",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-43669-1508744086399-"
+            "2:215849:0:0:1",
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "errata.builds.removed",
+            "brew_build": "ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev"
+        },
+        "msg": {
+            "when": "2017-10-26 14:31:03 UTC",
+            "product": "RHV",
+            "who": "sradco@redhat.com",
+            "errata_id": 29571,
+            "brew_build": "ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev"
+        }
+    }
+
+
+class TestErrataTextChanged(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    You'll see a message like this one when someone **changes the text** in a
+    field of an advisory.
+    """
+    expected_title = 'errata.activity.text_changes'
+    expected_subti = ('bkundal changed security_impact, synopsis, cve, topic, '
+                      'description, and reference on JBEAP advisory 30821')
+    expected_link = 'https://errata.devel.redhat.com/advisory/30821'
+    expected_packages = set([])
+    expected_usernames = set(['bkundal'])
+    expected_agent = 'bkundal'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "i": 0,
+        "timestamp": 1516695443.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-"
+        "42569-1516420517578-2:51216:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.errata.activity.text_changes",
+        "headers": {
+            "product": "JBEAP",
+            "expires": "0",
+            "errata_id": "30821",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.text_changes",
+            "when": "2018-01-23 08:16:46 UTC",
+            "persistent": "true",
+            "who": "bkundal@redhat.com",
+            "priority": "4",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-"
+            "42569-1516420517578-2:51216:0:0:1",
+            "timestamp": "0",
+            "release": "RHEL-7-JBEAP-6.4",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "type": "RHSA",
+            "subject": "errata.activity.text_changes"
+        },
+        "msg": {
+            "product": "JBEAP",
+            "errata_id": 30821,
+            "who": "bkundal@redhat.com",
+            "when": "2018-01-23 08:16:46 UTC",
+            "text_changes": [
+                {
+                    "to": "Important",
+                    "from": "None",
+                    "name": "security_impact"
+                },
+                {
+                    "to": "Important: Red Hat JBoss Enterprise Application Platform 6.4.19 update on RHEL 7",
+                    "from": "Red Hat JBoss Enterprise Application Platform 6.4.19 update on RHEL 7",
+                    "name": "synopsis"
+                },
+                {
+                    "to": "CVE-2017-12617 CVE-2018-1041 CVE-2017-12174",
+                    "from": "",
+                    "name": "cve"
+                },
+                {
+                    "to": "An update is now available for Red Hat JBoss Enterprise Application Platform "
+                    "6.4 for Red Hat Enterprise Linux 6.\n\nRed Hat Product Security has rated this update "
+                    "as having a security impact of Important.A Common Vulnerability Scoring System (CVSS) "
+                    "base score,which gives a detailed severity rating,is available for each vulnerability "
+                    "from the CVE link(s) in the References section.",
+                    "from": "Updated packages that provide Red Hat JBoss Enterprise Application Platform "
+                    "6.4.19 and fix several bugs,and add various enhancements are now available for Red Hat "
+                    "Enterprise Linux 7.",
+                    "name": "topic"
+                },
+                {
+                    "to": "Red Hat JBoss Enterprise Application Platform is a platform for Java\napplications "
+                    "based on the JBoss Application Server.\n\nThis release of Red Hat JBoss Enterprise "
+                    "Application Platform 6.4.19 serves as a replacement for Red Hat JBoss Enterprise "
+                    "Application Platform 6.4.18,and includes bug fixes and enhancements,which are documented "
+                    "in the Release Notes document linked to in the References.\n\nSecurity Fix(es):\n\n* It "
+                    "was found that when Artemis and HornetQ are configure with UDP discovery and JGroups "
+                    "discovery create huge byte array when receiving unexpected multicast message and may "
+                    "result in heap memory exhaustion ,full GC and OutOfMemoryError. (CVE-2017-12174)\n\n* "
+                    "A vulnerability was discovered in Tomcat where if a servlet context was\nconfigured with "
+                    "readonly=false and HTTP PUT requests were allowed,an\nattacker could upload a JSP file to "
+                    "that context and achieve code\nexecution. (CVE-2017-12617)\n\n* A vulnerability was found "
+                    "in the way RemoteMessageChannel,introduced in\njboss-remoting versions "
+                    "3.3.10.Final-redhat-1,reads from an empty buffer.\nAn attacker could use this flaw to cause "
+                    "denial of service via high CPU\ncaused by an infinite loop. (CVE-2018-1041)\n\nThe "
+                    "CVE-2017-12174 issue was discovered by Masafumi Miura (Red Hat).",
+                    "from": "Red Hat JBoss Enterprise Application Platform 6 is a platform for Java\napplications "
+                    "based on JBoss Application Server 7. \n\nThis release serves as a replacement for Red Hat "
+                    "JBoss Enterprise Application\nPlatform 6.4.18,and includes bug fixes and enhancements. "
+                    "Documentation for these\nchanges will be available shortly from the Red Hat JBoss Enterprise "
+                    "Application\nPlatform 6.4.19 Release Notes,linked to in the References. \n\nAll users of Red "
+                    "Hat JBoss Enterprise Application Platform 6.4 on Red Hat\nEnterprise Linux 7 are advised to "
+                    "upgrade to these updated packages. The JBoss\nserver process must be restarted for the update "
+                    "to take effect.",
+                    "name": "description"
+                },
+                {
+                    "to": "https://access.redhat.com/security/updates/classification/#important\n"
+                    "https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/",
+                    "from": "https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/"
+                    "6.4/index.html",
+                    "name": "reference"
+                }
+            ],
+            "release": "RHEL-7-JBEAP-6.4",
+            "type": "RHSA"
+        }
+    }
+
+
+add_doc(locals())

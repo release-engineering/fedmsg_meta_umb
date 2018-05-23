@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestPungiStart(fedmsg.tests.test_meta.Base):
@@ -55,6 +56,28 @@ class TestPungiComplete(fedmsg.tests.test_meta.Base):
     msg = {
         "msg": {
             "status": "FINISHED",
+            "location": "/mnt/redhat/nightly/OracleJava-7.4-RHEL-7-20170602.n.0/compose",
+            "compose_id": "OracleJava-7.4-RHEL-7-20170602.n.0"
+        },
+        "timestamp": 1449600728.0,
+        "topic": "/topic/VirtualTopic.eng.pungi.status-change"
+    }
+
+
+class TestPungiTerminated(fedmsg.tests.test_meta.Base):
+    """ Pungi (previously known as distill) is the compose tool on which RCM is
+    trying to standardize... and it's on the message bus!
+
+    Here's an example message published when a compose is killed.
+    """
+    expected_title = "pungi.status-change"
+    expected_subti = "pungi compose of OracleJava-7.4-RHEL-7-20170602.n.0 was terminated"
+    expected_link = ("http://download.lab.bos.redhat.com/nightly/"
+                     "OracleJava-7.4-RHEL-7-20170602.n.0")
+    expected_icon = "https://apps.fedoraproject.org/img/icons/pungi.png"
+    msg = {
+        "msg": {
+            "status": "TERMINATED",
             "location": "/mnt/redhat/nightly/OracleJava-7.4-RHEL-7-20170602.n.0/compose",
             "compose_id": "OracleJava-7.4-RHEL-7-20170602.n.0"
         },
@@ -194,3 +217,6 @@ class TestPungiOstree(fedmsg.tests.test_meta.Base):
             "compose_id": "Fedora-25-20161002.n.0"
         }
     }
+
+
+add_doc(locals())

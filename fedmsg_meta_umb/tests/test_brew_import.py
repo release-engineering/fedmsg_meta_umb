@@ -17,6 +17,7 @@
 # Authors:  Mike Bonnet <mikeb@redhat.com>
 
 from . import test_brew
+from .common import add_doc
 
 class TestBrewImportBuild(test_brew.BrewBase):
     expected_title = 'brew.import.build'
@@ -547,3 +548,6 @@ class TestBrewImportCG(test_brew.BrewBase):
             }
         }
     }
+
+
+add_doc(locals())
