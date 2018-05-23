@@ -39,6 +39,7 @@ class PungiProcessor(BaseProcessor):
                 'STARTED': self._('started'),
                 'FINISHED': self._('just finished'),
                 'DOOMED': self._('failed in a horrible fire'),
+                'TERMINATED': self._('was terminated'),
             }
             status = statuses.get(msg['msg']['status'], msg['msg']['status'])
             tmpl = self._("pungi compose of {compose} {status}")
