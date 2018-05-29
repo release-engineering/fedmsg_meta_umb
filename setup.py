@@ -49,7 +49,8 @@ entry_points = {
         'freshmaker=fedmsg_meta_umb.freshmaker:FreshmakerProcessor',
         'odcs=fedmsg_meta_umb.odcs:ODCSProcessor',
         'resultsdb=fedmsg_meta_umb.resultsdb:ResultsDBProcessor',
-        'metaxor=fedmsg_meta_umb.metaxor:MetaXORProcessor'
+        'metaxor=fedmsg_meta_umb.metaxor:MetaXORProcessor',
+        'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor'
     ]
 }
 
