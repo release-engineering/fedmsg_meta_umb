@@ -32,7 +32,7 @@ class TestGreenwaveDecisionUpdate(fedmsg.tests.test_meta.Base):
     expected_title = 'greenwave.decision.update'
     expected_subti = ('greenwave is a GO on libXdmcp-1.1.2-9.el8 for '
                       '"errata_newfile_to_qe" (rhel-7)')
-    expected_link = ('https://resultsdb-api.engineering.redhat.com/api/v2.0/'
+    expected_link = ('https://resultsdb.engineering.redhat.com/'
                      'results?item=libXdmcp-1.1.2-9.el8&type=koji_build')
     expected_packages = set(['libXdmcp'])
     expected_icon = (

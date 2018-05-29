@@ -38,7 +38,7 @@ class GreenwaveProcessor(BaseProcessor):
     def link(self, msg, **config):
         subject = msg['msg']['subject']
         if subject:
-            base = "https://resultsdb-api.engineering.redhat.com/api/v2.0/results"
+            base = "https://resultsdb.engineering.redhat.com/results"
             # we want to be sure that we always have the same parameter order
             query = urlencode(sorted(
                 [(k, v) for k, v in msg['msg']['subject'][0].items()],
