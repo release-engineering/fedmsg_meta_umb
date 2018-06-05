@@ -52,6 +52,12 @@ class MetaXORProcessor(BaseProcessor):
         elif topic.endswith('containerImage.insert'):
             template = self._('New containerImage entity for {publish} '
                               'container image {brew_build} has been created.')
+        elif topic.endswith('containerRepository.insert'):
+            template = self._('New {publish} container repository '
+                              '{repository} has been created.')
+        elif topic.endswith('containerRepository.update'):
+            template = self._('Existing {publish} container repository '
+                              '{repository} has been updated.')
         elif topic.endswith('events.refresh'):
             template = self._('Container repository {repository} has been '
                               'refreshed in Lightblue.')
@@ -63,7 +69,9 @@ class MetaXORProcessor(BaseProcessor):
     def link(self, msg, **config):
         inner_msg = msg['msg']
         topic = msg['topic']
-        if topic.endswith('events.refresh'):
+        if (topic.endswith('events.refresh') or
+                topic.endswith('containerRepository.insert') or
+                topic.endswith('containerRepository.update')):
             template = ('https://access.redhat.com/containers/#/'
                         'registry.access.redhat.com/{repository}')
             return template.format(**inner_msg)
@@ -80,3 +88,10 @@ class MetaXORProcessor(BaseProcessor):
             return set([msg['msg']['brew_build'].rsplit('-', 2)[0]])
         else:
             return set([])
+
+    def objects(self, msg, **config):
+        if msg['topic'].endswith('containerRepository.update') or \
+           msg['topic'].endswith('containerRepository.insert'):
+            return {msg['msg']['repository']}
+        else:
+            return set()
