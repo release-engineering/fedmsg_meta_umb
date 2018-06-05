@@ -254,7 +254,8 @@ class TestMetaXORBadMessage(fedmsg.tests.test_meta.Base):
     expected_title = 'metaxor.internal.refresh'
     expected_subti = ('Unknown message format')
     expected_link = None
-    expected_packages = set([])
+    expected_packages = set()
+    expected_objects = set()
     expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
                      'redhat.com/umb/_static/img/icons/metaxor.png')
 
@@ -288,6 +289,134 @@ class TestMetaXORBadMessage(fedmsg.tests.test_meta.Base):
         "signature": None,
         "source_version": "0.8.2",
         "msg": 123
+    }
+
+
+class TestMetaXORcontainerRepositoryInsert(fedmsg.tests.test_meta.Base):
+    """ The MetaXOR service provides repositories to lightblue database
+
+    Messages (like the example given here) are published when the new
+    repository is created in Lightblue
+    """
+    expected_title = 'metaxor.events.lightblue.containerRepository.insert'
+    expected_subti = ('New published container repository rhel7/rhel has '
+                      'been created.')
+    expected_link = ('https://access.redhat.com/containers/#/'
+                     'registry.access.redhat.com/rhel7/rhel')
+    expected_objects = {'rhel7/rhel'}
+    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
+                     'redhat.com/umb/_static/img/icons/metaxor.png')
+
+    msg = {
+        'username': None,
+        'source_name': 'datanommer',
+        'certificate': None,
+        'i': 0,
+        'timestamp': 1517059491.0,
+        'msg_id': 'ID:messaging-devops-broker02.web.prod.ext.phx2.redhat'
+        '.com-42569-1516420517578-2:283330:0:0:1',
+        'crypto': None,
+        'topic': '/topic/VirtualTopic.eng.metaxor.events.lightblue'
+                 '.containerRepository.insert',
+        'headers': {
+            'content-length': '206',
+            'full_refresh': 'false',
+            'JMS_AMQP_MESSAGE_FORMAT': '0',
+            'overridden': 'false',
+            'force_refresh': 'true',
+            'JMS_AMQP_NATIVE': 'false',
+            'expires': '0',
+            'published': 'true',
+            'schema_version': '1.0.0',
+            'priority': '4',
+            'JMS_AMQP_FirstAcquirer': 'false',
+            'timestamp': '0',
+            'destination': '/topic/VirtualTopic.eng.metaxor.events.'
+            'lightblue.containerRepository.insert',
+            'message-id': 'ID:messaging-devops-broker02.web.prod.ext.'
+            'phx2.redhat.com-42569-1516420517578-2:283330:0:0:1',
+            'changes': '[lastUpdateDate]',
+            'brew_build': 'etcd-docker-3.2.11-2',
+            'subscription': '/queue/Consumer.client-datanommer.'
+            'openpaas-prod.VirtualTopic.eng.>'
+        },
+        'signature': None,
+        'source_version': '0.8.2',
+        'msg': {
+            'published': True,
+            'repository': 'rhel7/rhel',
+            'registry': 'registry.access.redhat.com',
+            'full_refresh': False,
+            'force_refresh': False,
+            'schema_version': '1.0.0',
+            'changes': [
+                'lastUpdateDate'
+            ]
+        }
+    }
+
+
+class TestMetaXORcontainerRepositoryUpdate(fedmsg.tests.test_meta.Base):
+    """ The MetaXOR service provides repositories to lightblue database
+
+    Messages (like the example given here) are published when the existing
+    repository is updated in Lightblue
+    """
+    expected_title = 'metaxor.events.lightblue.containerRepository.update'
+    expected_subti = ('Existing published container repository rhel7/rhel has '
+                      'been updated.')
+    expected_link = ('https://access.redhat.com/containers/#/'
+                     'registry.access.redhat.com/rhel7/rhel')
+    expected_objects = {'rhel7/rhel'}
+    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
+                     'redhat.com/umb/_static/img/icons/metaxor.png')
+
+    msg = {
+        'username': None,
+        'source_name': 'datanommer',
+        'certificate': None,
+        'i': 0,
+        'timestamp': 1517059491.0,
+        'msg_id': 'ID:messaging-devops-broker02.web.prod.ext.phx2.redhat'
+        '.com-42569-1516420517578-2:283330:0:0:1',
+        'crypto': None,
+        'topic': '/topic/VirtualTopic.eng.metaxor.events.lightblue'
+                 '.containerRepository.update',
+        'headers': {
+            'content-length': '206',
+            'full_refresh': 'false',
+            'JMS_AMQP_MESSAGE_FORMAT': '0',
+            'overridden': 'false',
+            'force_refresh': 'true',
+            'JMS_AMQP_NATIVE': 'false',
+            'expires': '0',
+            'published': 'true',
+            'schema_version': '1.0.0',
+            'priority': '4',
+            'JMS_AMQP_FirstAcquirer': 'false',
+            'timestamp': '0',
+            'destination': '/topic/VirtualTopic.eng.metaxor.events.'
+            'lightblue.containerRepository.update',
+            'message-id': 'ID:messaging-devops-broker02.web.prod.ext.'
+            'phx2.redhat.com-42569-1516420517578-2:283330:0:0:1',
+            'changes': '[lastUpdateDate]',
+            'brew_build': 'etcd-docker-3.2.11-2',
+            'subscription': '/queue/Consumer.client-datanommer.'
+            'openpaas-prod.VirtualTopic.eng.>'
+        },
+        'signature': None,
+        'source_version': '0.8.2',
+        'msg': {
+            'published': True,
+            'repository': 'rhel7/rhel',
+            'registry': 'registry.access.redhat.com',
+            'full_refresh': False,
+            'force_refresh': False,
+            'schema_version': '1.0.0',
+            'changes': [
+                'lastUpdateDate'
+            ]
+        }
     }
 
 
