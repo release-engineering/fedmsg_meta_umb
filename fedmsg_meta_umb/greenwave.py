@@ -68,6 +68,6 @@ class GreenwaveProcessor(BaseProcessor):
         subject = msg['msg']['subject']
         items = [
             entry.get('item') for entry in subject
-            if entry.get('item') and entry.get('type') == 'koji_build'
+            if entry.get('item') and entry.get('type') in ['brew-build', 'koji_build']
         ]
         return set([item.rsplit('-', 2)[0] for item in items])
