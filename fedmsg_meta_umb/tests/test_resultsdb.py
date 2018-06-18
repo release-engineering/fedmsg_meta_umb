@@ -26,8 +26,79 @@ class TestResultsDBNewGoodResult(fedmsg.tests.test_meta.Base):
     This message gets published whenever resultsdb ingests a new result.
     """
     expected_title = 'resultsdb.result.new'
-    expected_subti = ('resultsdb saw dist.rpmdiff.analysis.patches FAILED for '
-                      'qpid-dispatch-1.0.0-5.el6')
+    expected_subti = ('resultsdb saw baseos-ci.brew-build.covscan.static-analysis PASSED for '
+                      'foo-4.11.3-3400.el7')
+    expected_link = 'https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.com/job/ci-covscan/63806/'
+    expected_agent = None
+    expected_usernames = set([])
+    expected_packages = set(['foo'])
+    expected_icon = (
+        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
+        'umb/_static/img/icons/resultsdb.png')
+
+    msg = {
+        "timestamp": 1529352189.0,
+        "msg_id": "ID:messaging-devops-broker01.com-42045-1527890187852-2:346021:-1:1:1",
+        "topic": "/topic/VirtualTopic.eng.resultsdb.result.new",
+        "headers": {
+            "expires": "1529956989165",
+            "timestamp": "1529352189165",
+            "destination": "/topic/VirtualTopic.eng.resultsdb.result.new",
+            "priority": "4",
+            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2.com-...",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>"
+        },
+        "msg": {
+            "testcase": {
+                "ref_url": "https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.com",
+                "href": "https://resultsdb-api.engineering.com/api/v2.0/testcases/"
+                "baseos-ci.brew-build.covscan.static-analysis",
+                "name": "baseos-ci.brew-build.covscan.static-analysis"
+            },
+            "ref_url": "https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.com/"
+            "job/ci-covscan/63806/",
+            "note": "",
+            "href": "https://resultsdb-api.engineering.com/api/v2.0/results/5231886",
+            "groups": ["d24e5ea3-7e88-4474-b0ad-360a0a26cf21"],
+            "submit_time": "2018-06-18T20:03:08.233992",
+            "outcome": "PASSED",
+            "id": 5231886,
+            "data": {
+                "category": ["static-analysis"],
+                "ci_team": ["Platform QE"],
+                "brew_task_id": ["16769734"],
+                "ci_environment": ["None"],
+                "scratch": ["True"],
+                "component": ["rpm"],
+                "ci_email": ["platform-ci@com"],
+                "ci_name": ["Platform CI"],
+                "item": ["foo-4.11.3-3400.el7"],
+                "system_provider": ["None"],
+                "ci_irc": ["#baseosci"],
+                "type": ["brew-build"],
+                "system_os": ["None"],
+                "issuer": ["pmoravco"],
+                "ci_url": ["https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.com"],
+                "log": [
+                    "https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.com/job/ci-covscan/63806/console"
+                ],
+                "rebuild": [
+                    "https://rpm-factory-jenkins.rhev-ci-vms.eng.rdu2.com/job/ci-covscan/63806/rebuild/parameterized"
+                ],
+            },
+        }
+    }
+
+
+class TestLegacyResultsDBNewGoodResult(fedmsg.tests.test_meta.Base):
+    """ ResultsDB is a database for test results.
+
+    This message gets published whenever resultsdb ingests a new result.
+    """
+    expected_title = 'resultsdb.result.new'
+    expected_subti = (
+        'resultsdb saw dist.rpmdiff.analysis.patches FAILED for '
+        'qpid-dispatch-1.0.0-5.el6')
     expected_link = 'https://rpmdiff.engineering.redhat.com/run/185690/17'
     expected_agent = None
     expected_usernames = set([])
@@ -71,7 +142,7 @@ class TestResultsDBNewGoodResult(fedmsg.tests.test_meta.Base):
     }
 
 
-class TestResultsDBNewMalformedResult(fedmsg.tests.test_meta.Base):
+class TestLegacyResultsDBNewMalformedResult(fedmsg.tests.test_meta.Base):
     """ Test handling an oddly formed result. """
     nodoc = True  # Don't include this one in the docs.
 
