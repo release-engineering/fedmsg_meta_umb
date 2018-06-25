@@ -45,7 +45,7 @@ class ODCSProcessor(BaseProcessor):
                               'transitioned to {state_name}.')
             return template.format(agent=agent, **msg['msg']['compose'])
         else:
-            template = 'Unknown message.'
+            return 'Unknown message.'
 
     def link(self, msg, **config):
         if 'compose' in msg['msg']:
@@ -53,10 +53,12 @@ class ODCSProcessor(BaseProcessor):
                 return msg['msg']['compose']['result_repofile']
 
     def usernames(self, msg, **config):
+        usernames = set()
         if 'compose' in msg['msg']:
             if 'owner' in msg['msg']['compose']:
                 owner = self._format_username(msg['msg']['compose']['owner'])
-                return set([owner])
+                usernames.add(owner)
+        return usernames
 
     @staticmethod
     def _format_username(username):
