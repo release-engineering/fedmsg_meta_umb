@@ -56,7 +56,7 @@ entry_points = {
 
 setup(
     name='fedmsg_meta_umb',
-    version='0.0.1',
+    version='0.0.2',
     description="fedmsg metadata providers for services on Red Hat's Unified Message Bus",
     long_description=long_description,
     author='Mike Bonnet',

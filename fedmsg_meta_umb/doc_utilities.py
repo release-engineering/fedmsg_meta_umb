@@ -126,7 +126,7 @@ def make_topics_doc(output_dir):
         else:
             cls.__topic = None
 
-    test_classes = sorted(test_classes, lambda a, b: cmp(a.__topic, b.__topic))
+    test_classes = sorted(test_classes, key=lambda x: x.__topic or '')
 
     seen = []
     for cls in test_classes:
