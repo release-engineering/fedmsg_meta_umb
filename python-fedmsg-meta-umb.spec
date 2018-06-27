@@ -2,7 +2,7 @@
 %global rpmname fedmsg-meta-umb
 
 Name:           python-%{rpmname}
-Version:        0.0.1
+Version:        0.0.2
 Release:        1%{?dist}
 Summary:        fedmsg metadata provider plugins for the Unified Message Bus
 
@@ -14,8 +14,9 @@ BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 BuildRequires:  python2-nose python3-nose
 BuildRequires:  python2-fedmsg python3-fedmsg
-BuildRequires:  python2-mako python3-mako
-BuildRequires:  python2-cloud-sptheme python3-cloud-sptheme
+BuildRequires:  python3-mako
+BuildRequires:  python3-cloud-sptheme
+BuildRequires:  python3-sphinx
 
 %description
 This package contains plugins to the fedmsg metadata provider for internal
@@ -41,6 +42,13 @@ Requires:       python3-fedmsg
 This package contains plugins to the fedmsg metadata provider for internal
 Red Hat services attached to the Unified Message Bus.
 
+%package docs
+Summary:        Documentation for datagrepper running on the Unified Message Bus
+
+%description docs
+This package contains documentation for datagrepper running on the Unified
+Message Bus. This includes web pages with a customized theme, and descriptions
+of the message topics and formats that are specific to the Unified Message Bus.
 
 %prep
 %autosetup -n %{srcname}-%{version}
@@ -48,6 +56,7 @@ Red Hat services attached to the Unified Message Bus.
 %build
 %py2_build
 %py3_build
+PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 
 %install
 %py2_install
@@ -67,6 +76,13 @@ Red Hat services attached to the Unified Message Bus.
 %doc README.rst
 %{python3_sitelib}/*
 
+%files docs
+%doc datagrepper-docs/
+%doc htmldocs/
+
 %changelog
+* Wed Jun 27 2018 Mike Bonnet <mikeb@redhat.com> - 0.0.2-1
+- Build -docs subpackage
+
 * Thu Jun  7 2018 Mike Bonnet <mikeb@redhat.com> - 0.0.1-1
 - Initial build
