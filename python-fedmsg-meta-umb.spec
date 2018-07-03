@@ -3,7 +3,7 @@
 
 Name:           python-%{rpmname}
 Version:        0.0.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        fedmsg metadata provider plugins for the Unified Message Bus
 
 License:        LGPLv2+
@@ -61,8 +61,8 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %install
 %py2_install
 %py3_install
-%{__install} -d %{buildroot}%{_datadir}/%{name}
-%{__install} datagrepper-docs/ htmldocs/ %{buildroot}%{_datadir}/%{name}
+%{__mkdir_p} %{buildroot}%{_datadir}/%{name}
+%{__cp} -pr datagrepper-docs htmldocs %{buildroot}%{_datadir}/%{name}
 
 %check
 %{__python2} setup.py test
@@ -82,6 +82,9 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %{_datadir}/%{name}
 
 %changelog
+* Tue Jul  3 2018 Mike Bonnet <mikeb@redhat.com> - 0.0.2-3
+- install doesn't handle directories, use cp instead
+
 * Tue Jul  3 2018 Mike Bonnet <mikeb@redhat.com> - 0.0.2-2
 - Rename subpackage to -doc in accordance with Fedora recommendations
 - Don't install docs as %%doc files, because dnf in a container runs with tsflags=nodocs
