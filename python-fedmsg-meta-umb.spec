@@ -3,7 +3,7 @@
 
 Name:           python-%{rpmname}
 Version:        0.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        fedmsg metadata provider plugins for the Unified Message Bus
 
 License:        LGPLv2+
@@ -42,10 +42,10 @@ Requires:       python3-fedmsg
 This package contains plugins to the fedmsg metadata provider for internal
 Red Hat services attached to the Unified Message Bus.
 
-%package docs
+%package doc
 Summary:        Documentation for datagrepper running on the Unified Message Bus
 
-%description docs
+%description doc
 This package contains documentation for datagrepper running on the Unified
 Message Bus. This includes web pages with a customized theme, and descriptions
 of the message topics and formats that are specific to the Unified Message Bus.
@@ -61,6 +61,8 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %install
 %py2_install
 %py3_install
+%{__install} -d %{buildroot}%{_datadir}/%{name}
+%{__install} datagrepper-docs/ htmldocs/ %{buildroot}%{_datadir}/%{name}
 
 %check
 %{__python2} setup.py test
@@ -76,11 +78,14 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %doc README.rst
 %{python3_sitelib}/*
 
-%files docs
-%doc datagrepper-docs/
-%doc htmldocs/
+%files doc
+%{_datadir}/%{name}
 
 %changelog
+* Tue Jul  3 2018 Mike Bonnet <mikeb@redhat.com> - 0.0.2-2
+- Rename subpackage to -doc in accordance with Fedora recommendations
+- Don't install docs as %%doc files, because dnf in a container runs with tsflags=nodocs
+
 * Wed Jun 27 2018 Mike Bonnet <mikeb@redhat.com> - 0.0.2-1
 - Build -docs subpackage
 
