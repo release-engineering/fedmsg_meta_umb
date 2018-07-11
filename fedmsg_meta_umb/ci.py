@@ -24,9 +24,9 @@ class CIProcessor(BaseProcessor):
     __name__ = 'ci'
     __description__ = 'Engineering CI Automation System'
     __link__ = 'https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/'
-    __docs__ = 'https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view'
+    __docs__ = ('https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view'
                 '/Utils/job/libvirt-jobs-updater/lastSuccessfulBuild/artifact'
-                '/libvirt-ci/docs/build/html/intro.html'
+                '/libvirt-ci/docs/build/html/intro.html')
     __obj__ = 'Engineering CI Automation'
 
     def title(self, msg, **config):
