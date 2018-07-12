@@ -33,11 +33,11 @@ class CIProcessor(BaseProcessor):
         return 'CI Test Job ' + msg['topic'].split('.')[-1].capitalize()
 
     def subtitle(self, msg, **config):
-        return ('Test job for \"' + msg['msg']['artifact']['nvr']
-                + '\" ' + msg['topic'].split('.')[-1].capitalize())
+        return ('Test job for \"' + msg['msg']['artifact']['nvr'] +
+                '\" ' + msg['topic'].split('.')[-1])
 
     def packages(self, msg, **config):
-        return set([msg['header']['component']])
+        return set([msg['headers']['component']])
 
     def usernames(self, msg, **config):
         return set([msg['msg']['ci']['name'],

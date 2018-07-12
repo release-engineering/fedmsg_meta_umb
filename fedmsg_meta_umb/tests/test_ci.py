@@ -42,9 +42,11 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
             "destination": "/topic/VirtualTopic.eng.ci.brew-build.test.complete",
             "component": "libvirt",
             "priority": "4",
-            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "subscription": ("/queue/Consumer.client-datanommer.openpaas-prod"
+                             ".VirtualTopic.eng.>"),
             "timestamp": "1530670930696",
-            "message-id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-41274-1529619027429-3:231921:-1:1:1",
+            "message-id": ("ID:messaging-devops-broker01.web.prod.ext.phx2."
+                           "redhat.com-41274-1529619027429-3:231921:-1:1:1"),
             "type": "brew-build",
             "id": "16976169",
             "issuer": "jdenemar"
@@ -86,6 +88,6 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
     expected_link = ('https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com'
                      '/job/libvirt-RHEL-7.6-runtest-x86_64-function-migration'
                      '/9/#rhev')
-    expected_subti = 'Test job for \"libvirt-4.5.0-1.el7\" complete'
+    expected_subti = 'Test job for \"libvirt-4.5.0-1.el7\" Complete'
     expected_packages = set(['libvirt'])
     expected_icon = None
