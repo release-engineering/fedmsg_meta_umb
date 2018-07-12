@@ -30,10 +30,11 @@ class CIProcessor(BaseProcessor):
     __obj__ = 'Engineering CI Automation'
 
     def title(self, msg, **config):
-        return msg['topic'].split('.', 2)[-1]
+        return 'CI Test Job ' + msg['topic'].split('.')[-1].capitalize()
 
     def subtitle(self, msg, **config):
-        return 'CI Test Job' + msg['topic'].split('.')[-1]
+        return ('Test job for \"' + msg['msg']['artifact']['nvr']
+                + '\" ' + msg['topic'].split('.')[-1].capitalize())
 
     def packages(self, msg, **config):
         return set([msg['header']['component']])
