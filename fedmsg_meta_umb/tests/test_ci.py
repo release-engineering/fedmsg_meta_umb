@@ -26,13 +26,13 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
     job is **completed**.
     """
     msg = {
-        "username": null,
+        "username": "null",
         "source_name": "datanommer",
-        "certificate": null,
+        "certificate": "null",
         "i": 0,
         "timestamp": 1530670930,
         "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-41274-1529619027429-3:231921:-1:1:1",
-        "crypto": null,
+        "crypto": "null",
         "topic": "/topic/VirtualTopic.eng.ci.brew-build.test.complete",
         "headers": {
             "content-length": "918",
@@ -49,7 +49,7 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
             "id": "16976169",
             "issuer": "jdenemar"
         },
-        "signature": null,
+        "signature": "null",
         "source_version": "0.9.0",
         "msg": {
             "category": "functional",
@@ -72,7 +72,7 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
             },
             "artifact": {
                 "nvr": "libvirt-4.5.0-1.el7",
-                "scratch": false,
+                "scratch": "false",
                 "component": "libvirt",
                 "type": "brew-build",
                 "id": "16976169",
