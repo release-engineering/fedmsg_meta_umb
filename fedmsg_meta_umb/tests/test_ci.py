@@ -31,7 +31,8 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
         "certificate": "null",
         "i": 0,
         "timestamp": 1530670930,
-        "msg_id": "ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-41274-1529619027429-3:231921:-1:1:1",
+        "msg_id": ("ID:messaging-devops-broker01.web.prod.ext.phx2.redhat.com-"
+                   "41274-1529619027429-3:231921:-1:1:1"),
         "crypto": "null",
         "topic": "/topic/VirtualTopic.eng.ci.brew-build.test.complete",
         "headers": {
@@ -64,8 +65,11 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
                 "name": "Libvirt CI"
             },
             "run": {
-                "url": "https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/libvirt-RHEL-7.6-runtest-x86_64-function-migration/9/#rhev",
-                "log": "http://qed.lab.eng.pek2.redhat.com/test-results/testresult/e23871e8-7f30-11e8-b238-0a580a8101fd"
+                "url": ("https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com"
+                        "/job/libvirt-RHEL-7.6-runtest-x86_64-function-migration"
+                        "/9/#rhev"),
+                "log": ("http://qed.lab.eng.pek2.redhat.com/test-results"
+                        "/testresult/e23871e8-7f30-11e8-b238-0a580a8101fd")
             },
             "namespace": "libvirt-ci",
             "system": {
@@ -84,10 +88,10 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
             "type": "official"
         }
     }
-    expected_title = 'CI Test Job complete'
+    expected_title = 'CI Test Job Complete'
     expected_link = ('https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com'
                      '/job/libvirt-RHEL-7.6-runtest-x86_64-function-migration'
                      '/9/#rhev')
-    expected_subti = 'Test job for \"libvirt-4.5.0-1.el7\" Complete'
+    expected_subti = 'Test job for \"libvirt-4.5.0-1.el7\" complete'
     expected_packages = set(['libvirt'])
     expected_icon = None
