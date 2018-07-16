@@ -33,8 +33,8 @@ class CIProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
-        return ('Test job for ' + msg['msg']['artifact']['nvr'] + ' '
-                + msg['topic'].split('.')[-1])
+        return ('Test job for ' + msg['msg']['artifact']['nvr'] + ' ' +
+                msg['topic'].split('.')[-1])
 
     def packages(self, msg, **config):
         return set([msg['headers']['component']])
