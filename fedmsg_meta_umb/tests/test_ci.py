@@ -88,10 +88,10 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
             "type": "official"
         }
     }
-    expected_title = 'CI Test Job Complete'
+    expected_title = 'ci.brew-build.test.complete'
     expected_link = ('https://libvirt-jenkins.rhev-ci-vms.eng.rdu2.redhat.com'
                      '/job/libvirt-RHEL-7.6-runtest-x86_64-function-migration'
                      '/9/#rhev')
-    expected_subti = 'Test job for \"libvirt-4.5.0-1.el7\" complete'
+    expected_subti = 'Test job for libvirt-4.5.0-1.el7 complete'
     expected_packages = set(['libvirt'])
     expected_icon = None
