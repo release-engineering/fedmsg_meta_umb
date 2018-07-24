@@ -713,4 +713,59 @@ class TestErrataTextChanged(fedmsg.tests.test_meta.Base):
     }
 
 
+class TestErrataCCATResult(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Container Content Availability Testing (CCAT) results are published to the
+    UMB whenever a test completes.
+    """
+    expected_title = 'errata.ccat'
+    expected_subti = ('CAT results for erratum 34908 on cdn-stage (automated): pass')
+    expected_link = ("https://content-test-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/"
+                     "job/stage_cdn_content_validation/6277/")
+    expected_packages = set([
+        # TODO - this would be very valuable for routing notifications
+    ])
+    expected_usernames = set([])
+    expected_agent = None
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1532442252.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-34769-1532431903164-21:11079:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.errata.ccat",
+        "headers": {
+            "BUILD_ID": "6277",
+            "content-length": "199",
+            "expires": "0",
+            "ERRATA_ID": "34908",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "TRIGGER_TYPE": "automated",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.errata.ccat",
+            "priority": "4",
+            "subscription": "/queue/Consumer.client-datanommer.openpaas-prod.VirtualTopic.eng.>",
+            "message-id": ("ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com"
+                           "-34769-1532431903164-21:11079:0:0:1"),
+            "timestamp": "0",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "MESSAGE_TYPE": "pass",
+            "TARGET": "cdn-stage"
+        },
+        "signature": None,
+        "source_version": "0.9.0",
+        "msg": {
+            "MESSAGE": "This is a content testing message sent at 2018-07-24 14:23:31.328161",
+            "BUILD_URL": ("https://content-test-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/"
+                          "job/stage_cdn_content_validation/6277/")
+        }
+    }
+
+
 add_doc(locals())
