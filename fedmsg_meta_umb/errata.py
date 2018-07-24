@@ -51,6 +51,8 @@ class ErrataProcessor(BaseProcessor):
                 '{agent} removed {brew_build} from {product} advisory {errata_id}'),
             'errata.ccat.reschedule_test': self._(
                 'CCAT for erratum {ERRATA_ID} in {TARGET} was rescheduled'),
+            'errata.ccat': self._(
+                'CAT results for erratum {ERRATA_ID} on {TARGET} ({TRIGGER_TYPE}): {MESSAGE_TYPE}'),
         }
 
     def title(self, msg, **config):
@@ -151,6 +153,8 @@ class ErrataProcessor(BaseProcessor):
         title = self.title(msg, **config)
         if title == 'errata.ccat.reschedule_test':
             template = 'https://errata.devel.redhat.com/advisory/{ERRATA_ID}'
+        elif title == 'errata.ccat':
+            template = msg['msg'].get('BUILD_URL', '')
         else:
             template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
         return template.format(**msg['headers'])
