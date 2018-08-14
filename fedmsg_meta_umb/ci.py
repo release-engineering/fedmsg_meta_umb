@@ -33,17 +33,19 @@ class CIProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
-        try:
-            return ('Test job for ' + msg['msg']['artifact']['nvr'] + ' ' +
-                    msg['topic'].split('.')[-1])
-        except KeyError:
-            return None
+        if msg['topic'].startswith('VirtualTopic.eng.ci.brew-build.test.'):
+            try:
+                return ('Test job for ' + msg['msg']['artifact']['nvr'] + ' ' +
+                        msg['topic'].split('.')[-1])
+            except KeyError:
+                return None
+        return None
 
     def packages(self, msg, **config):
         try:
             return set([msg['headers']['component']])
         except KeyError:
-            return None
+            return set()
 
     def link(self, msg, **config):
         try:
