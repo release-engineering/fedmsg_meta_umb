@@ -51,7 +51,8 @@ entry_points = {
         'resultsdb=fedmsg_meta_umb.resultsdb:ResultsDBProcessor',
         'metaxor=fedmsg_meta_umb.metaxor:MetaXORProcessor',
         'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor',
-        'ci=fedmsg_meta_umb.ci:CIProcessor'
+        'ci=fedmsg_meta_umb.ci:CIProcessor',
+        'jira=fedmsg_meta_umb.jira:JIRAProcessor'
     ]
 }
 
