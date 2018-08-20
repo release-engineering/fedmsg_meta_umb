@@ -50,7 +50,8 @@ entry_points = {
         'odcs=fedmsg_meta_umb.odcs:ODCSProcessor',
         'resultsdb=fedmsg_meta_umb.resultsdb:ResultsDBProcessor',
         'metaxor=fedmsg_meta_umb.metaxor:MetaXORProcessor',
-        'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor'
+        'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor',
+        'ci=fedmsg_meta_umb.ci:CIProcessor'
     ]
 }
 
