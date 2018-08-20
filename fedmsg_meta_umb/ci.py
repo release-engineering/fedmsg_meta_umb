@@ -33,7 +33,7 @@ class CIProcessor(BaseProcessor):
         return msg['topic'].split('.', 2)[-1]
 
     def subtitle(self, msg, **config):
-        if msg['topic'].startswith('VirtualTopic.eng.ci.brew-build.test.'):
+        if msg['topic'].startswith('/topic/VirtualTopic.eng.ci.brew-build.test.'):
             try:
                 return ('Test job for ' + msg['msg']['artifact']['nvr'] + ' ' +
                         msg['topic'].split('.')[-1])
