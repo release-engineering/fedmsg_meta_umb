@@ -52,7 +52,8 @@ entry_points = {
         'metaxor=fedmsg_meta_umb.metaxor:MetaXORProcessor',
         'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor',
         'ci=fedmsg_meta_umb.ci:CIProcessor',
-        'jira=fedmsg_meta_umb.jira:JIRAProcessor'
+        'jira=fedmsg_meta_umb.jira:JIRAProcessor',
+        'pnc=fedmsg_meta_umb.pnc:ProjectNewCastleProcessor',
     ]
 }
 
