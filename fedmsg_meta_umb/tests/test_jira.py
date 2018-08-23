@@ -30,6 +30,7 @@ class TestJIRAIssueCreate(fedmsg.tests.test_meta.Base):
                      'DEVOPSA-4091')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['rbean', 'kboran'])
 
     msg = {
         "username": None,
@@ -145,6 +146,7 @@ class TestJIRAIssueGenericUpdate(fedmsg.tests.test_meta.Base):
                      'FACTORY-2904')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['rbean', 'red-user'])
 
     msg = {
         "username": None,
@@ -273,6 +275,7 @@ class TestJIRAIssueAddComment(fedmsg.tests.test_meta.Base):
                      'FACTORY-2904?focusedCommentId=973188')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['brainfor', 'rbean', 'red-user'])
 
     msg = {
         "username": None,
@@ -417,6 +420,7 @@ class TestJIRAIssueEditComment(fedmsg.tests.test_meta.Base):
                      'FACTORY-2904?focusedCommentId=973188')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['brainfor', 'rbean', 'red-user'])
 
     msg = {
         "username": None,
@@ -560,6 +564,7 @@ class TestJIRAIssueMissingKey(fedmsg.tests.test_meta.Base):
     expected_link = None
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['brainfor', 'rbean', 'red-user'])
 
     msg = {
         "username": None,

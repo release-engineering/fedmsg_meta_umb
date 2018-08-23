@@ -75,3 +75,35 @@ class JIRAProcessor(BaseProcessor):
                                    comment_id=comment_id)
         except KeyError:
             return None
+
+    def usernames(self, msg, **config):
+        names = set()
+        inner_msg = msg['msg']
+
+        # this is relatively readable at least. Various pieces can exist in
+        # different situations so let's just handle by ignoring missing places
+        try:
+            names.add(inner_msg['issue']['fields']['creator']['name'])
+        except KeyError:
+            pass
+        try:
+            names.add(inner_msg['issue']['fields']['assignee']['name'])
+        except KeyError:
+            pass
+        try:
+            names.add(inner_msg['issue']['fields']['reporter']['name'])
+        except KeyError:
+            pass
+        try:
+            names.add(inner_msg['comment']['author']['name'])
+        except KeyError:
+            pass
+        try:
+            names.add(inner_msg['comment']['updateAuthor']['name'])
+        except KeyError:
+            pass
+        try:
+            names.add(inner_msg['user']['name'])
+        except KeyError:
+            pass
+        return names
