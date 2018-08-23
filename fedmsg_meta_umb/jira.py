@@ -47,19 +47,15 @@ class JIRAProcessor(BaseProcessor):
         if topic.endswith('jira.issue.created'):
             template = self._('New JIRA issue {key} has been created.')
         elif topic.endswith('jira.issue.updated'):
-            # default to generic update message
             template = self._('JIRA issue {key} has been updated.')
-            if inner_msg['comment']['author']:
-                # there was a new/updated comment (non-empty author dict)
-                data['author'] = inner_msg['comment']['author']['displayName']
-                data['created'] = inner_msg['comment']['created']
-                data['updated'] = inner_msg['comment']['updated']
-                if data['created'] == data['updated']:
-                    template = self._("{author} added new comment in JIRA "
-                                      "issue {key}.")
-                else:
-                    template = self._("{author} updated comment in JIRA "
-                                      "issue {key}.")
+        elif topic.endswith("jira.comment.added"):
+            data['author'] = inner_msg['comment']['author']['displayName']
+            template = self._("{author} added new comment in JIRA issue "
+                              "{key}.")
+        elif topic.endswith("jira.comment.updated"):
+            data['author'] = inner_msg['comment']['author']['displayName']
+            template = self._("{author} updated comment in JIRA issue "
+                              "{key}.")
         else:
             template = 'Unknown message.'
 
@@ -69,15 +65,13 @@ class JIRAProcessor(BaseProcessor):
         inner_msg = msg['msg']
         topic = msg['topic']
         comment_id = None
-        if (topic.endswith('jira.issue.created') or
-                topic.endswith('jira.issue.updated')):
-            template = self.__link__ + "/browse/{key}"
-            if inner_msg['comment']['author']:
-                comment_id = inner_msg['comment']['id']
-                template = template + "?focusedCommentId={comment_id}"
-            try:
-                return template.format(key=inner_msg['issue']['key'],
-                                       comment_id=comment_id)
-            except KeyError:
-                return None
-        return None
+        template = self.__link__ + "/browse/{key}"
+        if (topic.endswith('jira.comment.added') or
+                topic.endswith('jira.comment.updated')):
+            comment_id = inner_msg['comment']['id']
+            template = template + "?focusedCommentId={comment_id}"
+        try:
+            return template.format(key=inner_msg['issue']['key'],
+                                   comment_id=comment_id)
+        except KeyError:
+            return None

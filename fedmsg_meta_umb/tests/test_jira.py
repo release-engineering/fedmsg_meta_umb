@@ -267,7 +267,7 @@ class TestJIRAIssueAddComment(fedmsg.tests.test_meta.Base):
     Messages (like the example given here) are published when issue is
     updated by posting a new comment.
     """
-    expected_title = 'jira.issue.updated'
+    expected_title = 'jira.comment.added'
     expected_subti = 'Bill Rainford added new comment in JIRA issue FACTORY-2904.'
     expected_link = ('https://projects.engineering.redhat.com/browse/'
                      'FACTORY-2904?focusedCommentId=973188')
@@ -284,14 +284,14 @@ class TestJIRAIssueAddComment(fedmsg.tests.test_meta.Base):
         "ID:messaging-devops-broker01.web.prod.ext.phx2."
         "redhat.com-37550-1534679656045-2:40012:-1:1:132",
         "crypto": None,
-        "topic": "/topic/VirtualTopic.eng.jira.issue.updated",
+        "topic": "/topic/VirtualTopic.eng.jira.comment.added",
         "headers": {
             "priority": "4",
             "expires": "1535382740838",
             "event_type": "jira:issue_updated",
             "project": "FACTORY",
             "timestamp": "1534777940838",
-            "destination": "/topic/VirtualTopic.eng.jira.issue.updated",
+            "destination": "/topic/VirtualTopic.eng.jira.comment.added",
             "issue_key": "FACTORY-2904",
             "message-id":
             "ID:messaging-devops-broker01.web.prod.ext.phx2."
@@ -411,7 +411,7 @@ class TestJIRAIssueEditComment(fedmsg.tests.test_meta.Base):
     Messages (like the example given here) are published when issue is
     updated by posting a new comment.
     """
-    expected_title = 'jira.issue.updated'
+    expected_title = 'jira.comment.updated'
     expected_subti = 'Bill Rainford updated comment in JIRA issue FACTORY-2904.'
     expected_link = ('https://projects.engineering.redhat.com/browse/'
                      'FACTORY-2904?focusedCommentId=973188')
@@ -428,14 +428,14 @@ class TestJIRAIssueEditComment(fedmsg.tests.test_meta.Base):
         "ID:messaging-devops-broker01.web.prod.ext.phx2."
         "redhat.com-37550-1534679656045-2:40012:-1:1:132",
         "crypto": None,
-        "topic": "/topic/VirtualTopic.eng.jira.issue.updated",
+        "topic": "/topic/VirtualTopic.eng.jira.comment.updated",
         "headers": {
             "priority": "4",
             "expires": "1535382740838",
             "event_type": "jira:issue_updated",
             "project": "FACTORY",
             "timestamp": "1534777940838",
-            "destination": "/topic/VirtualTopic.eng.jira.issue.updated",
+            "destination": "/topic/VirtualTopic.eng.jira.comment.updated",
             "issue_key": "FACTORY-2904",
             "message-id":
             "ID:messaging-devops-broker01.web.prod.ext.phx2."
