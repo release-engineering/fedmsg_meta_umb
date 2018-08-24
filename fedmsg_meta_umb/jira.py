@@ -114,3 +114,9 @@ class JIRAProcessor(BaseProcessor):
         except KeyError:
             pass
         return names
+
+    def agent(self, msg, **config):
+        try:
+            return msg['msg']['user']['name']
+        except KeyError:
+            return None
