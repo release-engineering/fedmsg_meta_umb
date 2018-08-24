@@ -39,23 +39,30 @@ class JIRAProcessor(BaseProcessor):
             # these will only be available on issue create/update but not
             # comment added/edited messages
             data['key'] = inner_msg['issue']['key']
+            data['issue_type'] = inner_msg['issue']['fields']['issuetype']['name']
             data['summary'] = inner_msg['issue']['fields']['summary']
         except KeyError:
             return None
         topic = msg['topic']
 
         if topic.endswith('jira.issue.created'):
-            template = self._('New JIRA issue {key} has been created.')
+            data['author'] = inner_msg['user']['displayName']
+            template = self._('{issue_type} {key} has been created by '
+                              '{author}.')
         elif topic.endswith('jira.issue.updated'):
-            template = self._('JIRA issue {key} has been updated.')
+            data['author'] = inner_msg['user']['displayName']
+            template = self._('{issue_type} {key} has been updated by '
+                              '{author}.')
         elif topic.endswith("jira.comment.added"):
             data['author'] = inner_msg['comment']['author']['displayName']
-            template = self._("{author} added new comment in JIRA issue "
-                              "{key}.")
+            data['issue_type'] = data['issue_type'].lower()
+            template = self._('Comment has been added by {author} in {issue_type} '
+                              '{key}.')
         elif topic.endswith("jira.comment.updated"):
-            data['author'] = inner_msg['comment']['author']['displayName']
-            template = self._("{author} updated comment in JIRA issue "
-                              "{key}.")
+            data['author'] = inner_msg['comment']['updateAuthor']['displayName']
+            data['issue_type'] = data['issue_type'].lower()
+            template = self._('Comment has been edited by {author} in {issue_type} '
+                              '{key}.')
         else:
             template = 'Unknown message.'
 
