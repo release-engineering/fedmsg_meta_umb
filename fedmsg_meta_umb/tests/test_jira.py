@@ -25,11 +25,13 @@ class TestJIRAIssueCreate(fedmsg.tests.test_meta.Base):
     created
     """
     expected_title = 'jira.issue.created'
-    expected_subti = 'New JIRA issue DEVOPSA-4091 has been created.'
+    expected_subti = 'Task DEVOPSA-4091 has been created by Ralph Bean.'
     expected_link = ('https://projects.engineering.redhat.com/browse/'
                      'DEVOPSA-4091')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['rbean', 'kboran'])
+    expected_agent = 'rbean'
 
     msg = {
         "username": None,
@@ -76,14 +78,6 @@ class TestJIRAIssueCreate(fedmsg.tests.test_meta.Base):
                     },
                     "updated": "2018-08-20T16:40:09.644+0000",
                     "description": "Proper long description",
-                    "creator": {
-                        "displayName": "Ralph Bean",
-                        "name": "rbean",
-                        "emailAddress": "rbean@redhat.com",
-                        "key": "rbean",
-                        "active": True,
-                        "timeZone": "America/Havana"
-                    },
                     "created": "2018-08-20T16:40:09.644+0000",
                     "votes": {},
                     "watches": {},
@@ -140,11 +134,13 @@ class TestJIRAIssueGenericUpdate(fedmsg.tests.test_meta.Base):
     added/removed as well
     """
     expected_title = 'jira.issue.updated'
-    expected_subti = 'JIRA issue FACTORY-2904 has been updated.'
+    expected_subti = 'Bug FACTORY-2904 has been updated by red-user.'
     expected_link = ('https://projects.engineering.redhat.com/browse/'
                      'FACTORY-2904')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['rbean', 'red-user'])
+    expected_agent = 'red-user'
 
     msg = {
         "username": None,
@@ -215,27 +211,11 @@ class TestJIRAIssueGenericUpdate(fedmsg.tests.test_meta.Base):
                         "name": "Factory 2.0",
                         "key": "FACTORY"
                     },
-                    "assignee": {
-                        "displayName": "Ralph Bean",
-                        "name": "rbean",
-                        "emailAddress": "rbean@redhat.com",
-                        "key": "rbean",
-                        "active": True,
-                        "timeZone": "America/Havana"
-                    },
                     "issuetype": {
                         "description": "A problem which impairs functions.",
                         "name": "Bug"
                     },
                     "resolution": {},
-                    "reporter": {
-                        "displayName": "Ralph Bean",
-                        "name": "rbean",
-                        "emailAddress": "rbean@redhat.com",
-                        "key": "rbean",
-                        "active": True,
-                        "timeZone": "America/Havana"
-                    }
                 },
                 "key": "FACTORY-2904"
             },
@@ -267,12 +247,14 @@ class TestJIRAIssueAddComment(fedmsg.tests.test_meta.Base):
     Messages (like the example given here) are published when issue is
     updated by posting a new comment.
     """
-    expected_title = 'jira.issue.updated'
-    expected_subti = 'Bill Rainford added new comment in JIRA issue FACTORY-2904.'
+    expected_title = 'jira.comment.added'
+    expected_subti = 'Comment has been added by Bill Rainford in bug FACTORY-2904.'
     expected_link = ('https://projects.engineering.redhat.com/browse/'
                      'FACTORY-2904?focusedCommentId=973188')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['brainfor', 'rbean', 'red-user'])
+    expected_agent = 'red-user'
 
     msg = {
         "username": None,
@@ -284,14 +266,14 @@ class TestJIRAIssueAddComment(fedmsg.tests.test_meta.Base):
         "ID:messaging-devops-broker01.web.prod.ext.phx2."
         "redhat.com-37550-1534679656045-2:40012:-1:1:132",
         "crypto": None,
-        "topic": "/topic/VirtualTopic.eng.jira.issue.updated",
+        "topic": "/topic/VirtualTopic.eng.jira.comment.added",
         "headers": {
             "priority": "4",
             "expires": "1535382740838",
             "event_type": "jira:issue_updated",
             "project": "FACTORY",
             "timestamp": "1534777940838",
-            "destination": "/topic/VirtualTopic.eng.jira.issue.updated",
+            "destination": "/topic/VirtualTopic.eng.jira.comment.added",
             "issue_key": "FACTORY-2904",
             "message-id":
             "ID:messaging-devops-broker01.web.prod.ext.phx2."
@@ -411,12 +393,14 @@ class TestJIRAIssueEditComment(fedmsg.tests.test_meta.Base):
     Messages (like the example given here) are published when issue is
     updated by posting a new comment.
     """
-    expected_title = 'jira.issue.updated'
-    expected_subti = 'Bill Rainford updated comment in JIRA issue FACTORY-2904.'
+    expected_title = 'jira.comment.updated'
+    expected_subti = 'Comment has been edited by Bill Rainford in bug FACTORY-2904.'
     expected_link = ('https://projects.engineering.redhat.com/browse/'
                      'FACTORY-2904?focusedCommentId=973188')
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['brainfor', 'rbean', 'red-user'])
+    expected_agent = 'red-user'
 
     msg = {
         "username": None,
@@ -428,14 +412,14 @@ class TestJIRAIssueEditComment(fedmsg.tests.test_meta.Base):
         "ID:messaging-devops-broker01.web.prod.ext.phx2."
         "redhat.com-37550-1534679656045-2:40012:-1:1:132",
         "crypto": None,
-        "topic": "/topic/VirtualTopic.eng.jira.issue.updated",
+        "topic": "/topic/VirtualTopic.eng.jira.comment.updated",
         "headers": {
             "priority": "4",
             "expires": "1535382740838",
             "event_type": "jira:issue_updated",
             "project": "FACTORY",
             "timestamp": "1534777940838",
-            "destination": "/topic/VirtualTopic.eng.jira.issue.updated",
+            "destination": "/topic/VirtualTopic.eng.jira.comment.updated",
             "issue_key": "FACTORY-2904",
             "message-id":
             "ID:messaging-devops-broker01.web.prod.ext.phx2."
@@ -560,6 +544,8 @@ class TestJIRAIssueMissingKey(fedmsg.tests.test_meta.Base):
     expected_link = None
     expected_packages = set([])
     expected_icon = 'https://projects.engineering.redhat.com/favicon.ico'
+    expected_usernames = set(['brainfor', 'rbean', 'red-user'])
+    expected_agent = 'red-user'
 
     msg = {
         "username": None,
