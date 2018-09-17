@@ -37,18 +37,18 @@ class CIProcessor(BaseProcessor):
             try:
                 return ('Test job for ' + msg['msg']['artifact']['nvr'] + ' ' +
                         msg['topic'].split('.')[-1])
-            except KeyError:
+            except (KeyError, TypeError):
                 return None
         return None
 
     def packages(self, msg, **config):
         try:
             return set([msg['headers']['component']])
-        except KeyError:
+        except (KeyError, TypeError):
             return set()
 
     def link(self, msg, **config):
         try:
             return msg['msg']['run']['url']
-        except KeyError:
+        except (KeyError, TypeError):
             return None
