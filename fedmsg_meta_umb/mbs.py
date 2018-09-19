@@ -41,7 +41,7 @@ class MBSProcessor(BaseProcessor):
 
     def link(self, msg, **config):
         idx = msg['msg']['id']
-        return 'https://mbsweb.engineering.redhat.com/module/%i' % idx
+        return 'http://mbsweb.engineering.redhat.com/module/%i' % idx
 
     def usernames(self, msg, **config):
         return set([msg['msg']['owner']])

@@ -30,7 +30,7 @@ class TestMBSStateChange(fedmsg.tests.test_meta.Base):
     expected_title = 'mbs.module.state.change'
     expected_subti = ('tdawson\'s build of foobar-linux-9000 '
                       'transitioned to the "done" state.')
-    expected_link = 'https://mbsweb.engineering.redhat.com/module/40'
+    expected_link = 'http://mbsweb.engineering.redhat.com/module/40'
     expected_agent = 'tdawson'
     expected_usernames = set(['tdawson'])
     expected_packages = set(['foobar'])
