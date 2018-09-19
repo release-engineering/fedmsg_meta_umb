@@ -16,7 +16,6 @@
 #
 # Authors:  Giulia Naponiello <gnaponie@redhat.com>
 
-from six.moves.urllib.parse import urlencode
 from fedmsg.meta.base import BaseProcessor
 
 
@@ -37,14 +36,11 @@ class GreenwaveProcessor(BaseProcessor):
 
     def link(self, msg, **config):
         subject = msg['msg']['subject']
-        if subject:
-            base = "https://resultsdb.engineering.redhat.com/results"
-            # we want to be sure that we always have the same parameter order
-            query = urlencode(sorted(
-                [(k, v) for k, v in msg['msg']['subject'][0].items()],
-                key=lambda tup: tup[0]
-            ))
-            return base + "?" + query
+        base = "https://pipeline.engineering.redhat.com/"
+        koji_types = ('brew-build', 'koji_build')
+        for entry in subject:
+            if entry.get('type') in koji_types:
+                return base + "kojibuild/" + entry.get('item')
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]

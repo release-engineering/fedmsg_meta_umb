@@ -27,8 +27,8 @@ class TestDistGitCommit(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'distgit.commit'
     expected_subti = '42bcbca2 was committed on the rhel-7.4 branch of the rpcbind rpm repo by steved'
-    expected_link = ('https://pkgs.devel.redhat.com/cgit/rpms/rpcbind/commit/'
-                     '?h=rhel-7.4&id=42bcbca202b35ae663bdbca9e10b64d4a5dfbf5a')
+    expected_link = ('https://pipeline.engineering.redhat.com/distgitcommit/'
+                     '42bcbca202b35ae663bdbca9e10b64d4a5dfbf5a')
     expected_packages = set(['rpcbind'])
     expected_icon = 'https://git-scm.com/images/logos/downloads/Git-Icon-Black.png'
     expected_usernames = set(['steved'])

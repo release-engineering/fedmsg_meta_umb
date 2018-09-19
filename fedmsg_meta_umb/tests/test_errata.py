@@ -28,7 +28,7 @@ class TestErrataStatusChange(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.activity.status'
     expected_subti = ('fmuellne moved RHBA-2017:27087-02 from QE to NEW_FILES')
-    expected_link = 'https://errata.devel.redhat.com/advisory/27087'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/27087'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -79,7 +79,7 @@ class TestErrataActivityCreated(fedmsg.tests.test_meta.Base):
     expected_title = 'errata.activity.created'
     expected_subti = ('bkearney filed a new RHBA advisory for '
                       'Sat-Tools-6.2-ASYNC')
-    expected_link = 'https://errata.devel.redhat.com/advisory/28816'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/28816'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -126,7 +126,7 @@ class TestErrataSecurityRequested(fedmsg.tests.test_meta.Base):
     expected_title = 'errata.activity.security_approved'
     expected_subti = ('rbean requested security approval on '
                       'RHSA-2016:10000-01')
-    expected_link = 'https://errata.devel.redhat.com/advisory/10000'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/10000'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -183,7 +183,7 @@ class TestErrataSignaturesReported(fedmsg.tests.test_meta.Base):
     expected_title = 'errata.activity.signing'
     expected_subti = ('robosignatory reported signing gssproxy-0.7.0-4.el7 for '
                       'RHBA-2017:26924-01')
-    expected_link = 'https://errata.devel.redhat.com/advisory/26924'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/26924'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -232,7 +232,7 @@ class TestErrataBugsChanged(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.bugs.changed'
     expected_subti = ('rharwood changed bugs on an advisory')
-    expected_link = 'https://errata.devel.redhat.com/advisory/26924'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/26924'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -276,7 +276,7 @@ class TestErrataBuildsChanged(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.builds.changed'
     expected_subti = ('rharwood changed builds on an advisory')
-    expected_link = 'https://errata.devel.redhat.com/advisory/26924'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/26924'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -321,7 +321,7 @@ class TestErrataBatchChanged(fedmsg.tests.test_meta.Base):
     expected_title = 'errata.activity.batch'
     expected_subti = ('lfriedma added RHEA-2017:28445-03 '
                       'to the RHEL-7.3.6-Containers advisory batch')
-    expected_link = 'https://errata.devel.redhat.com/advisory/28445'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/28445'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -370,7 +370,7 @@ class TestErrataDocsApproved(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.activity.docs_approval'
     expected_subti = 'lbopf approved the docs on RHBA-2017:27244-01'
-    expected_link = 'https://errata.devel.redhat.com/advisory/27244'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/27244'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -418,7 +418,7 @@ class TestErrataAssignedTo(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.activity.assigned_to'
     expected_subti = 'cye assigned rbean to RHBA-2017:28809-02'
-    expected_link = 'https://errata.devel.redhat.com/advisory/28809'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/28809'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -466,7 +466,7 @@ class TestErrataRescheduleCCAT(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.ccat.reschedule_test'
     expected_subti = 'CCAT for erratum 29873 in cdn-live was rescheduled'
-    expected_link = 'https://errata.devel.redhat.com/advisory/29873'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/29873'
     expected_packages = set([
         # TODO - this would be very valuable for routing notifications
     ])
@@ -510,7 +510,7 @@ class TestErrataBuildsAdded(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.builds.added'
     expected_subti = 'ajackson added libpciaccess-0.13.4-3.1.el7_4 to RHEL advisory 31169'
-    expected_link = 'https://errata.devel.redhat.com/advisory/31169'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/31169'
     expected_packages = set(['libpciaccess'])
     expected_usernames = set(['ajackson'])
     expected_agent = 'ajackson'
@@ -559,7 +559,7 @@ class TestErrataBuildsRemoved(fedmsg.tests.test_meta.Base):
     """
     expected_title = 'errata.builds.removed'
     expected_subti = 'sradco removed ovirt-engine-dwh-4.2.1-0.0.master.20171025112108.el7ev from RHV advisory 29571'
-    expected_link = 'https://errata.devel.redhat.com/advisory/29571'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/29571'
     expected_packages = set(['ovirt-engine-dwh'])
     expected_usernames = set(['sradco'])
     expected_agent = 'sradco'
@@ -609,7 +609,7 @@ class TestErrataTextChanged(fedmsg.tests.test_meta.Base):
     expected_title = 'errata.activity.text_changes'
     expected_subti = ('bkundal changed security_impact, synopsis, cve, topic, '
                       'description, and reference on JBEAP advisory 30821')
-    expected_link = 'https://errata.devel.redhat.com/advisory/30821'
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/30821'
     expected_packages = set([])
     expected_usernames = set(['bkundal'])
     expected_agent = 'bkundal'
