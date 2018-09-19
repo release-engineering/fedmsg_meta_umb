@@ -23,7 +23,7 @@ class TestBrewBuildBuilding(test_brew.BrewBase):
     expected_title = 'brew.build.building'
     expected_subti = 'selinux-policy-3.13.1-136.el7 is building'
     expected_packages = set(['selinux-policy'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=547678'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/547678'
     msg = {
         "i": 0,
         "timestamp": 1490891323.0,
@@ -57,7 +57,7 @@ class TestBrewBuildComplete(test_brew.BrewBase):
     expected_subti = 'org.jboss-jboss-dmr-1.4.0.Final_redhat_1-1 has been built successfully'
     expected_packages = set(['org.jboss-jboss-dmr'])
     expected_usernames = set(['psakar'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=547865'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/547865'
     msg = {
         "i": 0,
         "timestamp": 1490946728.0,
@@ -101,7 +101,7 @@ class TestBrewBuildCompleteDocker(test_brew.BrewBase):
     expected_subti = 'metrics-cassandra-docker-3.6.0-3 has been built successfully'
     expected_packages = set(['metrics-cassandra-docker'])
     expected_usernames = set()
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=550925'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/550925'
     msg = {
         "i": 0,
         "timestamp": 1491951183.0,
@@ -136,7 +136,7 @@ class TestBrewBuildDeleted(test_brew.BrewBase):
     expected_subti = 'elasticsearch-2.4.1-2.el7 has been deleted'
     expected_packages = set(['elasticsearch'])
     expected_usernames = set(['rmeggins'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=524863'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/524863'
     msg = {
         "i": 0,
         "timestamp": 1490786161.0,
@@ -180,7 +180,7 @@ class TestBrewBuildFailed(test_brew.BrewBase):
     expected_subti = 'build of libreoffice-5.0.6.2-8.el7 has failed'
     expected_packages = set(['libreoffice'])
     expected_usernames = set(['caolanm'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=547932'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/547932'
     msg = {
         "i": 0,
         "timestamp": 1490978317.0,
@@ -224,7 +224,7 @@ class TestBrewBuildCanceled(test_brew.BrewBase):
     expected_subti = 'build of libgpod-0.8.2-12.el7 has been canceled'
     expected_packages = set(['libgpod'])
     expected_usernames = set(['klember'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=543196'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/543196'
     msg = {
         "i": 0,
         "timestamp": 1489097838.0,
@@ -268,7 +268,7 @@ class TestBrewBuildTag(test_brew.BrewBase):
     expected_subti = 'python-gssapi-1.2.0-3.el7 tagged into rhel-7.4-candidate'
     expected_packages = set(['python-gssapi'])
     expected_usernames = set(['rharwood'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=550575'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/550575'
     msg = {
         "i": 0,
         "timestamp": 1491926538.0,
@@ -328,7 +328,7 @@ class TestBrewBuildUntag(test_brew.BrewBase):
     expected_subti = 'luci-0.26.0-75.el6 untagged from RHEL-6.8-candidate'
     expected_packages = set(['luci'])
     expected_usernames = set(['host/x86-013.build.bos.redhat.com', 'rmccabe'])
-    expected_link = 'https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=480574'
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/480574'
     msg = {
         "i": 0,
         "timestamp": 1491940321.0,

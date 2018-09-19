@@ -57,12 +57,13 @@ class FreshmakerProcessor(BaseProcessor):
     def link(self, msg, **config):
         topic = msg['topic']
 
-        if (topic.endswith('build.state.changed') or
-                topic.endswith('event.state.changed')):
-            return msg['msg']['url']
+        pipeline_url = 'https://pipeline.engineering.redhat.com'
+        if topic.endswith('build.state.changed'):
+            return '{0}/freshmakerevent/{1}'.format(pipeline_url, msg['msg']['event_id'])
+        elif topic.endswith('event.state.changed'):
+            return '{0}/freshmakerevent/{1}'.format(pipeline_url, msg['msg']['id'])
         elif topic.endswith('manual.rebuild'):
-            return 'https://errata.devel.redhat.com/advisory/{0}'.format(
-                msg['msg']['errata_id'])
+            return '{0}/advisory/{1}'.format(pipeline_url, msg['msg']['errata_id'])
         else:
             # For any other new kind of message that is not known yet
             return None

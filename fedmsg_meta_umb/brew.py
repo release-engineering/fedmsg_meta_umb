@@ -137,7 +137,8 @@ class BrewProcessor(BaseProcessor):
                 build_id = msg['msg']['build']['id']
             else:
                 build_id = msg['msg']['info']['id']
-            return self.__link__ + 'buildinfo?buildID=' + str(build_id)
+            pipeline_url = "https://pipeline.engineering.redhat.com/kojibuild/"
+            return pipeline_url + str(build_id)
         elif tokens[-2] == 'repo':
             if tokens[-1] == 'init':
                 tag_id = msg['msg']['tag']['id']

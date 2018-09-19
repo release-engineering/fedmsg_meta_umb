@@ -34,8 +34,7 @@ class TestGreenwaveDecisionUpdateErrataNewFiles(fedmsg.tests.test_meta.Base):
     expected_title = 'greenwave.decision.update'
     expected_subti = ('greenwave is a GO on libXdmcp-1.1.2-9.el8 for '
                       '"errata_newfile_to_qe" (rhel-7)')
-    expected_link = ('https://resultsdb.engineering.redhat.com/'
-                     'results?item=libXdmcp-1.1.2-9.el8&type=koji_build')
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/libXdmcp-1.1.2-9.el8'
     expected_packages = set(['libXdmcp'])
     expected_icon = (
         'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
@@ -110,8 +109,7 @@ class TestGreenwaveDecisionUpdateComposeGate(fedmsg.tests.test_meta.Base):
     expected_title = 'greenwave.decision.update'
     expected_subti = ('greenwave says NO-GO on libsemanage-2.8-2.el8+7 for '
                       '"osci_compose_gate" (rhel-8)')
-    expected_link = ('https://resultsdb.engineering.redhat.com/'
-                     'results?item=libsemanage-2.8-2.el8%2B7&type=brew-build')
+    expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/libsemanage-2.8-2.el8+7'
     expected_packages = set(['libsemanage'])
     expected_icon = (
         'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'

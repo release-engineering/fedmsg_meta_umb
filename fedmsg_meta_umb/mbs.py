@@ -40,10 +40,8 @@ class MBSProcessor(BaseProcessor):
         return tmpl.format(**msg['msg'])
 
     def link(self, msg, **config):
-        link = msg['msg']['state_url']
-        if not link:
-            return None
-        return link.replace('http://localhost', 'https://mbs.engineering.redhat.com')
+        idx = msg['msg']['id']
+        return 'https://mbsweb.engineering.redhat.com/module/%i' % idx
 
     def usernames(self, msg, **config):
         return set([msg['msg']['owner']])

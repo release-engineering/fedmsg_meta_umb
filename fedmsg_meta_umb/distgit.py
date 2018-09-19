@@ -28,8 +28,7 @@ class DistGitProcessor(BaseProcessor):
     __docs__ = 'https://mojo.redhat.com/docs/DOC-1045187'
     __obj__ = 'Dist-Git Repository Management System'
     __icon__ = 'https://git-scm.com/images/logos/downloads/Git-Icon-Black.png'
-    commit_link_template = ('https://pkgs.devel.redhat.com/cgit/rpms/{repo}/'
-                            'commit/?h={branch}&id={rev}')
+    commit_link_template = 'https://pipeline.engineering.redhat.com/distgitcommit/{rev}'
     push_link_template = 'https://pkgs.devel.redhat.com/cgit/rpms/{repo}/log/?h={branch}'
     commit_subtitle_template = ('{shortrev} was committed on the {branch} branch '
                                 'of the {repo} {repotype} repo by {username}')

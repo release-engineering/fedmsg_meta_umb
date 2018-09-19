@@ -152,11 +152,11 @@ class ErrataProcessor(BaseProcessor):
     def link(self, msg, **config):
         title = self.title(msg, **config)
         if title == 'errata.ccat.reschedule_test':
-            template = 'https://errata.devel.redhat.com/advisory/{ERRATA_ID}'
+            template = 'https://pipeline.engineering.redhat.com/advisory/{ERRATA_ID}'
         elif title == 'errata.ccat':
             template = msg['msg'].get('BUILD_URL', '')
         else:
-            template = 'https://errata.devel.redhat.com/advisory/{errata_id}'
+            template = 'https://pipeline.engineering.redhat.com/advisory/{errata_id}'
         return template.format(**msg['headers'])
 
     def packages(self, msg, **config):
