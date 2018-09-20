@@ -32,7 +32,8 @@ class TestGreenwaveDecisionUpdateErrataNewFiles(fedmsg.tests.test_meta.Base):
     This decision is for Erratum moving to New Files state.
     """
     expected_title = 'greenwave.decision.update'
-    expected_subti = ('greenwave is a GO on libXdmcp-1.1.2-9.el8 for '
+    expected_subti = ('all required tests passed for '
+                      'libXdmcp-1.1.2-9.el8, '
                       '"errata_newfile_to_qe" (rhel-7)')
     expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/libXdmcp-1.1.2-9.el8'
     expected_packages = set(['libXdmcp'])
@@ -107,7 +108,8 @@ class TestGreenwaveDecisionUpdateComposeGate(fedmsg.tests.test_meta.Base):
     This decision is for compose gating.
     """
     expected_title = 'greenwave.decision.update'
-    expected_subti = ('greenwave says NO-GO on libsemanage-2.8-2.el8+7 for '
+    expected_subti = ('1 of 1 required tests failed for '
+                      'libsemanage-2.8-2.el8+7, '
                       '"osci_compose_gate" (rhel-8)')
     expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/libsemanage-2.8-2.el8+7'
     expected_packages = set(['libsemanage'])

@@ -52,7 +52,7 @@ class GreenwaveProcessor(BaseProcessor):
             decision = self._("says NO-GO")
 
         tmpl = self._(
-            "greenwave {decision} on {item} for "
+            "{summary} for {item}, "
             "\"{decision_context}\" ({product_version})"
         )
         subject = msg['msg']['subject']
