@@ -419,5 +419,56 @@ class TestMetaXORcontainerRepositoryUpdate(fedmsg.tests.test_meta.Base):
         }
     }
 
+class TestMetaXORnternalRefreshRepo(fedmsg.tests.test_meta.Base):
+    """ The MetaXOR service provides images to lightblue database
+
+    Messages (like the example given here) are published when user/service
+    requests repository update done by workers
+    """
+    expected_title = 'metaxor.internal.refresh.repository'
+    expected_subti = ('Repository update (2) requested by metaxor - '
+                      'jboss-datagrid-7/datagrid72-openshift')
+    expected_objects = set(['jboss-datagrid-7/datagrid72-openshift'])
+    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
+                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_usernames = {'metaxor'}
+
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1537794802.0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-38086-1536885036904-4:664804:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.metaxor.internal.refresh.repository",
+        "headers": {
+            "content-length": "130",
+            "expires": "0",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "full_refresh": "false",
+            "force_refresh": "false",
+            "JMS_AMQP_NATIVE": "false",
+            "destination": "/topic/VirtualTopic.eng.metaxor.internal.refresh.repository",
+            "persistent": "true",
+            "priority": "2",
+            "subscription": "/queue/Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "user": "metaxor",
+            "timestamp": "0",
+            "message-id":
+                "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-38086-1536885036904-4:664804:0:0:1",
+            "name": "jboss-datagrid-7/datagrid72-openshift"
+        },
+        "signature": None,
+        "source_version": "0.9.1",
+        "msg": {
+            "force_refresh": False,
+            "priority": 2,
+            "full_refresh": False,
+            "name": "jboss-datagrid-7/datagrid72-openshift",
+            "user": "metaxor"
+        }
+    }
+
 
 add_doc(locals())

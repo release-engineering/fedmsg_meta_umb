@@ -61,6 +61,9 @@ class MetaXORProcessor(BaseProcessor):
         elif topic.endswith('events.refresh'):
             template = self._('Container repository {repository} has been '
                               'refreshed in Lightblue.')
+        elif topic.endswith('internal.refresh.repository'):
+            template = self._('Repository update ({priority}) requested by {user} - '
+                              '{name}')
         else:
             template = 'Unknown message.'
 
@@ -93,5 +96,12 @@ class MetaXORProcessor(BaseProcessor):
         if msg['topic'].endswith('containerRepository.update') or \
            msg['topic'].endswith('containerRepository.insert'):
             return {msg['msg']['repository']}
+        elif msg['topic'].endswith('internal.refresh.repository'):
+            return {msg['msg']['name']}
         else:
             return set()
+
+    def usernames(self, msg, **config):
+        if msg['topic'].endswith('internal.refresh.repository'):
+            return {msg['msg']['user']}
+        return set()
