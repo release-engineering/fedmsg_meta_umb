@@ -53,6 +53,7 @@ entry_points = {
         'greenwave=fedmsg_meta_umb.greenwave:GreenwaveProcessor',
         'ci=fedmsg_meta_umb.ci:CIProcessor',
         'jira=fedmsg_meta_umb.jira:JIRAProcessor',
+        'tower=fedmsg_meta_umb.tower:TowerProcessor',
         'pnc=fedmsg_meta_umb.pnc:ProjectNewCastleProcessor',
     ]
 }
