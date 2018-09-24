@@ -83,3 +83,39 @@ class TestTower(fedmsg.tests.test_meta.Base):
             "playbook": "playbooks/ping.yml"
         }
     }
+
+class TestTowerUnknownMessage(fedmsg.tests.test_meta.Base):
+    """
+    Test of Tower2UMB handler - unknown message format
+
+    Messages (like the example given here) are published when
+    a job in Tower finishes
+    """
+    expected_title = 'tower'
+    expected_subti = 'Unknown message format'
+
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1537454841.0,
+        "msg_id": "ID:messaging-devops-broker01.web.stage.ext.phx2.redhat.com-39834-1537414777669-3:506:-1:1:2",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.tower",
+        "headers": {
+            "status": "failed",
+            "project": "Tower2UMB",
+            "expires": "1538059641455",
+            "name": "Tower2UMB - ping",
+            "timestamp": "1537454841455",
+            "destination": "/topic/VirtualTopic.eng.tower",
+            "priority": "4",
+            "message-id": "ID:messaging-devops-broker01.web.stage.ext.phx2.redhat.com-39834-1537414777669-3:506:-1:1:2",
+            "content-type": "application/json",
+            "subscription": "/queue/Consumer.client-datanommer.upshift-stage.VirtualTopic.eng.>"
+        },
+        "signature": None,
+        "source_version": "0.9.1",
+        "msg": "Bad message format"
+    }
