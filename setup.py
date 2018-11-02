@@ -55,6 +55,7 @@ entry_points = {
         'jira=fedmsg_meta_umb.jira:JIRAProcessor',
         'tower=fedmsg_meta_umb.tower:TowerProcessor',
         'pnc=fedmsg_meta_umb.pnc:ProjectNewCastleProcessor',
+        'repotracker=fedmsg_meta_umb.repotracker:RepotrackerProcessor',
     ]
 }
 
