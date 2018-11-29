@@ -56,6 +56,7 @@ entry_points = {
         'tower=fedmsg_meta_umb.tower:TowerProcessor',
         'pnc=fedmsg_meta_umb.pnc:ProjectNewCastleProcessor',
         'repotracker=fedmsg_meta_umb.repotracker:RepotrackerProcessor',
+        'waiverdb=fedmsg_meta_umb.waiverdb:WaiverDBProcessor',
     ]
 }
 
