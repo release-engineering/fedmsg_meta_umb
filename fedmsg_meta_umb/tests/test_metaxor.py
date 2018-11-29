@@ -32,8 +32,7 @@ class TestMetaXORcontainerImageInsert(fedmsg.tests.test_meta.Base):
                      'terms=aos3-installation-docker-v3.3.1.46.37-1&'
                      'type=build&match=exact')
     expected_packages = set(['aos3-installation-docker'])
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         "username": None,
@@ -93,8 +92,7 @@ class TestMetaXORcontainerImageUpdate(fedmsg.tests.test_meta.Base):
     expected_link = ('https://brewweb.engineering.redhat.com/brew/search?'
                      'terms=etcd-docker-3.2.11-2&type=build&match=exact')
     expected_packages = set(['etcd-docker'])
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         'username': None,
@@ -158,8 +156,7 @@ class TestMetaXORRefreshEvent(fedmsg.tests.test_meta.Base):
     expected_link = ('https://access.redhat.com/containers/#/'
                      'registry.access.redhat.com/openshift3/registry-console')
     expected_packages = set([])
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         "username": None,
@@ -208,8 +205,7 @@ class TestMetaXORStrMessage(fedmsg.tests.test_meta.Base):
     expected_subti = ('Non dictionary message')
     expected_link = None
     expected_packages = set([])
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         "username": None,
@@ -256,8 +252,7 @@ class TestMetaXORBadMessage(fedmsg.tests.test_meta.Base):
     expected_link = None
     expected_packages = set()
     expected_objects = set()
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         "username": None,
@@ -304,8 +299,7 @@ class TestMetaXORcontainerRepositoryInsert(fedmsg.tests.test_meta.Base):
     expected_link = ('https://access.redhat.com/containers/#/'
                      'registry.access.redhat.com/rhel7/rhel')
     expected_objects = {'rhel7/rhel'}
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         'username': None,
@@ -368,8 +362,7 @@ class TestMetaXORcontainerRepositoryUpdate(fedmsg.tests.test_meta.Base):
     expected_link = ('https://access.redhat.com/containers/#/'
                      'registry.access.redhat.com/rhel7/rhel')
     expected_objects = {'rhel7/rhel'}
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
 
     msg = {
         'username': None,
@@ -429,8 +422,7 @@ class TestMetaXORnternalRefreshRepo(fedmsg.tests.test_meta.Base):
     expected_subti = ('Repository update (2) requested by metaxor - '
                       'jboss-datagrid-7/datagrid72-openshift')
     expected_objects = set(['jboss-datagrid-7/datagrid72-openshift'])
-    expected_icon = ('https://datagrepper-prod-datanommer.int.open.paas.'
-                     'redhat.com/umb/_static/img/icons/metaxor.png')
+    expected_icon = '/umb/_static/img/icons/metaxor.png'
     expected_usernames = {'metaxor'}
 
     msg = {

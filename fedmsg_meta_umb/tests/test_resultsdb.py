@@ -32,9 +32,7 @@ class TestResultsDBNewGoodResult(fedmsg.tests.test_meta.Base):
     expected_agent = None
     expected_usernames = set([])
     expected_packages = set(['foo'])
-    expected_icon = (
-        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
-        'umb/_static/img/icons/resultsdb.png')
+    expected_icon = '/umb/_static/img/icons/resultsdb.png'
 
     msg = {
         "timestamp": 1529352189.0,
@@ -103,9 +101,7 @@ class TestLegacyResultsDBNewGoodResult(fedmsg.tests.test_meta.Base):
     expected_agent = None
     expected_usernames = set([])
     expected_packages = set(['qpid-dispatch'])
-    expected_icon = (
-        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
-        'umb/_static/img/icons/resultsdb.png')
+    expected_icon = '/umb/_static/img/icons/resultsdb.png'
 
     msg = {
         "headers": {
@@ -154,9 +150,7 @@ class TestLegacyResultsDBNewMalformedResult(fedmsg.tests.test_meta.Base):
     expected_agent = None
     expected_usernames = set([])
     expected_packages = set([])
-    expected_icon = (
-        'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
-        'umb/_static/img/icons/resultsdb.png')
+    expected_icon = '/umb/_static/img/icons/resultsdb.png'
 
     msg = {
         "headers": {
