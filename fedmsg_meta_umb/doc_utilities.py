@@ -91,7 +91,7 @@ def write(fname, s=''):
 def datagrepper_link(topic):
     suffix = topic.split('.', 1)[-1]
     category = topic.split('.')[2]
-    base_url = 'https://datagrepper-prod-datanommer.int.open.paas.redhat.com/raw'
+    base_url = 'https://datagrepper.engineering.redhat.com/raw'
     topic_link = base_url + '?topic=%s' % topic
     category_link = base_url + '?category=%s' % category
     tmpl = (

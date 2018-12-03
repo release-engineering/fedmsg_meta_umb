@@ -26,8 +26,7 @@ class FreshmakerProcessor(BaseProcessor):
     __description__ = 'a service scheduling rebuilds of artifacts as new content becomes available'
     __link__ = 'https://freshmaker.engineering.redhat.com'
     __docs__ = 'https://mojo.redhat.com/docs/DOC-1155261'
-    __icon__ = ('https://datagrepper-prod-datanommer.int.open.paas.redhat.com/'
-                'umb/_static/img/icons/freshmaker.png')
+    __icon__ = '/umb/_static/img/icons/freshmaker.png'
     __obj__ = 'Artifact rebuild scheduler'
 
     def title(self, msg, **config):
