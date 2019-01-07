@@ -46,7 +46,7 @@ class FreshmakerProcessor(BaseProcessor):
             else:
                 template = self._('{type_name} build state is switched to {state_name}: '
                                   '"{state_reason}"')
-        elif topic.endswith('event.state.changed'):
+        elif topic.endswith('event.state.changed') or topic.endswith('event.state.changed.min'):
             template = self._('Event state is switched to {state_name}: "{state_reason}"')
         else:
             template = 'Unknown message.'
@@ -59,7 +59,7 @@ class FreshmakerProcessor(BaseProcessor):
         pipeline_url = 'https://pipeline.engineering.redhat.com'
         if topic.endswith('build.state.changed'):
             return '{0}/freshmakerevent/{1}'.format(pipeline_url, msg['msg']['event_id'])
-        elif topic.endswith('event.state.changed'):
+        elif topic.endswith('event.state.changed') or topic.endswith('event.state.changed.min'):
             return '{0}/freshmakerevent/{1}'.format(pipeline_url, msg['msg']['id'])
         elif topic.endswith('manual.rebuild'):
             return '{0}/advisory/{1}'.format(pipeline_url, msg['msg']['errata_id'])

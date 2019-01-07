@@ -185,6 +185,47 @@ class TestEventStateChanged(fedmsg.tests.test_meta.Base):
     }
 
 
+class TestEventStateChangedMin(fedmsg.tests.test_meta.Base):
+
+    expected_title = 'freshmaker.event.state.changed.min'
+    expected_subti = ('Event state is switched to COMPLETE: "Generated '
+                      'ErrataAdvisoryRPMsSignedEvent '
+                      '(ID:messaging-devops-broker01.localhost-46295-'
+                      '1510954431290-2:473881:0:0:1) '
+                      'for errata: RHSA-2017:29110"')
+    expected_link = 'https://pipeline.engineering.redhat.com/freshmakerevent/81'
+    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_packages = set([])
+
+    msg = {
+        "username": None,
+        "source_name": "datanommer",
+        "certificate": None,
+        "i": 0,
+        "timestamp": 1511940834.0,
+        "msg_id": "ID:localhost-45704-1510236486219-2:66659:0:0:1",
+        "crypto": None,
+        "topic": "/topic/VirtualTopic.eng.freshmaker.event.state.changed.min",
+        "signature": None,
+        "source_version": "0.8.2",
+        "msg": {
+            "state_reason": ("Generated ErrataAdvisoryRPMsSignedEvent "
+                             "(ID:messaging-devops-broker01.localhost-"
+                             "46295-1510954431290-2:473881:0:0:1) "
+                             "for errata: RHSA-2017:29110"),
+            "url": "http://freshmaker.localhost/api/1/events/81",
+            "search_key": "ID:messaging-devops-broker01.localhost-"
+            "46295-1510954431290-2:473881:0:0:1",
+            "id": 81,
+            "state": 2,
+            "event_type_id": 11,
+            "message_id": "ID:messaging-devops-broker01.localhost-"
+            "46295-1510954431290-2:473881:0:0:1",
+            "state_name": "COMPLETE"
+        }
+    }
+
+
 class TestUnknownMessageComes(fedmsg.tests.test_meta.Base):
 
     expected_title = 'freshmaker.some.new.event'
