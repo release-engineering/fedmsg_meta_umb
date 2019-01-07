@@ -92,8 +92,9 @@ def datagrepper_link(topic):
     suffix = topic.split('.', 1)[-1]
     category = topic.split('.')[2]
     base_url = 'https://datagrepper.engineering.redhat.com/raw'
-    topic_link = base_url + '?topic=%s' % topic
-    category_link = base_url + '?category=%s' % category
+    limiting_suffix = '&rows_per_page=1&delta=2592000'
+    topic_link = base_url + '?topic=' + topic + limiting_suffix
+    category_link = base_url + '?category=' + category + limiting_suffix
     tmpl = (
         "You can view the history of `messages with the %s topic <%s>`_ "
         "or `all %s messages <%s>`_ in datagrepper."
