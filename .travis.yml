@@ -1,12 +1,13 @@
+dist: xenial
 language: python
 python:
  - "2.7"
- - "3.6"
+ - "3.7"
 matrix:
   include:
-    - python: "2.7"
+    - python: "3.7"
       env: TOXENV=flake8
-    - python: "2.7"
+    - python: "3.7"
       env: TOXENV=docs
 install: pip install tox-travis codecov
 script: tox -- --with-coverage --cover-branches --cover-package=fedmsg_meta_umb
