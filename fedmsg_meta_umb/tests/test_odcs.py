@@ -26,7 +26,7 @@ class TestODCSStateChange(fedmsg.tests.test_meta.Base):
     expected_link = (
         'http://odcs.host.stage.eng.bos.redhat.com/'
         'composes/latest-odcs-185-1/compose/Temporary/odcs-185.repo')
-    expected_icon = '/umb/_static/img/icons/odcs.png'
+    expected_icon = '_static/img/icons/odcs.png'
     expected_usernames = set(['osbs'])
 
     msg = {

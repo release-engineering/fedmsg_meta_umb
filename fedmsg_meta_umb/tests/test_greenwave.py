@@ -37,7 +37,7 @@ class TestGreenwaveDecisionUpdateErrataNewFiles(fedmsg.tests.test_meta.Base):
                       '"errata_newfile_to_qe" (rhel-7)')
     expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/libXdmcp-1.1.2-9.el8'
     expected_packages = set(['libXdmcp'])
-    expected_icon = '/umb/_static/img/icons/greenwave.png'
+    expected_icon = '_static/img/icons/greenwave.png'
 
     msg = {
         "i": 0,
@@ -111,7 +111,7 @@ class TestGreenwaveDecisionUpdateComposeGate(fedmsg.tests.test_meta.Base):
                       '"osci_compose_gate" (rhel-8)')
     expected_link = 'https://pipeline.engineering.redhat.com/kojibuild/libsemanage-2.8-2.el8+7'
     expected_packages = set(['libsemanage'])
-    expected_icon = '/umb/_static/img/icons/greenwave.png'
+    expected_icon = '_static/img/icons/greenwave.png'
 
     msg = {
         "username": "upshift",

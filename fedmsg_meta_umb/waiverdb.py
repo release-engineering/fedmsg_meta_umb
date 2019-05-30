@@ -27,7 +27,7 @@ class WaiverDBProcessor(BaseProcessor):
     __link__ = 'https://waiverdb.engineering.redhat.com'
     __docs__ = 'https://pagure.io/docs/waiverdb/'
     __obj__ = 'Waivers'
-    __icon__ = '/umb/_static/img/icons/waiverdb.png'
+    __icon__ = '_static/img/icons/waiverdb.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]

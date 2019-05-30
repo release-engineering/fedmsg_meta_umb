@@ -27,7 +27,7 @@ class ResultsDBProcessor(BaseProcessor):
     __link__ = 'https://resultsdb.engineering.redhat.com'
     __docs__ = 'https://mojo.redhat.com/docs/DOC-1131637'
     __obj__ = 'Results'
-    __icon__ = '/umb/_static/img/icons/resultsdb.png'
+    __icon__ = '_static/img/icons/resultsdb.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]

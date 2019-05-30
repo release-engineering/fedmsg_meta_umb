@@ -32,9 +32,7 @@ class TestNewcastleStateChange(fedmsg.tests.test_meta.Base):
     expected_link = "http://orch.cloud.pnc.engineering.redhat.com/pnc-web/#/build-records/7156"
     expected_packages = set([])
     expected_usernames = set([])
-    expected_icon = (
-        'https://datagrepper.engineering.redhat.com/'
-        'umb/_static/img/icons/newcastle.png')
+    expected_icon = '_static/img/icons/newcastle.png'
     msg = {
         "timestamp": 1534958190.0,
         "msg_id": "ID:orch-70-8z1lp-37781-1533892609865-3:1:250:1:1",

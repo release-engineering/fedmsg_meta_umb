@@ -27,7 +27,7 @@ class GreenwaveProcessor(BaseProcessor):
     __link__ = 'https://greenwave.engineering.redhat.com/api/v1.0/policies'
     __obj__ = 'Gating Decisions'
     __docs__ = 'https://mojo.redhat.com/docs/DOC-1171796'
-    __icon__ = '/umb/_static/img/icons/greenwave.png'
+    __icon__ = '_static/img/icons/greenwave.png'
 
     @staticmethod
     def satisfied(msg):

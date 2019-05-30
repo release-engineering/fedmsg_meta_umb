@@ -33,7 +33,7 @@ Example messages are included as well as descriptions and sample output
 from ``fedmsg.meta``.
 
 .. note:: All topics from Unified Message Bus are prefixed with
-   ``/topic/VirtualTopic``, but the :term:`topic_prefix` is omitted here
+   ``/topic/VirtualTopic``, but the prefix is omitted here
    for brevity.  For instance, the item listed as ``eng.brew.task.open``
    will actually be broadcast as
    ``/topic/VirtualTopic.eng.brew.task.open``.

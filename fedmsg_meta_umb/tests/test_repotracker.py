@@ -28,7 +28,7 @@ class TestRepotrackerAdded(fedmsg.tests.test_meta.Base):
     expected_title = 'repotracker.container.tag.added'
     expected_subti = 'testtag tag was added to the repotracker container repository'
     expected_link = 'https://quay.io/factory2/repotracker'
-    expected_icon = '/umb/_static/img/icons/repotracker.png'
+    expected_icon = '_static/img/icons/repotracker.png'
 
     msg = {
         "i": 0,
@@ -86,7 +86,7 @@ class TestRepotrackerUpdated(fedmsg.tests.test_meta.Base):
     expected_title = 'repotracker.container.tag.updated'
     expected_subti = 'testtag tag was updated in the repotracker container repository'
     expected_link = 'https://quay.io/factory2/repotracker'
-    expected_icon = '/umb/_static/img/icons/repotracker.png'
+    expected_icon = '_static/img/icons/repotracker.png'
 
     msg = {
         "i": 0,
@@ -144,7 +144,7 @@ class TestRepotrackerRemoved(fedmsg.tests.test_meta.Base):
     expected_title = 'repotracker.container.tag.removed'
     expected_subti = 'testtag tag was removed from the repotracker container repository'
     expected_link = 'https://quay.io/factory2/repotracker'
-    expected_icon = '/umb/_static/img/icons/repotracker.png'
+    expected_icon = '_static/img/icons/repotracker.png'
 
     msg = {
         "i": 0,

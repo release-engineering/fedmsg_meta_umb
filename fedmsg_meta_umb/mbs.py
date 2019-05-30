@@ -27,7 +27,7 @@ class MBSProcessor(BaseProcessor):
     __link__ = 'https://mbs.engineering.redhat.com'
     __docs__ = 'https://gitlab.cee.redhat.com/rhel-appstream/module-maintainer-guide'
     __obj__ = 'Module Builds'
-    __icon__ = '/umb/_static/img/icons/mbs.png'
+    __icon__ = '_static/img/icons/mbs.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]

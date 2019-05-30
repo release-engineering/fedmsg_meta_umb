@@ -24,7 +24,7 @@ class TestManualRebuild(fedmsg.tests.test_meta.Base):
     expected_title = 'freshmaker.manual.rebuild'
     expected_subti = 'Manual rebuild is triggered for Errata advisory 31360.'
     expected_link = 'https://pipeline.engineering.redhat.com/advisory/31360'
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set([])
 
     msg = {
@@ -51,7 +51,7 @@ class TestBuildStateIsDone(fedmsg.tests.test_meta.Base):
                       'from original build rh-nodejs6-docker-6-14.11 to new '
                       'build rh-nodejs6-docker-6-14.1511360844.')
     expected_link = 'https://pipeline.engineering.redhat.com/freshmakerevent/58'
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set([])
 
     msg = {
@@ -100,7 +100,7 @@ class TestBuildStateIsNotDone(fedmsg.tests.test_meta.Base):
                       '"Cannot build artifact, because its dependency '
                       'cannot be built."')
     expected_link = 'https://pipeline.engineering.redhat.com/freshmakerevent/60'
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set([])
 
     msg = {
@@ -152,7 +152,7 @@ class TestEventStateChanged(fedmsg.tests.test_meta.Base):
                       '1510954431290-2:473881:0:0:1) '
                       'for errata: RHSA-2017:29110"')
     expected_link = 'https://pipeline.engineering.redhat.com/freshmakerevent/81'
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set(['pkg', 'another-pkg'])
 
     msg = {
@@ -194,7 +194,7 @@ class TestEventStateChangedMin(fedmsg.tests.test_meta.Base):
                       '1510954431290-2:473881:0:0:1) '
                       'for errata: RHSA-2017:29110"')
     expected_link = 'https://pipeline.engineering.redhat.com/freshmakerevent/81'
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set([])
 
     msg = {
@@ -231,7 +231,7 @@ class TestUnknownMessageComes(fedmsg.tests.test_meta.Base):
     expected_title = 'freshmaker.some.new.event'
     expected_subti = 'Unknown message.'
     expected_link = None
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set([])
 
     msg = {
@@ -266,7 +266,7 @@ class TestAllBuildsDone(fedmsg.tests.test_meta.Base):
     expected_subti = ('Event state is switched to COMPLETE: "All docker '
                       'images have been rebuilt."')
     expected_link = 'https://pipeline.engineering.redhat.com/freshmakerevent/242'
-    expected_icon = '/umb/_static/img/icons/freshmaker.png'
+    expected_icon = '_static/img/icons/freshmaker.png'
     expected_packages = set(['someimage', 'someimage2'])
     msg = {
         "headers": {

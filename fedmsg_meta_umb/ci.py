@@ -28,6 +28,7 @@ class CIProcessor(BaseProcessor):
                 '/Utils/job/libvirt-jobs-updater/lastSuccessfulBuild/artifact'
                 '/libvirt-ci/docs/build/html/intro.html')
     __obj__ = 'Engineering CI Automation'
+    __icon__ = '_static/img/icons/jenkins.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]
