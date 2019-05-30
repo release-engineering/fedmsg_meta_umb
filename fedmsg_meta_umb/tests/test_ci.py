@@ -94,4 +94,3 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
                      '/9/#rhev')
     expected_subti = 'Test job for libvirt-4.5.0-1.el7 complete'
     expected_packages = set(['libvirt'])
-    expected_icon = None

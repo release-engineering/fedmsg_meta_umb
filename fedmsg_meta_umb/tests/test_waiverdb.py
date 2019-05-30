@@ -31,7 +31,7 @@ class TestWaiverDBNewWaiver(fedmsg.tests.test_meta.Base):
     expected_agent = 'lvrabec'
     expected_usernames = set(['lvrabec'])
     expected_packages = set(['selinux-policy'])
-    expected_icon = '/umb/_static/img/icons/waiverdb.png'
+    expected_icon = '_static/img/icons/waiverdb.png'
 
     msg = {
         "i": 0,
@@ -78,7 +78,7 @@ class TestWaiverDBUnwaive(fedmsg.tests.test_meta.Base):
     expected_agent = 'mminar'
     expected_usernames = set(['mminar'])
     expected_packages = set(['rh-amazon-rhui-client'])
-    expected_icon = '/umb/_static/img/icons/waiverdb.png'
+    expected_icon = '_static/img/icons/waiverdb.png'
 
     msg = {
         "i": 0,

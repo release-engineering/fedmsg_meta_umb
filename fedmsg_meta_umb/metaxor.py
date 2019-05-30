@@ -27,7 +27,7 @@ class MetaXORProcessor(BaseProcessor):
                       'in Lightblue'
     __link__ = 'https://docs.engineering.redhat.com/x/MxSPAg'
     __docs__ = 'https://docs.engineering.redhat.com/x/MxSPAg'
-    __icon__ = '/umb/_static/img/icons/metaxor.png'
+    __icon__ = '_static/img/icons/metaxor.png'
     __obj__ = 'Metaxor'
 
     def title(self, msg, **config):

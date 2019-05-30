@@ -27,9 +27,7 @@ class ProjectNewCastleProcessor(BaseProcessor):
     __link__ = 'http://orch.cloud.pnc.engineering.redhat.com/'
     __docs__ = 'https://docs.engineering.redhat.com/display/JP/Project+Newcastle'
     __obj__ = 'Middleware Builds'
-    __icon__ = (
-        'https://datagrepper.engineering.redhat.com/'
-        'umb/_static/img/icons/newcastle.png')
+    __icon__ = '_static/img/icons/newcastle.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]

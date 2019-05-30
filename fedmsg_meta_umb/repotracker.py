@@ -27,7 +27,7 @@ class RepotrackerProcessor(BaseProcessor):
     __link__ = 'https://github.com/release-engineering/repotracker'
     __docs__ = 'https://github.com/release-engineering/repotracker'
     __obj__ = 'repotracker'
-    __icon__ = '/umb/_static/img/icons/repotracker.png'
+    __icon__ = '_static/img/icons/repotracker.png'
 
     subtitle_templates = {
         'repotracker.container.tag.added':

@@ -34,7 +34,7 @@ class TestMBSStateChange(fedmsg.tests.test_meta.Base):
     expected_agent = 'tdawson'
     expected_usernames = set(['tdawson'])
     expected_packages = set(['foobar'])
-    expected_icon = '/umb/_static/img/icons/mbs.png'
+    expected_icon = '_static/img/icons/mbs.png'
 
     msg = {
         "username": None,

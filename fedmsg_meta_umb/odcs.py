@@ -26,7 +26,7 @@ class ODCSProcessor(BaseProcessor):
     __description__ = 'the On-Demand Compose Service'
     __link__ = 'https://odcs.engineering.redhat.com'
     __docs__ = 'https://pagure.io/odcs'
-    __icon__ = '/umb/_static/img/icons/odcs.png'
+    __icon__ = '_static/img/icons/odcs.png'
     __obj__ = 'ODCS composes'
 
     def title(self, msg, **config):
