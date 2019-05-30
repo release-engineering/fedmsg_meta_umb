@@ -1,7 +1,7 @@
 # Makefile used by Copr to generate a srpm
 
 setup:
-	dnf install git-core
+	dnf install git-core python3-setuptools
 
 tarball: setup
 	python3 setup.py sdist --formats=tar
