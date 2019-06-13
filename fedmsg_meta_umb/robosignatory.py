@@ -33,7 +33,7 @@ class RobosignatoryProcessor(BaseProcessor):
 
     def subtitle(self, msg, **config):
         if msg['topic'].endswith('robosignatory.container.sign'):
-            tmpl = self._("robosignatory's attempt to sign the {repo} "
-                          "container with {sig_key_id} was met "
-                          "with {signing_status}")
+            tmpl = self._("attempt to sign the {repo} container in pub task "
+                          "{pub_task_id} with {sig_key_id} was met with "
+                          "{signing_status}")
             return tmpl.format(**msg['msg'])
