@@ -28,9 +28,9 @@ class TestRobosignatoryContainerSign(fedmsg.tests.test_meta.Base):
     """
     expected_title = "robosignatory.container.sign"
     expected_subti = (
-        "robosignatory's attempt to sign the redhat-e2e-container-e2e-"
-        "container-test-product container with F21541EB was met with "
-        "success")
+        "attempt to sign the redhat-e2e-container-e2e-container-test-product "
+        "container in pub task 135422 with F21541EB was met with success")
+
     msg = {
         "headers": {
             "content-type": "text/plain",
