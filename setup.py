@@ -1,4 +1,4 @@
-# Copyright (C) 2017-2018 Red Hat, Inc.
+# Copyright (C) 2017-2019 Red Hat, Inc.
 #
 # fedmsg_meta_umb is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -57,6 +57,7 @@ entry_points = {
         'pnc=fedmsg_meta_umb.pnc:ProjectNewCastleProcessor',
         'repotracker=fedmsg_meta_umb.repotracker:RepotrackerProcessor',
         'waiverdb=fedmsg_meta_umb.waiverdb:WaiverDBProcessor',
+        'aqe-jenkins=fedmsg_meta_umb.aqe_jenkins:AqeJenkinsProcessor',
     ]
 }
 
