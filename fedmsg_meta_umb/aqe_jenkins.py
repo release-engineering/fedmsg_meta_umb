@@ -27,6 +27,7 @@ class AqeJenkinsProcessor(BaseProcessor):
     __link__ = "https://docs.engineering.redhat.com/display/PDT/RetroBob"
     __docs__ = "https://docs.engineering.redhat.com/display/PDT/RetroBob"
     __obj__ = "Container First builds (Retrobob)"
+    __icon__ = "_static/img/icons/jenkins.png"
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]
