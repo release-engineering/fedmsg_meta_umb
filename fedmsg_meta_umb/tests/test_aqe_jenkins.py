@@ -14,7 +14,7 @@
 # License along with fedmsg; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
-# Authors:  Ralph Bean <rbean@redhat.com>
+# Authors:  Wai Cheang <wcheang@redhat.com>
 
 import fedmsg.tests.test_meta
 from .common import add_doc
@@ -29,6 +29,7 @@ class TestAqeJenkins(fedmsg.tests.test_meta.Base):
     expected_subti = (
         "retrodep run on build osbs-test-sandwich-container was met with "
         "success")
+    expected_icon = "_static/img/icons/jenkins.png"
     msg = {
         "i": 0,
         "msg_id": "ID:pnt-devops-rad-stage-jenkins.rhev-ci-vms.eng.rdu2.redhat.com-44328-1560142882813-1701:1:1:1:1",
