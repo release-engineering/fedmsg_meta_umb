@@ -71,6 +71,9 @@ class BrewProcessor(BaseProcessor):
                 'rpm': self._('{rpm[name]}-{rpm[version]}-{rpm[release]}.{rpm[arch]}.rpm has been signed '
                               'with key {sigkey}'),
             },
+            'kojira': {
+                'expired': self._('tag {tag} was expired for {seconds} seconds'),
+            }
         }
 
     def title(self, msg, **config):
@@ -145,4 +148,7 @@ class BrewProcessor(BaseProcessor):
             else:
                 tag_id = msg['msg']['repo']['tag_id']
             return self.__link__ + 'taginfo?tagID=' + str(tag_id)
+        elif tokens[-2] == 'kojira' and tokens[-1] == 'expired':
+            return self.__link__ + 'taskinfo?taskID=' + \
+                str(msg['msg']['task_id'])
         return self.__link__
