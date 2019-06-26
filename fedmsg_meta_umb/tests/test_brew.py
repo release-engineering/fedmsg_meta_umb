@@ -19,5 +19,4 @@
 import fedmsg.tests.test_meta
 
 class BrewBase(fedmsg.tests.test_meta.Base):
-    expected_icon = ('https://brewweb.engineering.redhat.com/'
-                     'koji-static/themes/brew/images/brew_small.png')
+    expected_icon = '_static/img/icons/brew.png'
