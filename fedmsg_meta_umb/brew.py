@@ -26,8 +26,7 @@ class BrewProcessor(BaseProcessor):
     __link__ = 'https://brewweb.engineering.redhat.com/brew/'
     __docs__ = 'https://mojo.redhat.com/docs/DOC-1024827'
     __obj__ = 'Brew Build System'
-    __icon__ = ('https://brewweb.engineering.redhat.com/'
-                'koji-static/themes/brew/images/brew_small.png')
+    __icon__ = '_static/img/icons/brew.png'
 
     def __init__(self, *args, **kw):
         super(BrewProcessor, self).__init__(*args, **kw)
