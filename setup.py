@@ -58,6 +58,7 @@ entry_points = {
         'repotracker=fedmsg_meta_umb.repotracker:RepotrackerProcessor',
         'waiverdb=fedmsg_meta_umb.waiverdb:WaiverDBProcessor',
         'aqe-jenkins=fedmsg_meta_umb.aqe_jenkins:AqeJenkinsProcessor',
+        'clair=fedmsg_meta_umb.clair:ClairProcessor',
     ]
 }
 
