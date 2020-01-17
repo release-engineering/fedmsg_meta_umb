@@ -17,6 +17,7 @@
 # Authors:  Chenxiong Qi <cqi@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestManualRebuild(fedmsg.tests.test_meta.Base):
@@ -350,3 +351,6 @@ class TestAllBuildsDone(fedmsg.tests.test_meta.Base):
         "topic": "/topic/VirtualTopic.eng.freshmaker.event.state.changed",
         "username": None,
     }
+
+
+add_doc(locals())

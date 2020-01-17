@@ -17,9 +17,10 @@
 # Authors: Yukin Chan <yuqchen@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 class TestCIComplete(fedmsg.tests.test_meta.Base):
-    """ `Engineering CI Automation System performs tests to ensure the quality
+    """Engineering CI Automation System performs tests to ensure the quality
     of virtualization packages automatically.
 
     Messages (like the example given here) are published when an **CI**
@@ -95,3 +96,6 @@ class TestCIComplete(fedmsg.tests.test_meta.Base):
     expected_subti = 'Test job for libvirt-4.5.0-1.el7 complete'
     expected_packages = set(['libvirt'])
     expected_icon = '_static/img/icons/jenkins.png'
+
+
+add_doc(locals())

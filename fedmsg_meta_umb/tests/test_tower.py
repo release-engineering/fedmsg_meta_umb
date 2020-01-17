@@ -17,6 +17,7 @@
 # Authors:  Ales Raszka <araszka@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 class TestTower(fedmsg.tests.test_meta.Base):
     """
@@ -119,3 +120,6 @@ class TestTowerUnknownMessage(fedmsg.tests.test_meta.Base):
         "source_version": "0.9.1",
         "msg": "Bad message format"
     }
+
+
+add_doc(locals())

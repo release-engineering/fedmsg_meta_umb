@@ -17,6 +17,7 @@
 # Authors:  Stanislav Ochotnicky <sochotnicky@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 class TestJIRAIssueCreate(fedmsg.tests.test_meta.Base):
     """JIRA is issue tracking system
@@ -676,3 +677,6 @@ class TestJIRAIssueMissingKey(fedmsg.tests.test_meta.Base):
             }
         }
     }
+
+
+add_doc(locals())
