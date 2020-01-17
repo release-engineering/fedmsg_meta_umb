@@ -17,6 +17,7 @@
 # Authors:  Ralph Bean <rbean@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestODCSStateChange(fedmsg.tests.test_meta.Base):
@@ -70,3 +71,6 @@ class TestODCSStateChange(fedmsg.tests.test_meta.Base):
             "event": "state-changed"
         }
     }
+
+
+add_doc(locals())

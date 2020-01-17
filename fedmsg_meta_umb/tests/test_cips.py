@@ -17,6 +17,7 @@
 # Authors: Gowrishankar Rajaiyan <grajaiya@redhat.com>
 
 import fedmsg.tests.test_meta
+from .common import add_doc
 
 
 class TestLegacyTestMessage(fedmsg.tests.test_meta.Base):
@@ -302,3 +303,6 @@ class TestCIPSComplete(fedmsg.tests.test_meta.Base):
             "xunit": ""
         }
     }
+
+
+add_doc(locals())
