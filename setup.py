@@ -59,6 +59,7 @@ entry_points = {
         'waiverdb=fedmsg_meta_umb.waiverdb:WaiverDBProcessor',
         'aqe-jenkins=fedmsg_meta_umb.aqe_jenkins:AqeJenkinsProcessor',
         'clair=fedmsg_meta_umb.clair:ClairProcessor',
+        'snitch=fedmsg_meta_umb.snitch:SnitchProcessor',
     ]
 }
 
