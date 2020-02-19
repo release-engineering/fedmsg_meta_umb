@@ -39,14 +39,16 @@ class SnitchProcessor(BaseProcessor):
         if not isinstance(inner_msg, dict):
             return "Unknown message format"
 
+        obj_id = inner_msg["entityData"]["_id"]
+        if isinstance(obj_id, dict) and obj_id.get("$oid"):
+            obj_id = obj_id.get("$oid")
         data = {
             "entityData": inner_msg["entityData"],
             "entityName": inner_msg["entityName"],
             "operationType": headers["operationType"],
+            "_id": obj_id,
         }
 
-        template = self._(
-            "New DB event ({operationType}): {entityName} - {entityData[_id][$oid]}"
-        )
+        template = self._("New DB event ({operationType}): {entityName} - {_id}")
 
         return template.format(**data)
