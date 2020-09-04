@@ -34,8 +34,7 @@ class TestErrataStatusChange(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['fmuellne'])
     expected_agent = 'fmuellne'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
 
     msg = {
         "username": None,
@@ -85,8 +84,7 @@ class TestErrataActivityCreated(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['bkearney'])
     expected_agent = 'bkearney'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "username": None,
         "i": 0,
@@ -132,8 +130,7 @@ class TestErrataSecurityRequested(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['rbean'])
     expected_agent = 'rbean'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "username": None,
         "source_name": "datanommer",
@@ -184,8 +181,7 @@ class TestErrataSecurityApproved(fedmsg.tests.test_meta.Base):
     expected_packages = set([])
     expected_usernames = set(['dmoppert'])
     expected_agent = 'dmoppert'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "certificate": None,
         "crypto": None,
@@ -257,8 +253,7 @@ class TestErrataSecurityCatchAll(fedmsg.tests.test_meta.Base):
     expected_packages = set([])
     expected_usernames = set(['dmoppert'])
     expected_agent = 'dmoppert'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "certificate": None,
         "crypto": None,
@@ -335,8 +330,7 @@ class TestErrataSignaturesReported(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['robosignatory'])
     expected_agent = 'robosignatory'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1496271000.0,
@@ -384,8 +378,7 @@ class TestErrataBugsChanged(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['rharwood'])
     expected_agent = 'rharwood'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1496269224.0,
@@ -428,8 +421,7 @@ class TestErrataBuildsChanged(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['rharwood'])
     expected_agent = 'rharwood'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1496269189.0,
@@ -473,8 +465,7 @@ class TestErrataBatchChanged(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['lfriedma'])
     expected_agent = 'lfriedma'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1496268967.0,
@@ -522,8 +513,7 @@ class TestErrataDocsApproved(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['lbopf'])
     expected_agent = 'lbopf'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1496279793.0,
@@ -570,8 +560,7 @@ class TestErrataAssignedTo(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set(['rbean', 'cye', 'kernel-qe'])
     expected_agent = 'cye'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1496284509.0,
@@ -620,8 +609,7 @@ class TestErrataRescheduleCCAT(fedmsg.tests.test_meta.Base):
         # TODO - this would be very valuable for routing notifications
     ])
     expected_agent = None
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         'topic': '/topic/VirtualTopic.eng.errata.ccat.reschedule_test',
         'msg': {
@@ -660,8 +648,7 @@ class TestErrataBuildsAdded(fedmsg.tests.test_meta.Base):
     expected_packages = set(['libpciaccess'])
     expected_usernames = set(['ajackson'])
     expected_agent = 'ajackson'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1509028483.0,
@@ -709,8 +696,7 @@ class TestErrataBuildsRemoved(fedmsg.tests.test_meta.Base):
     expected_packages = set(['ovirt-engine-dwh'])
     expected_usernames = set(['sradco'])
     expected_agent = 'sradco'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1509028264.0,
@@ -759,8 +745,7 @@ class TestErrataTextChanged(fedmsg.tests.test_meta.Base):
     expected_packages = set([])
     expected_usernames = set(['bkundal'])
     expected_agent = 'bkundal'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
     msg = {
         "i": 0,
         "timestamp": 1516695443.0,
@@ -874,8 +859,7 @@ class TestErrataCCATResult(fedmsg.tests.test_meta.Base):
     ])
     expected_usernames = set([])
     expected_agent = None
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
 
     msg = {
         "username": None,

@@ -29,8 +29,7 @@ class ErrataProcessor(BaseProcessor):
     __link__ = 'https://errata.devel.redhat.com/'
     __docs__ = 'https://errata.devel.redhat.com/user-guide/'
     __obj__ = 'errata events'
-    __icon__ = ('https://errata.devel.redhat.com/assets/'
-                'images/erratatool18.png')
+    __icon__ = '_static/img/icons/erratatool50.png'
 
     def __init__(self, *args, **kwargs):
         super(ErrataProcessor, self).__init__(*args, **kwargs)
