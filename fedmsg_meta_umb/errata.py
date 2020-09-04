@@ -84,6 +84,10 @@ class ErrataProcessor(BaseProcessor):
                 else:
                     template = self._('{agent} denied the security '
                                       'request on {fulladvisory}')
+            else:
+                # Catch-all
+                template = self._('{agent} set the security '
+                                  'flag from "{from}" to "{to}" on {fulladvisory}')
 
             return template.format(agent=agent, **headers)
 

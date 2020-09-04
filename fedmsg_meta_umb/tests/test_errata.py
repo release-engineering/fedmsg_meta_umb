@@ -173,6 +173,152 @@ class TestErrataSecurityRequested(fedmsg.tests.test_meta.Base):
     }
 
 
+class TestErrataSecurityApproved(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Messages like this one are published when someone *grants security approval*.
+    """
+    expected_title = 'errata.activity.security_approved'
+    expected_subti = ('dmoppert approved the security request on RHSA-2020:58034-03')
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/58034'
+    expected_packages = set([])
+    expected_usernames = set(['dmoppert'])
+    expected_agent = 'dmoppert'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "certificate": None,
+        "crypto": None,
+        "headers": {
+            "JMSXUserID": "msg-client-errata",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "amq6100_destination": "queue://Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "amq6100_originalDestination": "topic://VirtualTopic.eng.errata.activity.security_approved",
+            "correlation-id": "c547d12f-d41e-44cf-a45c-7538ac436f22",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+            "errata_id": "58034",
+            "errata_status": "REL_PREP",
+            "expires": "0",
+            "from": "0",
+            "fulladvisory": "RHSA-2020:58034-03",
+            "message-id":
+            "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-45945-1594124283720-5:3843970:0:0:1",
+            "original-destination": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+            "persistent": "true",
+            "priority": "4",
+            "product": "RHEL",
+            "release": "RHEL-7.8.Z",
+            "subject": "errata.activity.security_approved",
+            "subscription": "/queue/Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "synopsis": "Important: thunderbird security update",
+            "timestamp": "0",
+            "to": "1",
+            "type": "RHSA",
+            "when": "2020-08-05 23:45:44 UTC",
+            "who": "dmoppert@redhat.com"
+        },
+        "i": 0,
+        "msg": {
+            "content_types": [
+                "rpm"
+            ],
+            "errata_id": 58034,
+            "errata_status": "REL_PREP",
+            "from": "0",
+            "fulladvisory": "RHSA-2020:58034-03",
+            "product": "RHEL",
+            "release": "RHEL-7.8.Z",
+            "synopsis": "Important: thunderbird security update",
+            "to": "1",
+            "type": "RHSA",
+            "when": "2020-08-05 23:45:44 UTC",
+            "who": "dmoppert@redhat.com"
+        },
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-45945-1594124283720-5:3843970:0:0:1",
+        "signature": None,
+        "source_name": "datanommer",
+        "source_version": "0.9.1",
+        "timestamp": 1596671149,
+        "topic": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+        "username": None
+    }
+
+
+class TestErrataSecurityCatchAll(fedmsg.tests.test_meta.Base):
+    """ The Errata Tool supports the release workflow for Red Hat content.
+
+    Messages like this one are published when someone *changes the security approval value*.
+    """
+    expected_title = 'errata.activity.security_approved'
+    expected_subti = ('dmoppert set the security flag from "foo" to "bar" on RHSA-2020:58035-03')
+    expected_link = 'https://pipeline.engineering.redhat.com/advisory/58035'
+    expected_packages = set([])
+    expected_usernames = set(['dmoppert'])
+    expected_agent = 'dmoppert'
+    expected_icon = ('https://errata.devel.redhat.com/assets/'
+                     'images/erratatool18.png')
+    msg = {
+        "certificate": None,
+        "crypto": None,
+        "headers": {
+            "JMSXUserID": "msg-client-errata",
+            "JMS_AMQP_FirstAcquirer": "false",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "amq6100_destination": "queue://Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "amq6100_originalDestination": "topic://VirtualTopic.eng.errata.activity.security_approved",
+            "correlation-id": "6462cedc-b0bf-4d6d-9700-4713f5166857",
+            "destination": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+            "errata_id": "58035",
+            "errata_status": "QE",
+            "expires": "0",
+            "from": "foo",
+            "fulladvisory": "RHSA-2020:58035-03",
+            "message-id":
+            "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-45945-1594124283720-5:3843827:0:0:1",
+            "original-destination": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+            "persistent": "true",
+            "priority": "4",
+            "product": "RHEL",
+            "release": "RHEL-6.10.z",
+            "subject": "errata.activity.security_approved",
+            "subscription": "/queue/Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "synopsis": "Important: thunderbird security update",
+            "timestamp": "0",
+            "to": "bar",
+            "type": "RHSA",
+            "when": "2020-08-05 23:43:56 UTC",
+            "who": "dmoppert@redhat.com"
+        },
+        "i": 0,
+        "msg": {
+            "content_types": [
+                "rpm"
+            ],
+            "errata_id": 58035,
+            "errata_status": "QE",
+            "from": "foo",
+            "fulladvisory": "RHSA-2020:58035-03",
+            "product": "RHEL",
+            "release": "RHEL-6.10.z",
+            "synopsis": "Important: thunderbird security update",
+            "to": "bar",
+            "type": "RHSA",
+            "when": "2020-08-05 23:43:56 UTC",
+            "who": "dmoppert@redhat.com"
+        },
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-45945-1594124283720-5:3843827:0:0:1",
+        "signature": None,
+        "source_name": "datanommer",
+        "source_version": "0.9.1",
+        "timestamp": 1596671040,
+        "topic": "/topic/VirtualTopic.eng.errata.activity.security_approved",
+        "username": None
+    }
+
+
 class TestErrataSignaturesReported(fedmsg.tests.test_meta.Base):
     """ The Errata Tool supports the release workflow for Red Hat content.
 
