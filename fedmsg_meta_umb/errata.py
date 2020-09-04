@@ -70,13 +70,13 @@ class ErrataProcessor(BaseProcessor):
 
         # Then, handle these more complex cases if that failed.
         if title == 'errata.activity.security_approved':
-            if headers['to'] == 'true':
+            if headers['to'] == '1':
                 template = self._('{agent} approved the security '
                                   'request on {fulladvisory}')
             elif headers['to'] == 'null':
                 template = self._('{agent} unset the security '
                                   'flag on {fulladvisory}')
-            elif headers['to'] == 'false':
+            elif headers['to'] == '0':
                 # Two very different senses of "false"
                 if headers['from'] == 'null':
                     template = self._('{agent} requested security '

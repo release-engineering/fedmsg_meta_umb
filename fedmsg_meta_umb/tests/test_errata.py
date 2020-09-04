@@ -149,7 +149,7 @@ class TestErrataSecurityRequested(fedmsg.tests.test_meta.Base):
             "expires": "0",
             "errata_id": "10000",
             "JMS_AMQP_MESSAGE_FORMAT": "0",
-            "to": "false",
+            "to": "0",
             "JMS_AMQP_NATIVE": "false",
             "destination": "/topic/VirtualTopic.eng.errata.activity.security_approved",
             "when": "2016-01-01 00:00:01 UTC",
