@@ -29,8 +29,7 @@ class ErrataProcessor(BaseProcessor):
     __link__ = 'https://errata.devel.redhat.com/'
     __docs__ = 'https://errata.devel.redhat.com/user-guide/'
     __obj__ = 'errata events'
-    __icon__ = ('https://errata.devel.redhat.com/assets/'
-                'images/erratatool18.png')
+    __icon__ = '_static/img/icons/erratatool50.png'
 
     def __init__(self, *args, **kwargs):
         super(ErrataProcessor, self).__init__(*args, **kwargs)
@@ -70,13 +69,13 @@ class ErrataProcessor(BaseProcessor):
 
         # Then, handle these more complex cases if that failed.
         if title == 'errata.activity.security_approved':
-            if headers['to'] == 'true':
+            if headers['to'] == '1':
                 template = self._('{agent} approved the security '
                                   'request on {fulladvisory}')
             elif headers['to'] == 'null':
                 template = self._('{agent} unset the security '
                                   'flag on {fulladvisory}')
-            elif headers['to'] == 'false':
+            elif headers['to'] == '0':
                 # Two very different senses of "false"
                 if headers['from'] == 'null':
                     template = self._('{agent} requested security '
@@ -84,6 +83,10 @@ class ErrataProcessor(BaseProcessor):
                 else:
                     template = self._('{agent} denied the security '
                                       'request on {fulladvisory}')
+            else:
+                # Catch-all
+                template = self._('{agent} set the security '
+                                  'flag from "{from}" to "{to}" on {fulladvisory}')
 
             return template.format(agent=agent, **headers)
 
