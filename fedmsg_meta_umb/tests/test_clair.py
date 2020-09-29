@@ -26,24 +26,132 @@ class TestClairNotification(fedmsg.tests.test_meta.Base):
     new security vulnerability
     """
 
-    expected_title = 'clair.notification'
-    expected_subti = 'New notification 0c1346ff-a64b-4504-a673-ea95930eacf1'
-    expected_link = (
-        'http://clair-clair-prod.cloud.paas.psi.redhat.com/'
-        'notifications/0c1346ff-a64b-4504-a673-ea95930eacf1?limit=10'
-    )
-    expected_icon = '_static/img/icons/clair.png'
+    expected_title = "clair.v4.notification"
+    expected_subti = "New notification - added: 2, removed: 1 vulnerabilities"
+    expected_icon = "_static/img/icons/clair.png"
 
     msg = {
         "i": 0,
         "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-35238-1560306230293-3:382125:-1:1:122",
-        "topic": "/topic/VirtualTopic.eng.clair.notification",
+        "topic": "/topic/VirtualTopic.eng.clair.v4.notification",
         "timestamp": 1561017066.0,
         "certificate": None,
         "signature": None,
         "username": None,
         "crypto": None,
-        "msg": {"Notification": {"Name": "0c1346ff-a64b-4504-a673-ea95930eacf1"}},
+        "msg": [
+            {
+                "id": "001680dd-bf80-49d0-842d-255c06d0d2df",
+                "manifest": "sha256:6066f95b13ae8b2c210c60c215ac93401e297f45e59b755ac14d2262157d9fea",
+                "reason": "added",
+                "vulnerability": {
+                    "distribution": {
+                        "arch": "",
+                        "cpe": "cpe:2.3:o:redhat:enterprise_linux:8:*:*:*:*:*:*:*",
+                        "did": "rhel",
+                        "id": "",
+                        "name": "Red Hat Enterprise Linux Server",
+                        "pretty_name": "Red Hat Enterprise Linux Server 8",
+                        "version": "8",
+                        "version_code_name": "",
+                        "version_id": "8",
+                    },
+                    "fixed_in_version": "0:6.0.0-25.5.module+el8.2.1+8680+ea98947b",
+                    "links": "https://access.redhat.com/errata/RHSA-2020:5111",
+                    "name": "RHSA-2020:5111: virt:8.2 and virt-devel:8.2 security and bug fix update (Moderate)",
+                    "package": {
+                        "arch": "aarch64|ppc64le|s390x|x86_64",
+                        "cpe": "",
+                        "id": "",
+                        "kind": "binary",
+                        "module": "virt:8.2",
+                        "name": "libvirt-daemon",
+                        "normalized_version": "",
+                        "version": "",
+                    },
+                    "repo": {
+                        "cpe": "",
+                        "key": "rhel-cpe-repository",
+                        "name": "cpe:/a:redhat:advanced_virtualization:8.2::el8",
+                    },
+                    "severity": "Medium",
+                },
+            },
+            {
+                "id": "009e3b28-ac0f-4bbc-8604-0f0d4ade08a4",
+                "manifest": "sha256:30ea340057e23e6be8d6012453e709879ce29a23d9e5482164826ba4aa6ffe2b",
+                "reason": "added",
+                "vulnerability": {
+                    "distribution": {
+                        "arch": "",
+                        "cpe": "cpe:2.3:o:redhat:enterprise_linux:8:*:*:*:*:*:*:*",
+                        "did": "rhel",
+                        "id": "",
+                        "name": "Red Hat Enterprise Linux Server",
+                        "pretty_name": "Red Hat Enterprise Linux Server 8",
+                        "version": "8",
+                        "version_code_name": "",
+                        "version_id": "8",
+                    },
+                    "fixed_in_version": "0:6.0.0-25.5.module+el8.2.1+8680+ea98947b",
+                    "links": "https://access.redhat.com/errata/RHSA-2020:5111",
+                    "name": "RHSA-2020:5111: virt:8.2 and virt-devel:8.2 security and bug fix update (Moderate)",
+                    "package": {
+                        "arch": "aarch64|ppc64le|s390x|x86_64",
+                        "cpe": "",
+                        "id": "",
+                        "kind": "binary",
+                        "module": "virt:8.2",
+                        "name": "libvirt-daemon",
+                        "normalized_version": "",
+                        "version": "",
+                    },
+                    "repo": {
+                        "cpe": "",
+                        "key": "rhel-cpe-repository",
+                        "name": "cpe:/a:redhat:advanced_virtualization:8.2::el8",
+                    },
+                    "severity": "Medium",
+                },
+            },
+            {
+                "id": "00ae7a5b-bd08-468a-b3c6-dc95c249a435",
+                "manifest": "sha256:05c7ad6e08d7f2203b5c35cfeabd7fd423959f5cfcdefc32d07b5a1e6e0581dc",
+                "reason": "removed",
+                "vulnerability": {
+                    "distribution": {
+                        "arch": "",
+                        "cpe": "cpe:2.3:o:redhat:enterprise_linux:8:*:*:*:*:*:*:*",
+                        "did": "rhel",
+                        "id": "",
+                        "name": "Red Hat Enterprise Linux Server",
+                        "pretty_name": "Red Hat Enterprise Linux Server 8",
+                        "version": "8",
+                        "version_code_name": "",
+                        "version_id": "8",
+                    },
+                    "fixed_in_version": "0:6.0.0-25.5.module+el8.2.1+8680+ea98947b",
+                    "links": "https://access.redhat.com/errata/RHSA-2020:5111",
+                    "name": "RHSA-2020:5111: virt:8.2 and virt-devel:8.2 security and bug fix update (Moderate)",
+                    "package": {
+                        "arch": "aarch64|ppc64le|s390x|x86_64",
+                        "cpe": "",
+                        "id": "",
+                        "kind": "binary",
+                        "module": "virt:8.2",
+                        "name": "libvirt-daemon",
+                        "normalized_version": "",
+                        "version": "",
+                    },
+                    "repo": {
+                        "cpe": "",
+                        "key": "rhel-cpe-repository",
+                        "name": "cpe:/a:redhat:advanced_virtualization:8.2::el8",
+                    },
+                    "severity": "Medium",
+                },
+            },
+        ],
         "headers": {
             "JMSXUserID": "msg-clair",
             "amq6100_destination": "queue://Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
@@ -64,70 +172,21 @@ class TestClairNotification(fedmsg.tests.test_meta.Base):
     }
 
 
-class TestClairNotificationSplit(fedmsg.tests.test_meta.Base):
-    """
-    Messages (like the example given here) are published when Clair wrapper
-    split notification with new security vulnerability
-    """
-
-    expected_title = 'clair.notification'
-    expected_subti = 'New notification batch CVE-1234 - RHSA-2019:1234 with 5 image(s)'
-    expected_link = (
-        'http://clair-clair-prod.cloud.paas.psi.redhat.com/'
-        'notifications/0c1346ff-a64b-4504-a673-ea95930eacf1?limit=10'
-    )
-    expected_icon = '_static/img/icons/clair.png'
-    expected_usernames = set([])
-
-    msg = {
-        "i": 0,
-        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-35238-1560306230293-3:382125:-1:1:122",
-        "topic": "/topic/VirtualTopic.eng.clair.notification",
-        "timestamp": 1561017066.0,
-        "certificate": None,
-        "signature": None,
-        "username": None,
-        "crypto": None,
-        "msg": {
-            "Notification": {"Name": "0c1346ff-a64b-4504-a673-ea95930eacf1"},
-            'affected_images': ['image1', 'image2', 'image3', 'image4', 'image5'],
-            'vulnerability_name': 'CVE-1234 - RHSA-2019:1234',
-        },
-        "headers": {
-            "JMSXUserID": "msg-clair",
-            "amq6100_destination": "queue://Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
-            "amq6100_originalDestination": "topic://VirtualTopic.eng.clair.notification",
-            "content-type": "application/json",
-            "correlation-id": "2ccad28b-0a6e-43d9-9376-ee238276fcbf",
-            "destination": "/topic/VirtualTopic.eng.clair.notification",
-            "expires": "1561103466372",
-            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-' \
-                '35238-1560306230293-3:382125:-1:1:122",
-            "original-destination": "/topic/VirtualTopic.eng.clair.notification",
-            "priority": "4",
-            "subscription": "/queue/Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
-            "timestamp": "1561017066372",
-        },
-        "source_name": "datanommer",
-        "source_version": "0.9.1",
-    }
-
-
-class TestClairWrapperScan(fedmsg.tests.test_meta.Base):
+class TestClairWrapperScanNVR(fedmsg.tests.test_meta.Base):
     """
     Messages (like the example given here) are published when Clair + Wrapper
     scan and grade new container image
     """
 
-    expected_title = 'clair.scan'
-    expected_subti = 'New image scanned: openstack-nova-compute-container-14.0-110.1561066899.ppc64le (A)'
+    expected_title = "clair.scan"
+    expected_subti = "New image scanned: openstack-nova-compute-container-14.0-110.1561066899.ppc64le (A)"
     expected_link = (
-        'http://clair-clair-prod.cloud.paas.psi.redhat.com/'
-        'ancestry/openstack-nova-compute-container-14.0-110.1561066899.ppc64le'
+        "https://clair.engineering.redhat.com/"
+        "matcher/api/v1/vulnerability_report/sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f"
     )
-    expected_packages = set(['openstack-nova-compute-container'])
+    expected_packages = set(["openstack-nova-compute-container"])
     expected_objects = set([])
-    expected_icon = '_static/img/icons/clair.png'
+    expected_icon = "_static/img/icons/clair.png"
 
     msg = {
         "i": 0,
@@ -142,6 +201,61 @@ class TestClairWrapperScan(fedmsg.tests.test_meta.Base):
             "arch": "ppc64le",
             "grades": [{"grade": "A", "start_date": "20190621T06:55:00.000-0400"}],
             "nvr": "openstack-nova-compute-container-14.0-110.1561066899",
+            "image_id": "sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f",
+        },
+        "headers": {
+            "JMSXUserID": "msg-clair",
+            "JMS_AMQP_MESSAGE_FORMAT": "0",
+            "JMS_AMQP_NATIVE": "false",
+            "amq6100_destination": "queue://Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "amq6100_originalDestination": "topic://VirtualTopic.eng.clair.scan",
+            "arch": "ppc64le",
+            "content-length": "154",
+            "correlation-id": "2ec19d5b-8820-4a9e-b8aa-ea3a11523057",
+            "destination": "/topic/VirtualTopic.eng.clair.scan",
+            "expires": "0",
+            "message-id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.' \
+                'com-35238-1560306230293-6:866563:0:0:1",
+            "nvr": "openstack-nova-compute-container-14.0-110.1561066899",
+            "original-destination": "/topic/VirtualTopic.eng.clair.scan",
+            "priority": "4",
+            "subscription": "/queue/Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",
+            "timestamp": "0",
+        },
+        "source_name": "datanommer",
+        "source_version": "0.9.1",
+    }
+
+
+class TestClairWrapperScanNVRA(fedmsg.tests.test_meta.Base):
+    """
+    Messages (like the example given here) are published when Clair + Wrapper
+    scan and grade new container image
+    """
+
+    expected_title = "clair.scan"
+    expected_subti = "New image scanned: openstack-nova-compute-container-14.0-110.1561066899.ppc64le (A)"
+    expected_link = (
+        "https://clair.engineering.redhat.com/"
+        "matcher/api/v1/vulnerability_report/sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f"
+    )
+    expected_packages = set(["openstack-nova-compute-container"])
+    expected_objects = set([])
+    expected_icon = "_static/img/icons/clair.png"
+
+    msg = {
+        "i": 0,
+        "msg_id": "ID:messaging-devops-broker02.web.prod.ext.phx2.redhat.com-35238-1560306230293-6:866563:0:0:1",
+        "topic": "/topic/VirtualTopic.eng.clair.scan",
+        "timestamp": 1561114556.0,
+        "certificate": None,
+        "signature": None,
+        "username": None,
+        "crypto": None,
+        "msg": {
+            "grades": [{"grade": "A", "start_date": "20190621T06:55:00.000-0400"}],
+            "nvra": "openstack-nova-compute-container-14.0-110.1561066899.ppc64le",
+            "image_id": "sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f",
         },
         "headers": {
             "JMSXUserID": "msg-clair",
@@ -173,13 +287,13 @@ class TestClairWrapperScanISV(fedmsg.tests.test_meta.Base):
     scan and grade new ISV container image
     """
 
-    expected_title = 'clair.scan.isv'
-    expected_subti = 'New image scanned: sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f (B)'
+    expected_title = "clair.scan.isv"
+    expected_subti = "New image scanned: sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f (B)"
     expected_link = (
-        'http://clair-clair-prod.cloud.paas.psi.redhat.com/'
-        'ancestry/sha256-d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f'
+        "https://clair.engineering.redhat.com/"
+        "matcher/api/v1/vulnerability_report/sha256:d994ce5745cd63d727d21a0c93d0811942d4e4d054d7704e7240b8e4471edf5f"
     )
-    expected_icon = '_static/img/icons/clair.png'
+    expected_icon = "_static/img/icons/clair.png"
 
     msg = {
         "i": 0,
@@ -240,15 +354,15 @@ class TestCommandNVR(fedmsg.tests.test_meta.Base):
     request scan of Red Hat image
     """
 
-    expected_title = 'clair.command'
-    expected_subti = 'Scan request: rhmap-fh-metrics-docker-2.0.0-1.amd64'
+    expected_title = "clair.command"
+    expected_subti = "Scan request: rhmap-fh-metrics-docker-2.0.0-1.amd64"
     expected_link = (
-        'https://brewweb.engineering.redhat.com/brew/search?'
-        'terms=rhmap-fh-metrics-docker-2.0.0-1&type=build&match=glob'
+        "https://brewweb.engineering.redhat.com/brew/search?"
+        "terms=rhmap-fh-metrics-docker-2.0.0-1&type=build&match=glob"
     )
-    expected_packages = set(['rhmap-fh-metrics-docker'])
-    expected_icon = '_static/img/icons/clair.png'
-    expected_usernames = {'araszka'}
+    expected_packages = set(["rhmap-fh-metrics-docker"])
+    expected_icon = "_static/img/icons/clair.png"
+    expected_usernames = {"araszka"}
 
     msg = {
         "i": 0,
@@ -295,11 +409,11 @@ class TestCommandISV(fedmsg.tests.test_meta.Base):
     request scan of ISV image
     """
 
-    expected_title = 'clair.command'
-    expected_subti = 'Scan request: sha256:0b8363dcca5b19788e84c7642a8a272a7fa1736b0db05614a6cf38e8f3bcf3d4'
+    expected_title = "clair.command"
+    expected_subti = "Scan request: sha256:0b8363dcca5b19788e84c7642a8a272a7fa1736b0db05614a6cf38e8f3bcf3d4"
     expected_link = None
-    expected_icon = '_static/img/icons/clair.png'
-    expected_usernames = {'araszka'}
+    expected_icon = "_static/img/icons/clair.png"
+    expected_usernames = {"araszka"}
 
     msg = {
         "i": 0,
@@ -345,8 +459,8 @@ class TestClairUnknowFormat(fedmsg.tests.test_meta.Base):
     Unknown format of message
     """
 
-    expected_icon = '_static/img/icons/clair.png'
-    expected_subti = 'Unknown message format'
+    expected_icon = "_static/img/icons/clair.png"
+    expected_subti = "Unknown message format"
 
     msg = {
         "i": 0,
@@ -357,7 +471,7 @@ class TestClairUnknowFormat(fedmsg.tests.test_meta.Base):
         "signature": None,
         "username": None,
         "crypto": None,
-        "msg": 'string-msg',
+        "msg": "string-msg",
         "headers": {
             "JMSXUserID": "msg-clair",
             "amq6100_destination": "queue://Consumer.client-datanommer.upshift-prod.VirtualTopic.eng.>",

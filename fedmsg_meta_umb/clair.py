@@ -20,82 +20,97 @@ from fedmsg.meta.base import BaseProcessor
 
 
 class ClairProcessor(BaseProcessor):
-    topic_prefix_re = r'/topic/VirtualTopic\.eng'
+    topic_prefix_re = r"/topic/VirtualTopic\.eng"
 
-    __name__ = 'clair'
-    __description__ = 'a service responsible for container grading'
-    __link__ = 'http://clair-clair-prod.cloud.paas.psi.redhat.com'
-    __docs__ = 'https://docs.engineering.redhat.com/x/OhbhB'
-    __icon__ = '_static/img/icons/clair.png'
-    __obj__ = 'Clair'
+    __name__ = "clair"
+    __description__ = "a service responsible for container grading"
+    __link__ = "https://clair.engineering.redhat.com"
+    __docs__ = "https://docs.engineering.redhat.com/x/OhbhB"
+    __icon__ = "_static/img/icons/clair.png"
+    __obj__ = "Clair"
 
     def title(self, msg, **config):
-        return msg['topic'].split('.', 2)[-1]
+        return msg["topic"].split(".", 2)[-1]
 
     def subtitle(self, msg, **config):
-        inner_msg = msg['msg']
-        topic = msg['topic']
+        inner_msg = msg["msg"]
+        topic = msg["topic"]
 
-        if not isinstance(inner_msg, dict):
+        if not isinstance(inner_msg, dict) and not isinstance(inner_msg, list):
             return "Unknown message format"
 
-        template = 'Unknown message'
+        template = "Unknown message"
 
-        if topic.endswith('clair.notification'):
-            if inner_msg.get('affected_images'):
-                inner_msg['affected_images_len'] = len(inner_msg['affected_images'])
+        if topic.endswith("clair.v4.notification"):
+            by_reason = self._split_by_reason(inner_msg)
+            return "New notification - added: {}, removed: {} vulnerabilities".format(
+                len(by_reason.get("added", [])), len(by_reason.get("removed", []))
+            )
+        elif topic.endswith("clair.scan"):
+            if inner_msg.get("nvr") and inner_msg.get("arch"):
                 template = self._(
-                    'New notification batch {vulnerability_name} with {affected_images_len} image(s)'
+                    "New image scanned: {nvr}.{arch} ({grades[0][grade]})"
                 )
-            else:
-                template = self._('New notification {Notification[Name]}')
-        elif topic.endswith('clair.scan'):
-            template = self._('New image scanned: {nvr}.{arch} ({grades[0][grade]})')
-        elif topic.endswith('clair.scan.isv'):
-            template = self._('New image scanned: {image_id} ({grades[0][grade]})')
-        elif topic.endswith('clair.command'):
-            if inner_msg.get('brew_build'):
-                template = self._('Scan request: {brew_build}.{architecture}')
-            elif inner_msg.get('imageDigest'):
-                template = self._('Scan request: {imageDigest}')
+            elif inner_msg.get("nvra"):
+                template = self._("New image scanned: {nvra} ({grades[0][grade]})")
+        elif topic.endswith("clair.scan.isv"):
+            template = self._("New image scanned: {image_id} ({grades[0][grade]})")
+        elif topic.endswith("clair.command"):
+            if inner_msg.get("brew_build"):
+                template = self._("Scan request: {brew_build}.{architecture}")
+            elif inner_msg.get("imageDigest"):
+                template = self._("Scan request: {imageDigest}")
 
         return template.format(**inner_msg)
 
     def link(self, msg, **config):
-        inner_msg = msg['msg']
-        topic = msg['topic']
-        if topic.endswith('clair.notification'):
-            return "{}/notifications/{}?limit=10".format(
-                self.__link__, inner_msg['Notification']['Name']
-            )
-        if topic.endswith('clair.scan'):
-            return "{}/ancestry/{}.{}".format(
-                self.__link__, inner_msg['nvr'], inner_msg['arch']
-            )
-        if topic.endswith('clair.scan.isv'):
-            return "{}/ancestry/{}".format(
-                self.__link__, inner_msg['image_id'].replace(':', '-')
-            )
-        elif topic.endswith('clair.command'):
-            if inner_msg.get('brew_build'):
+        inner_msg = msg["msg"]
+        topic = msg["topic"]
+        if topic.endswith("clair.scan") or topic.endswith("clair.scan.isv"):
+            if inner_msg.get("image_id"):
+                return "{}/matcher/api/v1/vulnerability_report/{}".format(
+                    self.__link__, inner_msg["image_id"]
+                )
+        elif topic.endswith("clair.command"):
+            if inner_msg.get("brew_build"):
                 return (
-                    'https://brewweb.engineering.redhat.com/brew/search?'
-                    'terms={brew_build}&type=build&match=glob'.format(**inner_msg)
+                    "https://brewweb.engineering.redhat.com/brew/search?"
+                    "terms={brew_build}&type=build&match=glob".format(**inner_msg)
                 )
 
         return None
 
     def packages(self, msg, **config):
-        inner_msg = msg['msg']
-        if msg['topic'].endswith('clair.scan'):
-            return set([inner_msg['nvr'].rsplit('-', 2)[0]])
-        elif msg['topic'].endswith('clair.command'):
-            if inner_msg.get('brew_build'):
-                return set([inner_msg['brew_build'].rsplit('-', 2)[0]])
+        inner_msg = msg["msg"]
+        if msg["topic"].endswith("clair.scan") and inner_msg.get("nvr"):
+            return set([inner_msg["nvr"].rsplit("-", 2)[0]])
+        if msg["topic"].endswith("clair.scan") and inner_msg.get("nvra"):
+            return set([inner_msg["nvra"].rsplit("-", 2)[0]])
+        elif msg["topic"].endswith("clair.command"):
+            if inner_msg.get("brew_build"):
+                return set([inner_msg["brew_build"].rsplit("-", 2)[0]])
 
         return set()
 
     def usernames(self, msg, **config):
-        if msg['topic'].endswith('clair.command'):
-            return {msg['msg']['user']}
+        if msg["topic"].endswith("clair.command"):
+            return {msg["msg"]["user"]}
         return set()
+
+    def _split_by_reason(self, notifications):
+        """
+        Split notification by notification reason
+
+        Args:
+            notifications (list): Clair notifications
+
+        Returns:
+            dict: notification split by reason - reason as key
+        """
+        by_reason = {}
+        for notification in notifications:
+            reason = notification.get("reason", "")
+            if reason not in by_reason:
+                by_reason[reason] = []
+            by_reason[reason].append(notification)
+        return by_reason
