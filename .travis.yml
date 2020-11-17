@@ -1,12 +1,12 @@
 language: python
 python:
- - "3.7"
- - "3.8"
-matrix:
+  - "3.8"
+  - "3.9"
+jobs:
   include:
-    - python: "3.7"
+    - python: "3.9"
       env: TOXENV=flake8
-    - python: "3.7"
+    - python: "3.9"
       env: TOXENV=docs
 install: pip install tox-travis codecov
 script: tox -- --with-coverage --cover-branches --cover-package=fedmsg_meta_umb
