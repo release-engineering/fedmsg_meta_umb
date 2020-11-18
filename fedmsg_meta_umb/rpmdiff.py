@@ -24,11 +24,10 @@ class RPMDiffProcessor(BaseProcessor):
 
     __name__ = 'rpmdiff'
     __description__ = 'the rpmdiff analysis system'
-    __link__ = 'https://rpmdiff.engineering.redhat.com'
-    __docs__ = 'https://mojo.redhat.com/docs/DOC-1085683'
+    __link__ = 'https://rpmdiff.engineering.redhat.com/'
+    __docs__ = 'https://docs.engineering.redhat.com/display/EXD/rpmdiff'
     __obj__ = 'RPMDiff Analysis System'
-    __icon__ = ('https://errata.devel.redhat.com/assets/'
-                'images/erratatool18.png')
+    __icon__ = '_static/img/icons/erratatool50.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]

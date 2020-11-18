@@ -32,8 +32,8 @@ class TestRPMDiffComparisonStart(fedmsg.tests.test_meta.Base):
                       '3.6.65.1-1.git.0.1f50797.el7)')
     expected_link = 'https://rpmdiff.engineering.redhat.com/run/94269/'
     expected_packages = set(['openshift-ansible'])
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
+
     msg = {
         "i": 0,
         "msg": {
@@ -67,8 +67,8 @@ class TestRPMDiffAnalysisCompleted(fedmsg.tests.test_meta.Base):
                       '.git.0.1a149c1.el7 is completed')
     expected_link = 'https://rpmdiff.engineering.redhat.com/run/94268/'
     expected_packages = set(['openshift-ansible'])
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
+
     msg = {
         "username": None,
         "i": 0,
