@@ -34,8 +34,8 @@ class TestPubPushStop(fedmsg.tests.test_meta.Base):
     expected_usernames = set(['errata'])
     expected_agent = 'errata'
     # TODO - pub needs an icon to be cool...
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
+
     msg = {
         "username": None,
         "i": 0,
@@ -103,8 +103,8 @@ class TestPubPushFail(fedmsg.tests.test_meta.Base):
     expected_packages = set([])
     expected_usernames = set(['rhartman', 'errata'])
     expected_agent = 'rhartman'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
+
     msg = {
         "username": None,
         "i": 0,
@@ -182,8 +182,8 @@ class TestPubPushStart(fedmsg.tests.test_meta.Base):
     expected_packages = set([])
     expected_usernames = set(['lismith'])
     expected_agent = 'lismith'
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
+
     msg = {
         "username": None,
         "i": 0,
@@ -248,8 +248,8 @@ class TestPubContainerSign(fedmsg.tests.test_meta.Base):
                       "e2e-container/e2e-container-test-product "
                       "was signed with key f21541eb in cdn-docker-stage-qa")
     expected_link = "http://pub.devel.redhat.com/pub/task/10908/"
-    expected_icon = ('https://errata.devel.redhat.com/assets/'
-                     'images/erratatool18.png')
+    expected_icon = '_static/img/icons/erratatool50.png'
+
     msg = {
         "username": None,
         "i": 0,

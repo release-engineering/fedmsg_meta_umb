@@ -24,11 +24,10 @@ class PubProcessor(BaseProcessor):
 
     __name__ = 'pub'
     __description__ = 'the software publication system'
-    __link__ = 'https://pub.devel.redhat.com'
+    __link__ = 'https://pub.devel.redhat.com/'
     __docs__ = 'https://pub.devel.redhat.com/pub/docs/index.html'
     __obj__ = 'Publish Events'
-    __icon__ = ('https://errata.devel.redhat.com/assets/'
-                'images/erratatool18.png')
+    __icon__ = '_static/img/icons/erratatool50.png'
 
     def title(self, msg, **config):
         return msg['topic'].split('.', 2)[-1]
