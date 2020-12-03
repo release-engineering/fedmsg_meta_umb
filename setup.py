@@ -60,6 +60,7 @@ entry_points = {
         'aqe-jenkins=fedmsg_meta_umb.aqe_jenkins:AqeJenkinsProcessor',
         'clair=fedmsg_meta_umb.clair:ClairProcessor',
         'snitch=fedmsg_meta_umb.snitch:SnitchProcessor',
+        'messagebusd=fedmsg_meta_umb.messagebusd:MessagebusdProcessor',
     ]
 }
 
