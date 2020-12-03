@@ -2,7 +2,7 @@
 %global rpmname fedmsg-meta-umb
 
 Name:           python-%{rpmname}
-Version:        0.0.3
+Version:        0.0.4
 Release:        1%{?dist}
 Summary:        fedmsg metadata provider plugins for the Unified Message Bus
 
@@ -64,6 +64,14 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %{_datadir}/%{name}
 
 %changelog
+* Thu Dec  3 2020 Mike Bonnet <mikeb@redhat.com> - 0.0.4-1
+- snitch: handle inconsistent IDs
+- errata: improved message handling
+- replace references to external icons with local copies
+- add CodeQL analysis and update tests to run on Python 3.9
+- clair: handle messages from Clair v4
+- messagebusd: new processor
+
 * Fri Jan 17 2020 Mike Bonnet <mikeb@redhat.com> - 0.0.3-1
 - remove python2 support, since fedmsg no longer supports it as of Fedora 31
 
