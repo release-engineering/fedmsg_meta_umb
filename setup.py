@@ -1,4 +1,4 @@
-# Copyright (C) 2017-2019 Red Hat, Inc.
+# Copyright (C) 2017-2020 Red Hat, Inc.
 #
 # fedmsg_meta_umb is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -66,7 +66,7 @@ entry_points = {
 
 setup(
     name='fedmsg_meta_umb',
-    version='0.0.3',
+    version='0.0.4',
     description="fedmsg metadata providers for services on Red Hat's Unified Message Bus",
     long_description=long_description,
     author='Mike Bonnet',
