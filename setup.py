@@ -61,6 +61,7 @@ entry_points = {
         'clair=fedmsg_meta_umb.clair:ClairProcessor',
         'snitch=fedmsg_meta_umb.snitch:SnitchProcessor',
         'messagebusd=fedmsg_meta_umb.messagebusd:MessagebusdProcessor',
+        'cts=fedmsg_meta_umb.cts:CTSProcessor',
     ]
 }
 
