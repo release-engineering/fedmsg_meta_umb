@@ -10,5 +10,6 @@ tarxz: tarball
 	xz dist/*.tar
 
 srpm: tarxz
+	git config --global safe.directory $(PWD)
 	sed -i -e "s/^Release:.*/Release:        0.$$(date +%s).git$$(git log -1 --pretty=format:%h)%{?dist}/" *.spec
 	rpmbuild --define "_sourcedir dist" --define "_srcrpmdir $(outdir)" -bs *.spec
