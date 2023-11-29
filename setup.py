@@ -27,7 +27,7 @@ f.close()
 setup_requires = [
 ]
 install_requires = [
-    'fedmsg',
+    'fedmsg @ git+https://github.com/fedora-infra/fedmsg.git@develop',
 ]
 tests_require = [
     'nose',
