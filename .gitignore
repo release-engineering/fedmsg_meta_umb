@@ -3,5 +3,6 @@
 .eggs
 *.egg-info
 .tox
+.coverage*
 htmldocs
 doc/topics.rst
