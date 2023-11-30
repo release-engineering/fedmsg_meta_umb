@@ -24,13 +24,8 @@ long_description = f.read().strip()
 long_description = long_description.split('split here', 1)[1]
 f.close()
 
-setup_requires = [
-]
 install_requires = [
     'fedmsg @ git+https://github.com/fedora-infra/fedmsg.git@develop',
-]
-tests_require = [
-    'nose',
 ]
 
 entry_points = {
@@ -74,10 +69,7 @@ setup(
     author_email='mikeb@redhat.com',
     url='https://github.com/release-engineering/fedmsg_meta_umb/',
     license='LGPLv2+',
-    setup_requires=setup_requires,
     install_requires=install_requires,
-    tests_require=tests_require,
-    test_suite='nose.collector',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,

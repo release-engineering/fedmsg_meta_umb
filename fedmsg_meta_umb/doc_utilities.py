@@ -2,14 +2,14 @@
 
 This code:
 
-- Uses :mod:`nose` to find all the fedmsg.meta unittests.
+- Uses :mod:`unittest` to find all the fedmsg.meta unittests.
 - Extracts all the metadata and docstrings from those tests.
 - Uses all that to generate a giant .rst document of all the fedmsg
   topics and what they are about with example messages.
 
 """
 
-import nose
+import unittest
 import pprint
 import textwrap
 import uuid
@@ -103,10 +103,20 @@ def datagrepper_link(topic):
 
 
 def load_classes(module):
-    testdir = os.path.dirname(os.path.abspath(__file__)) + '/tests'
-    suitelist = map(list, nose.loader.defaultTestLoader().loadTestsFromDir(testdir))
-    clslist = [cls for suite in suitelist for cls in suite]
-    return clslist
+    suite = unittest.defaultTestLoader.discover(
+        os.path.dirname(module.__file__),
+        top_level_dir=os.path.dirname(__file__),
+    )
+
+    def _classes(s):
+        if isinstance(s, unittest.TestCase):
+            yield s.__class__
+        else:
+            for t in s:
+                yield from _classes(t)
+
+    return set(_classes(suite))
+
 
 def make_topics_doc(output_dir):
 
@@ -117,13 +127,13 @@ def make_topics_doc(output_dir):
     test_classes = load_classes(source_module)
 
     # Strip out the conglomerator tests which are more complicated.
-    test_classes = [cls for cls in test_classes if hasattr(cls.context, 'msg')]
+    test_classes = [cls for cls in test_classes if hasattr(cls, 'msg')]
 
     write(fname, header)
 
     for cls in test_classes:
-        if cls.context.msg is not Unspecified:
-            cls.__topic = cls.context.msg['topic'].split('.', 1)[-1]
+        if cls.msg is not Unspecified:
+            cls.__topic = cls.msg['topic'].split('.', 1)[-1]
         else:
             cls.__topic = None
 
@@ -131,7 +141,7 @@ def make_topics_doc(output_dir):
 
     seen = []
     for cls in test_classes:
-        if cls.context.msg is not Unspecified:
+        if cls.msg is not Unspecified:
             topic = cls.__topic
 
             # You can also exclude a test from the docs with nodoc = True
@@ -149,18 +159,15 @@ def make_topics_doc(output_dir):
             write(fname, "~" * len(topic))
             write(fname)
 
-            # I would use __doc__ here, but something that nose is doing is
-            # stripping the __doc__ from my original unit tests.  Instead,
-            # we'll use our own 'doc' attribute which is a little clumsy.
-            if getattr(cls.context, 'doc', None):
-                write(fname, textwrap.dedent("    " + cls.context.doc.strip()))
+            if cls.__doc__:
+                write(fname, textwrap.dedent("    " + cls.__doc__.strip()))
                 write(fname)
 
-            write(fname, datagrepper_link(cls.context.msg['topic']))
+            write(fname, datagrepper_link(cls.msg['topic']))
             write(fname)
 
             write(fname, ".. code-block:: python")
-            write(fname, '\n    ' + pprint.pformat(cls.context.msg, indent=2)
+            write(fname, '\n    ' + pprint.pformat(cls.msg, indent=2)
                   .replace('\n', '\n    '))
             write(fname)
 
@@ -168,20 +175,20 @@ def make_topics_doc(output_dir):
             uid = str(uuid.uuid4())
             icon_inline = Unspecified
             secondary_icon_inline = Unspecified
-            if cls.context.expected_icon is not Unspecified:
+            if cls.expected_icon is not Unspecified:
                 icon_inline = "|%s-icon|" % uid
-            if cls.context.expected_secondary_icon is not Unspecified:
+            if cls.expected_secondary_icon is not Unspecified:
                 secondary_icon_inline = "|%s-secondary_icon|" % uid
 
             # A bunch of data for the template.
             kwargs = dict(
-                link=cls.context.expected_link,
-                title=cls.context.expected_title,
-                subtitle=cls.context.expected_subti,
-                usernames=cls.context.expected_usernames,
-                agent=cls.context.expected_agent,
-                packages=cls.context.expected_packages,
-                objects=cls.context.expected_objects,
+                link=cls.expected_link,
+                title=cls.expected_title,
+                subtitle=cls.expected_subti,
+                usernames=cls.expected_usernames,
+                agent=cls.expected_agent,
+                packages=cls.expected_packages,
+                objects=cls.expected_objects,
                 icon_inline=icon_inline,
                 secondary_icon_inline=secondary_icon_inline,
             )
@@ -194,8 +201,8 @@ def make_topics_doc(output_dir):
             longest = max([length(value) for value in kwargs.values()])
 
             write(fname, metadata_template.render(
-                icon=cls.context.expected_icon,
-                secondary_icon=cls.context.expected_secondary_icon,
+                icon=cls.expected_icon,
+                secondary_icon=cls.expected_secondary_icon,
                 Unspecified=Unspecified,
                 longest=longest,
                 **kwargs
