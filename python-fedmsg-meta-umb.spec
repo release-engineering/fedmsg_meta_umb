@@ -12,7 +12,6 @@ Source0:        %{srcname}-%{version}.tar.xz
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
-BuildRequires:  python3-nose
 BuildRequires:  python3-fedmsg
 BuildRequires:  python3-mako
 BuildRequires:  python3-cloud-sptheme

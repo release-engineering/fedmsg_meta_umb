@@ -1,4 +1,3 @@
 cloud_sptheme
-nose
-fedmsg
+fedmsg @ git+https://github.com/fedora-infra/fedmsg.git@develop
 mako
