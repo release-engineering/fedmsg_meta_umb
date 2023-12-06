@@ -1,0 +1,1 @@
+fedmsg @ git+https://github.com/fedora-infra/fedmsg.git@develop
