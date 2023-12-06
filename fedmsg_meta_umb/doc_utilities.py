@@ -15,7 +15,6 @@ import textwrap
 import uuid
 
 import mako.template
-import six
 import os.path
 
 from fedmsg.tests.test_meta import Unspecified
@@ -195,7 +194,7 @@ def make_topics_doc(output_dir):
 
             def length(value):
                 """ Find longest string so we can pad our tables adequately """
-                if isinstance(value, six.string_types):
+                if isinstance(value, str):
                     return len(value)
                 return len(repr(value))
             longest = max([length(value) for value in kwargs.values()])
