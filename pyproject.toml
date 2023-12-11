@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fedmsg_meta_umb"
-version = "0.0.4"
+version = "0.1.0"
 authors = [
     {name = "Mike Bonnet", email = "mikeb@redhat.com"},
 ]
