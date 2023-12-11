@@ -2,7 +2,7 @@
 %global rpmname fedmsg-meta-umb
 
 Name:           python-%{rpmname}
-Version:        0.0.4
+Version:        0.1.0
 Release:        1%{?dist}
 Summary:        fedmsg metadata provider plugins for the Unified Message Bus
 
@@ -52,7 +52,7 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %{__cp} -pr datagrepper-docs htmldocs %{buildroot}%{_datadir}/%{name}
 
 %check
-%{__python3} setup.py test
+%{__python3} -m unittest
 
 %files -n python3-%{rpmname}
 %license LICENSE
@@ -63,6 +63,10 @@ PYTHONPATH=. sphinx-build-3 doc/ htmldocs/
 %{_datadir}/%{name}
 
 %changelog
+* Mon Dec 11 2023 Mike Bonnet <mikeb@redhat.com> - 0.1.0-1
+- migrate to pyproject.toml
+- compatibility with Python 3.12
+
 * Thu Dec  3 2020 Mike Bonnet <mikeb@redhat.com> - 0.0.4-1
 - snitch: handle inconsistent IDs
 - errata: improved message handling
